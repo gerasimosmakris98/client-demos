@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, Facebook, Twitter } from 'lucide-react';
 
-const Footer = () => {
+const Footer = ({ t }) => {
     return (
         <footer className="bg-[#1A0F0A] text-amber-50 py-16">
             <div className="max-w-7xl mx-auto px-6">
@@ -9,7 +9,7 @@ const Footer = () => {
                     <div className="md:col-span-2 space-y-6">
                         <h2 className="text-3xl font-black tracking-tighter">Cafe<span className="text-amber-500">.</span></h2>
                         <p className="text-white/40 max-w-sm">
-                            Experience the true taste of Greece in every cup. Artisanal coffee, homemade pastries, and a welcoming atmosphere.
+                            {t.footer.desc}
                         </p>
                         <div className="flex gap-4">
                             {[Instagram, Facebook, Twitter].map((Icon, i) => (
@@ -21,21 +21,21 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-white mb-6">Quick Links</h4>
+                        <h4 className="font-bold text-white mb-6">{t.footer.links.title}</h4>
                         <ul className="space-y-4 text-white/60">
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">Home</a></li>
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">Menu</a></li>
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">About</a></li>
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">Contact</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.links.home}</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.links.menu}</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.links.about}</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.links.contact}</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-white mb-6">Legal</h4>
+                        <h4 className="font-bold text-white mb-6">{t.footer.legal.title}</h4>
                         <ul className="space-y-4 text-white/60">
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">Terms of Service</a></li>
-                            <li><a href="#" className="hover:text-amber-500 transition-colors">Cookie Policy</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.legal.privacy}</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.legal.terms}</a></li>
+                            <li><a href="#" className="hover:text-amber-500 transition-colors">{t.footer.legal.cookies}</a></li>
                         </ul>
                     </div>
                 </div>

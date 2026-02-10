@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ArrowLeft, Info, Smartphone, LayoutDashboard, Monitor, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const DemoLayout = () => {
+const DemoLayout = ({ language }) => {
     const [showMenu, setShowMenu] = useState(false);
     const [viewMode, setViewMode] = useState('desktop');
     const location = useLocation();
@@ -62,8 +62,7 @@ const DemoLayout = () => {
                 <div className="flex items-center gap-0.5 sm:gap-1 bg-white/5 rounded-full p-0.5 sm:p-1">
                     {[
                         { mode: 'desktop', icon: Monitor, label: 'Desktop' },
-                        { mode: 'mobile', icon: Smartphone, label: 'Mobile' },
-                        { mode: 'admin', icon: LayoutDashboard, label: 'Admin' }
+                        { mode: 'mobile', icon: Smartphone, label: 'Mobile' }
                     ].map(({ mode, icon: Icon, label }) => (
                         <button key={mode}
                             onClick={() => setViewMode(mode)}
@@ -107,7 +106,7 @@ const DemoLayout = () => {
 
             {/* ═══ CONTENT ═══ */}
             <div className={`relative transition-all duration-500 ${viewMode === 'mobile' ? 'max-w-md mx-auto border-x border-gray-800 shadow-2xl min-h-screen my-8 overflow-hidden rounded-[40px]' : ''}`}>
-                <Outlet context={{ viewMode }} />
+                <Outlet context={{ viewMode, language }} />
             </div>
         </div>
     );

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Zap, Shield, Phone, Clock, Star, Wrench, CheckCircle, MapPin, Mail, ArrowRight, ChevronDown, Users, Award, ThumbsUp, FileText, Truck, Package } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Shield, Star, Award, Zap, CheckCircle2, ArrowRight, Facebook, Instagram, Linkedin, Wrench, FileText, Truck, Package } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../../components/common/SEO';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
@@ -107,11 +108,17 @@ const Team = () => (
                 <h2 className="text-4xl md:text-5xl font-black mt-2">CERTIFIED EXPERTS</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {['Νίκος Κ.', 'Γιώργος Μ.', 'Δημήτρης Π.', 'Αλέξης Τ.'].map((name, i) => (
+                {[
+                    { name: 'Νίκος Κ.', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop' },
+                    { name: 'Γιώργος Μ.', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop' },
+                    { name: 'Δημήτρης Π.', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop' },
+                    { name: 'Αλέξης Τ.', img: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop' }
+                ].map((member, i) => (
                     <div key={i} className="group relative h-[300px] rounded-3xl overflow-hidden bg-slate-800">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                        <img src={member.img} alt={member.name} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity group-hover:scale-110 duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-6 w-full">
-                            <h3 className="text-lg font-bold">{name}</h3>
+                            <h3 className="text-lg font-bold">{member.name}</h3>
                             <p className="text-orange-400 text-sm">Master Electrician</p>
                         </div>
                     </div>
@@ -130,9 +137,22 @@ const Gallery = () => (
                 <h2 className="text-4xl md:text-5xl font-black mt-2">OUR WORK</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {[1, 2, 3, 4, 5, 6].map(i => (
-                    <div key={i} className="aspect-square rounded-2xl bg-slate-800 border border-white/5 hover:border-orange-500/30 transition-colors overflow-hidden">
-                        <div className="w-full h-full flex items-center justify-center text-gray-600"><Zap size={40} /></div>
+                {[
+                    'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800&auto=format&fit=crop', // Electrical panel
+                    'https://images.unsplash.com/photo-1544724569-5f546fd6dd2d?q=80&w=800&auto=format&fit=crop', // Wiring
+                    'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=800&auto=format&fit=crop', // Smart home
+                    'https://images.unsplash.com/photo-1565608444338-39712a2aa774?q=80&w=800&auto=format&fit=crop', // Modern kitchen lights
+                    'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop', // Office lighting
+                    'https://images.unsplash.com/photo-1550525811-e5869dd03032?q=80&w=800&auto=format&fit=crop'  // Server room
+                ].map((img, i) => (
+                    <div key={i} className="group aspect-square rounded-2xl bg-slate-800 border border-white/5 hover:border-orange-500/30 transition-colors overflow-hidden relative">
+                        <img src={img} alt={`Project ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-black/50 group-hover:opacity-0 transition-opacity duration-500" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="bg-orange-500 text-black p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <Zap size={24} />
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -236,26 +256,7 @@ const ElectricianDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Electric',
-            brandLogo: '⚡',
-            accentColor: 'orange',
-            roles: [{ id: 'admin', label: 'Owner' }, { id: 'staff', label: 'Field Tech' }, { id: 'user', label: 'Dispatcher' }],
-            stats: [
-                { label: 'Jobs Today', value: '8', trend: 10 },
-                { label: 'Revenue', value: '€2.4k', trend: 12 },
-                { label: 'Pending Quotes', value: '14', trend: -3 },
-                { label: 'Avg Rating', value: '4.9', trend: 2 }
-            ],
-            kpis: [
-                { label: 'Job Completion Rate', value: '96%', progress: 96 },
-                { label: 'Response Time', value: '< 2h', progress: 88 },
-                { label: 'Customer Retention', value: '91%', progress: 91 }
-            ],
-            customTabs: electricianTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div className="bg-slate-950 min-h-screen text-white font-sans">

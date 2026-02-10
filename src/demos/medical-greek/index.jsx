@@ -177,26 +177,7 @@ const MedicalDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Medical',
-            brandLogo: '🏥',
-            accentColor: 'teal',
-            roles: [{ id: 'admin', label: 'Director' }, { id: 'staff', label: 'Doctor' }, { id: 'user', label: 'Nurse' }],
-            stats: [
-                { label: 'Appointments Today', value: '42', trend: 8 },
-                { label: 'Patients (Month)', value: '1,200', trend: 12 },
-                { label: 'Doctors Active', value: '18/25', trend: 0 },
-                { label: 'Revenue', value: '€28k', trend: 15 }
-            ],
-            kpis: [
-                { label: 'Patient Satisfaction', value: '96%', progress: 96 },
-                { label: 'Wait Time (Avg)', value: '12 min', progress: 40 },
-                { label: 'Bed Occupancy', value: '78%', progress: 78 }
-            ],
-            customTabs: medicalTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div className="bg-slate-950 min-h-screen text-white font-sans">

@@ -2,7 +2,7 @@ import React from 'react';
 import { BookOpen, Award, Sparkles, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const TutoringHero = () => {
+const TutoringHero = ({ t }) => {
     return (
         <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white">
             {/* Dynamic Gradient Background */}
@@ -34,17 +34,16 @@ const TutoringHero = () => {
                         className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs md:text-sm font-bold mb-6 md:mb-8 border border-white/30"
                     >
                         <Award size={16} className="text-yellow-300" />
-                        <span>100% ΕΠΙΤΥΧΙΑ</span>
+                        <span>{t.badge}</span>
                     </motion.div>
 
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-                        Χτίζουμε το <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 filter drop-shadow-sm">Μέλλον</span> μαζί.
+                        {t.title} <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 filter drop-shadow-sm">{t.highlight}</span> {t.title2}
                     </h1>
 
                     <p className="text-lg md:text-xl text-blue-50 mb-8 md:mb-10 max-w-lg leading-relaxed">
-                        Ολοκληρωμένο σύστημα εκπαίδευσης για μαθητές Γυμνασίου και Λυκείου.
-                        Εξειδικευμένοι καθηγητές και σύγχρονα εποπτικά μέσα.
+                        {t.desc}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
@@ -53,10 +52,10 @@ const TutoringHero = () => {
                             whileTap={{ scale: 0.95 }}
                             className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
                         >
-                            Εγγραφές 2025-26 <ArrowRight size={20} />
+                            {t.ctaPrimary} <ArrowRight size={20} />
                         </motion.button>
                         <button className="px-8 py-4 rounded-xl font-bold text-white border-2 border-white/30 hover:bg-white/10 transition-colors">
-                            Πρόγραμμα Σπουδών
+                            {t.ctaSecondary}
                         </button>
                     </div>
                 </motion.div>
@@ -78,8 +77,8 @@ const TutoringHero = () => {
                             <Sparkles size={24} className="text-blue-600" />
                         </div>
                         <div>
-                            <p className="font-bold text-sm">Πρωτοπορία</p>
-                            <p className="text-xs text-gray-500">Στην εκπαίδευση</p>
+                            <p className="font-bold text-sm">{t.floatBadge}</p>
+                            <p className="text-xs text-gray-500">{t.floatSub}</p>
                         </div>
                     </motion.div>
 

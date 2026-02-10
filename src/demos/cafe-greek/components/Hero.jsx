@@ -2,7 +2,7 @@ import React from 'react';
 import { Coffee, MapPin, Clock, ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const CafeHero = () => {
+const CafeHero = ({ t }) => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Slow Zoom */}
@@ -22,28 +22,28 @@ const CafeHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="glass-panel p-8 md:p-12 rounded-2xl border border-amber-500/20 backdrop-blur-md bg-black/40 shadow-2xl"
+          className="glass-panel p-6 md:p-12 rounded-2xl border border-amber-500/20 backdrop-blur-md bg-black/40 shadow-2xl"
         >
           <div className="flex justify-center mb-6 text-amber-500">
-            <Coffee size={40} strokeWidth={1.5} />
+            <Coffee size={32} strokeWidth={1.5} className="md:w-10 md:h-10" />
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
             GM <span className="text-amber-500">CAFE</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-8 font-light italic tracking-wide">
-            Η τέχνη του καφέ στην καρδιά της πόλης.
+            {t.hero.subtitle}
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 mb-10 text-sm md:text-base font-medium text-amber-200/90">
             <div className="flex items-center gap-2 bg-amber-950/30 px-4 py-2 rounded-full border border-amber-500/10">
               <Clock size={16} />
-              <span>Δευ - Κυρ: 08:00 - 23:00</span>
+              <span>{t.hero.hours}</span>
             </div>
             <div className="flex items-center gap-2 bg-amber-950/30 px-4 py-2 rounded-full border border-amber-500/10">
               <MapPin size={16} />
-              <span>Αριστοτέλους 12, Κέντρο</span>
+              <span>{t.hero.address}</span>
             </div>
           </div>
 
@@ -52,7 +52,7 @@ const CafeHero = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-amber-600 hover:bg-amber-500 text-white px-8 py-4 rounded-lg font-bold uppercase tracking-widest text-sm transition-colors shadow-lg"
           >
-            Δειτε το μενου
+            {t.hero.cta}
           </motion.button>
         </motion.div>
       </div>

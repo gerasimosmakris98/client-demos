@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, CheckCircle, Briefcase, Zap } from 'lucide-react';
 
-const Educators = () => {
+const Educators = ({ t }) => {
     return (
         <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
             {/* Abstract Background */}
@@ -11,23 +11,18 @@ const Educators = () => {
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 font-bold text-sm uppercase mb-6 border border-blue-500/20">
-                            <Briefcase size={16} /> Για Εκπαιδευτικούς
+                            <Briefcase size={16} /> {t.badge}
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                            Είσαι Ελεύθερος Επαγγελματίας; <br />
-                            <span className="text-blue-400">Γίνε Συνεργάτης μας.</span>
+                            {t.title} <br />
+                            <span className="text-blue-400">{t.highlight}</span>
                         </h2>
                         <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-                            Η πλατφόρμα μας δεν είναι μόνο για μαθητές. Παρέχουμε σε ελεύθερους επαγγελματίες εκπαιδευτικούς τα εργαλεία για να οργανώσουν και να αναπτύξουν τη δουλειά τους.
+                            {t.desc}
                         </p>
 
                         <div className="space-y-4 mb-10">
-                            {[
-                                'Διαχείριση μαθητών και βαθμολογιών',
-                                'Αυτόματη έκδοση αποδείξεων και οικονομικά στατιστικά',
-                                'Ψηφιακή τάξη και διαμοιρασμός υλικού',
-                                'Πρόσβαση στο δίκτυο γονέων και εύρεση νέων μαθητών'
-                            ].map((item, index) => (
+                            {t.features.map((item, index) => (
                                 <div key={index} className="flex items-start gap-3">
                                     <CheckCircle className="text-green-500 mt-1 shrink-0" size={20} />
                                     <span className="text-slate-200">{item}</span>
@@ -36,7 +31,7 @@ const Educators = () => {
                         </div>
 
                         <button className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/50 flex items-center gap-2">
-                            <Zap size={20} /> Δημιουργία Λογαριασμού Teacher
+                            <Zap size={20} /> {t.cta}
                         </button>
                     </div>
 
@@ -46,21 +41,21 @@ const Educators = () => {
                             {/* Mock Interface showing Teacher Dashboard preview */}
                             <div className="flex items-center justify-between mb-8 border-b border-slate-700 pb-4">
                                 <div>
-                                    <h3 className="font-bold text-lg text-white">Teacher Dashboard</h3>
-                                    <p className="text-sm text-slate-400">Επισκόπηση Μήνα</p>
+                                    <h3 className="font-bold text-lg text-white">{t.dashboardTitle}</h3>
+                                    <p className="text-sm text-slate-400">{t.dashboardSub}</p>
                                 </div>
                                 <div className="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-bold">
-                                    Active Studio
+                                    {t.activeStudio}
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4 mb-6">
                                 <div className="bg-slate-700/50 p-4 rounded-xl">
-                                    <p className="text-slate-400 text-xs mb-1">Τρέχοντες Μαθητές</p>
+                                    <p className="text-slate-400 text-xs mb-1">{t.currentStudents}</p>
                                     <p className="text-2xl font-bold text-white">24</p>
                                 </div>
                                 <div className="bg-slate-700/50 p-4 rounded-xl">
-                                    <p className="text-slate-400 text-xs mb-1">Έσοδα μήνα</p>
+                                    <p className="text-slate-400 text-xs mb-1">{t.monthlyRevenue}</p>
                                     <p className="text-2xl font-bold text-white">€1.850</p>
                                 </div>
                             </div>

@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Github } from 'lucide-react';
+import Footer from './Footer';
 
 const MainLayout = ({ children }) => {
     const location = useLocation();
-    const currentYear = new Date().getFullYear();
 
     return (
         <div className="relative min-h-screen flex flex-col">
@@ -36,25 +37,8 @@ const MainLayout = ({ children }) => {
                 {children}
             </main>
 
-            {/* Footer */}
-            <footer className="border-t border-white/5 py-8 sm:py-12 px-4 sm:px-6" style={{ background: '#020617' }}>
-                <div className="max-w-[1400px] mx-auto flex flex-col items-center gap-4 text-center">
-                    <div>
-                        <div className="font-playfair text-lg font-bold text-white mb-1">GM</div>
-                        <p className="text-gray-500 text-xs sm:text-sm">AI Web Developer & FinTech Specialist</p>
-                    </div>
-
-                    <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
-                        <a href="https://g-makris.com/portfolio" className="hover:text-white transition-colors">Portfolio</a>
-                        <a href="https://g-makris.com/services" className="hover:text-white transition-colors">Services</a>
-                        <a href="https://g-makris.com/contact" className="hover:text-white transition-colors">Contact</a>
-                    </div>
-                </div>
-
-                <div className="max-w-[1400px] mx-auto mt-6 pt-6 border-t border-white/5 text-center">
-                    <span className="text-gray-600 text-[10px] sm:text-xs">&copy; {currentYear} Gerasimos Makris. All rights reserved.</span>
-                </div>
-            </footer>
+            {/* Official Footer */}
+            <Footer />
         </div>
     );
 };

@@ -1,19 +1,14 @@
 import React from 'react';
-import { Search, Filter, LayoutGrid, List } from 'lucide-react';
+import { Search, Filter } from 'lucide-react';
 
 const FilterBar = ({ category, setCategory, searchQuery, setSearchQuery, totalItems }) => {
     return (
         <div className="space-y-3 sm:space-y-4">
-            {/* Top row — Filter button + view toggles */}
+            {/* Top row — Filter button */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center justify-between">
                 <button className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-900 border border-gray-800 rounded-xl text-white text-sm font-medium hover:bg-gray-800 transition sm:w-auto">
                     <Filter size={14} /> Filters
                 </button>
-
-                <div className="flex items-center gap-2 justify-end">
-                    <button className="p-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700 transition"><LayoutGrid size={16} /></button>
-                    <button className="p-2 text-gray-500 hover:text-white transition"><List size={16} /></button>
-                </div>
             </div>
 
             {/* Filter row — Category + Search */}

@@ -205,26 +205,7 @@ const StudioDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Fitness Studio',
-            brandLogo: '🧘',
-            accentColor: 'purple',
-            roles: [{ id: 'admin', label: 'Owner' }, { id: 'staff', label: 'Instructor' }, { id: 'user', label: 'Front Desk' }],
-            stats: [
-                { label: 'Active Members', value: '185', trend: 10 },
-                { label: 'Classes Today', value: '8', trend: 0 },
-                { label: 'New Signups', value: '12', trend: 20 },
-                { label: 'Revenue', value: '€8.4k', trend: 15 }
-            ],
-            kpis: [
-                { label: 'Member Retention', value: '95%', progress: 95 },
-                { label: 'Class Fill Rate', value: '78%', progress: 78 },
-                { label: 'NPS Score', value: '82', progress: 82 }
-            ],
-            customTabs: studioTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div className="bg-[#0d0015] min-h-screen text-white font-sans">

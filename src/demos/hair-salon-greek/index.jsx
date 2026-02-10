@@ -35,26 +35,7 @@ const SalonDemo = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Salon',
-            brandLogo: '✂️',
-            accentColor: 'rose',
-            roles: [{ id: 'admin', label: 'Owner' }, { id: 'staff', label: 'Stylist' }, { id: 'user', label: 'Receptionist' }],
-            stats: [
-                { label: 'Appointments', value: '28', trend: 5 },
-                { label: 'Staff Active', value: '4/6', trend: 0 },
-                { label: 'Revenue', value: '€890', trend: 8 },
-                { label: 'New Clients', value: '6', trend: 12 }
-            ],
-            kpis: [
-                { label: 'Client Satisfaction', value: '98%', progress: 98 },
-                { label: 'Rebooking Rate', value: '72%', progress: 72 },
-                { label: 'Product Sales', value: '€340', progress: 56 }
-            ],
-            customTabs: salonTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div style={{ fontFamily: "'Inter', sans-serif" }}>

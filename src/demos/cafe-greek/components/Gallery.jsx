@@ -6,26 +6,24 @@ const images = [
     "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop"
 ];
 
-const CafeGallery = () => {
+const CafeGallery = ({ t }) => {
     return (
-        <section style={{ padding: '0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-            {images.map((img, index) => (
-                <div key={index} style={{ height: '400px', overflow: 'hidden' }}>
-                    <img
-                        src={img}
-                        alt="Cafe vibe"
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            transition: 'transform 0.5s ease',
-                            cursor: 'pointer'
-                        }}
-                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                    />
-                </div>
-            ))}
+        <section className="bg-stone-950 py-12">
+            <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
+                <span className="text-[#d4a373] font-bold tracking-widest uppercase text-sm">{t.gallery.badge}</span>
+                <h2 className="text-3xl md:text-4xl font-black text-white mt-2">{t.gallery.title}</h2>
+            </div>
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {images.map((img, index) => (
+                    <div key={index} className="h-[300px] md:h-[400px] overflow-hidden group">
+                        <img
+                            src={img}
+                            alt="Cafe vibe"
+                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 cursor-pointer"
+                        />
+                    </div>
+                ))}
+            </section>
         </section>
     );
 };

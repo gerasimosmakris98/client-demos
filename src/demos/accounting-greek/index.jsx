@@ -184,26 +184,7 @@ const AccountingDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Accounting',
-            brandLogo: '📊',
-            accentColor: 'indigo',
-            roles: [{ id: 'admin', label: 'Partner' }, { id: 'staff', label: 'Accountant' }, { id: 'user', label: 'Clerk' }],
-            stats: [
-                { label: 'Active Clients', value: '342', trend: 5 },
-                { label: 'Pending Returns', value: '28', trend: -3 },
-                { label: 'Revenue (Month)', value: '€18k', trend: 12 },
-                { label: 'Deadlines (Week)', value: '5', trend: 0 }
-            ],
-            kpis: [
-                { label: 'Filing Accuracy', value: '99.8%', progress: 99 },
-                { label: 'Client Retention', value: '94%', progress: 94 },
-                { label: 'Deadline Compliance', value: '100%', progress: 100 }
-            ],
-            customTabs: accountingTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div className="bg-[#0c0e1a] min-h-screen text-white font-sans">

@@ -174,26 +174,7 @@ const HotelDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Hotel',
-            brandLogo: '🏨',
-            accentColor: 'stone',
-            roles: [{ id: 'admin', label: 'GM' }, { id: 'staff', label: 'Concierge' }, { id: 'user', label: 'Housekeeping' }],
-            stats: [
-                { label: 'Occupancy', value: '87%', trend: 5 },
-                { label: 'Check-ins Today', value: '14', trend: 10 },
-                { label: 'RevPAR', value: '€185', trend: 8 },
-                { label: 'Reviews', value: '4.8★', trend: 2 }
-            ],
-            kpis: [
-                { label: 'Room Readiness', value: '99%', progress: 99 },
-                { label: 'ADR', value: '€210', progress: 84 },
-                { label: 'Guest Return Rate', value: '42%', progress: 42 }
-            ],
-            customTabs: hotelTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div className="bg-[#1a1814] min-h-screen text-[#d4cbb8] font-serif">

@@ -71,12 +71,16 @@ const Listings = () => (
             <div className="text-center mb-16"><span className="text-amber-500 font-mono text-sm uppercase tracking-widest">Featured</span><h2 className="text-4xl font-black mt-2">EXCLUSIVE LISTINGS</h2></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                    { loc: 'Κολωνάκι, Αθήνα', price: '€1,200,000', beds: 4, sqm: 220 },
-                    { loc: 'Σαντορίνη, Οία', price: '€2,500,000', beds: 5, sqm: 350 },
-                    { loc: 'Γλυφάδα, Αττική', price: '€850,000', beds: 3, sqm: 180 }
+                    { loc: 'Κολωνάκι, Αθήνα', price: '€1,200,000', beds: 4, sqm: 220, img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop' },
+                    { loc: 'Σαντορίνη, Οία', price: '€2,500,000', beds: 5, sqm: 350, img: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop' },
+                    { loc: 'Γλυφάδα, Αττική', price: '€850,000', beds: 3, sqm: 180, img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop' }
                 ].map((p, i) => (
-                    <div key={i} className="group rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all">
-                        <div className="h-64 bg-neutral-800 relative"><div className="absolute top-4 left-4 bg-amber-600 text-black px-3 py-1 rounded-full text-xs font-bold">{p.price}</div></div>
+                    <div key={i} className="group rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all cursor-pointer">
+                        <div className="h-64 relative overflow-hidden">
+                            <img src={p.img} alt={p.loc} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div className="absolute top-4 left-4 bg-amber-600 text-black px-3 py-1 rounded-full text-xs font-bold">{p.price}</div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                        </div>
                         <div className="p-6">
                             <h3 className="text-lg font-bold mb-2">{p.loc}</h3>
                             <div className="flex gap-4 text-sm text-gray-400"><span>{p.beds} Beds</span><span>{p.sqm} m²</span></div>
@@ -186,26 +190,7 @@ const RealEstateDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Estates',
-            brandLogo: '🏠',
-            accentColor: 'amber',
-            roles: [{ id: 'admin', label: 'Broker' }, { id: 'staff', label: 'Agent' }, { id: 'user', label: 'Appraiser' }],
-            stats: [
-                { label: 'Active Listings', value: '64', trend: 8 },
-                { label: 'Viewings (Week)', value: '23', trend: 15 },
-                { label: 'Offers Pending', value: '7', trend: 5 },
-                { label: 'Revenue', value: '€48k', trend: 20 }
-            ],
-            kpis: [
-                { label: 'Listing-to-Sale Rate', value: '34%', progress: 34 },
-                { label: 'Avg Days on Market', value: '28d', progress: 55 },
-                { label: 'Client Satisfaction', value: '97%', progress: 97 }
-            ],
-            customTabs: realEstateTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div className="bg-black min-h-screen text-white font-sans">

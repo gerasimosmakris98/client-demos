@@ -18,42 +18,23 @@ const highlights = [
     }
 ];
 
-const CafeMenu = () => {
+const CafeMenu = ({ t }) => {
     return (
-        <section style={{ padding: 'var(--space-xl) var(--space-md)', background: '#1c1917' }}>
-            <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-                <h2 style={{
-                    fontSize: '3rem',
-                    textAlign: 'center',
-                    marginBottom: '3rem',
-                    fontFamily: "'Playfair Display', serif",
-                    color: '#d4a373',
-                    textShadow: '0 4px 10px rgba(0,0,0,0.3)'
-                }}>
-                    Οι Προτάσεις Μας
+        <section className="py-24 bg-stone-900">
+            <div className="max-w-4xl mx-auto px-4 md:px-6">
+                <h2 className="text-4xl md:text-5xl text-center mb-12 font-playfair text-[#d4a373] drop-shadow-md">
+                    {t.menu.title}
                 </h2>
 
-                <div className="glass-panel" style={{
-                    padding: '3rem',
-                    background: 'rgba(28, 25, 23, 0.6)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(212, 163, 115, 0.2)',
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-                }}>
-                    <div style={{ display: 'grid', gap: '2rem' }}>
-                        {highlights.map((item, index) => (
-                            <div key={index} style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                paddingBottom: '1.5rem',
-                                borderBottom: index !== highlights.length - 1 ? '1px dashed rgba(212, 163, 115, 0.3)' : 'none'
-                            }}>
+                <div className="glass-panel p-6 md:p-12 bg-stone-900/60 backdrop-blur-md border border-[#d4a373]/20 shadow-2xl rounded-2xl">
+                    <div className="grid gap-8">
+                        {t.menu.items.map((item, index) => (
+                            <div key={index} className={`flex justify-between items-center pb-6 ${index !== t.menu.items.length - 1 ? 'border-b border-[#d4a373]/30 border-dashed' : ''}`}>
                                 <div>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: '#fff', fontFamily: "'Playfair Display', serif" }}>{item.title}</h3>
-                                    <p style={{ color: '#a8a29e', fontStyle: 'italic' }}>{item.desc}</p>
+                                    <h3 className="text-xl md:text-2xl mb-2 text-white font-playfair">{item.title}</h3>
+                                    <p className="text-stone-400 italic text-sm md:text-base">{item.desc}</p>
                                 </div>
-                                <div style={{ fontSize: '1.25rem', fontWeight: 600, color: '#d4a373' }}>
+                                <div className="text-lg md:text-xl font-bold text-[#d4a373] whitespace-nowrap ml-4">
                                     {item.price}
                                 </div>
                             </div>

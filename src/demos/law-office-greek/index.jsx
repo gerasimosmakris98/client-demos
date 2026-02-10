@@ -36,26 +36,7 @@ const LawDemo = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    if (viewMode === 'admin') {
-        return <UniversalAdmin config={{
-            brandName: 'GM Law Partners',
-            brandLogo: '⚖️',
-            accentColor: 'slate',
-            roles: [{ id: 'admin', label: 'Partner' }, { id: 'staff', label: 'Associate' }, { id: 'user', label: 'Paralegal' }],
-            stats: [
-                { label: 'Active Cases', value: '45', trend: 2 },
-                { label: 'Consultations', value: '12', trend: 5 },
-                { label: 'Billable Hours', value: '128', trend: 8 },
-                { label: 'Doc Requests', value: '24', trend: -2 }
-            ],
-            kpis: [
-                { label: 'Case Win Rate', value: '89%', progress: 89 },
-                { label: 'Billing Collection', value: '94%', progress: 94 },
-                { label: 'Client Satisfaction', value: '96%', progress: 96 }
-            ],
-            customTabs: lawTabs,
-        }} />;
-    }
+    // Admin view removed - consolidated to Universal Admin demo
 
     return (
         <div style={{ fontFamily: "'Inter', sans-serif", color: '#0f172a' }}>
