@@ -9,6 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { LayoutGrid, List, Search, SlidersHorizontal, ArrowUpDown, X, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -32,22 +33,112 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 // Mock Data for Demos (mapped to Project structure)
 const DEMO_PROJECTS = [
     {
+        id: 'premium-template',
+        type: 'project',
+        title: 'Universal Admin Dashboard',
+        slug: 'premium-template',
+        description: 'A comprehensive SaaS admin dashboard with analytics, user management, and settings. Features light/dark mode and data visualization.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+        images: [],
+        tags: ['SaaS', 'Admin', 'Dashboard', 'Analytics'],
+        category: 'Technology',
+        technologies: ['React', 'Recharts', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/premium-template',
+        href: '/demos/premium-template',
+        date: '2023-09-01T12:00:00Z',
+        engagement: { views: 320, likes: 45, comments: 8 }
+    },
+    {
+        id: 'hair-salon-greek',
+        type: 'project',
+        title: 'Beauty & Hair Salon',
+        slug: 'hair-salon-greek',
+        description: 'Modern booking and showcase template for beauty salons. Includes service menu, stylist profiles, and appointment requests.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop',
+        images: [],
+        tags: ['Beauty', 'Service Business', 'Greek', 'Booking'],
+        category: 'Beauty',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/hair-salon-greek',
+        href: '/demos/hair-salon-greek',
+        date: '2023-09-15T12:00:00Z',
+        engagement: { views: 95, likes: 18, comments: 1 }
+    },
+    {
+        id: 'law-office-greek',
+        type: 'project',
+        title: 'Law Partners',
+        slug: 'law-office-greek',
+        description: 'Professional presence for legal firms. Features practice areas, attorney profiles, case studies, and consultation booking.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2012&auto=format&fit=crop',
+        images: [],
+        tags: ['Legal', 'Professional Services', 'Greek'],
+        category: 'Professional Services',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/law-office-greek',
+        href: '/demos/law-office-greek',
+        date: '2023-10-01T12:00:00Z',
+        engagement: { views: 110, likes: 14, comments: 0 }
+    },
+    {
         id: 'electrician-greek',
         type: 'project',
         title: 'Electrician Services Demo',
         slug: 'electrician-greek',
         description: 'A professional website template for electricians and technical service providers. Features a clean design, service showcase, and contact forms.',
         content: '',
-        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop', // Placeholder
+        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop',
         images: [],
         tags: ['Service Business', 'Greek', 'Template', 'Contact Form'],
         category: 'Small Business',
         technologies: ['React', 'Tailwind', 'Vite'],
         githubUrl: '',
         liveUrl: '/demos/electrician-greek',
-        href: '/demos/electrician-greek', // Direct link to demo
+        href: '/demos/electrician-greek',
         date: '2023-10-15T12:00:00Z',
         engagement: { views: 120, likes: 15, comments: 2 }
+    },
+    {
+        id: 'gym-greek',
+        type: 'project',
+        title: 'Pro Fitness Gym',
+        slug: 'gym-greek',
+        description: 'Energetic design for gyms and fitness centers. Class schedules, trainer profiles, membership pricing, and trial sign-ups.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+        images: [],
+        tags: ['Fitness', 'Health', 'Greek', 'Membership'],
+        category: 'Health & Fitness',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/gym-greek',
+        href: '/demos/gym-greek',
+        date: '2023-10-25T12:00:00Z',
+        engagement: { views: 180, likes: 25, comments: 4 }
+    },
+    {
+        id: 'real-estate-greek',
+        type: 'project',
+        title: 'Prime Real Estate',
+        slug: 'real-estate-greek',
+        description: 'Property listing platform for agencies. Search filters, property details, agent contact, and map integration.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop',
+        images: [],
+        tags: ['Real Estate', 'Listings', 'Greek', 'Map'],
+        category: 'Real Estate',
+        technologies: ['React', 'Mapbox', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/real-estate-greek',
+        href: '/demos/real-estate-greek',
+        date: '2023-11-05T12:00:00Z',
+        engagement: { views: 210, likes: 28, comments: 6 }
     },
     {
         id: 'restaurant-greek',
@@ -68,6 +159,42 @@ const DEMO_PROJECTS = [
         engagement: { views: 250, likes: 32, comments: 5 }
     },
     {
+        id: 'medical-greek',
+        type: 'project',
+        title: 'Medical Clinic',
+        slug: 'medical-greek',
+        description: 'Trustworthy design for clinics and doctors. Specialties, doctor profiles, online appointment booking, and health blog.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop',
+        images: [],
+        tags: ['Healthcare', 'Medical', 'Greek', 'Booking'],
+        category: 'Healthcare',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/medical-greek',
+        href: '/demos/medical-greek',
+        date: '2023-12-01T12:00:00Z',
+        engagement: { views: 90, likes: 10, comments: 0 }
+    },
+    {
+        id: 'hotel-greek',
+        type: 'project',
+        title: 'Luxury Hotel',
+        slug: 'hotel-greek',
+        description: 'Immersive experience for hotels. Room showcases, amenities, booking engine integration, and local guide.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop',
+        images: [],
+        tags: ['Hospitality', 'Hotel', 'Greek', 'Booking'],
+        category: 'Hospitality',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/hotel-greek',
+        href: '/demos/hotel-greek',
+        date: '2023-12-15T12:00:00Z',
+        engagement: { views: 160, likes: 22, comments: 2 }
+    },
+    {
         id: 'cafe-greek',
         type: 'project',
         title: 'Modern Cafe Demo',
@@ -86,6 +213,24 @@ const DEMO_PROJECTS = [
         engagement: { views: 85, likes: 12, comments: 0 }
     },
     {
+        id: 'accounting-greek',
+        type: 'project',
+        title: 'Accounting Firm',
+        slug: 'accounting-greek',
+        description: 'Corporate design for accountants and financial advisors. Services, team, tax calculators, and resources.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop',
+        images: [],
+        tags: ['Finance', 'Corporate', 'Greek'],
+        category: 'Professional Services',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/accounting-greek',
+        href: '/demos/accounting-greek',
+        date: '2024-01-20T12:00:00Z',
+        engagement: { views: 70, likes: 8, comments: 0 }
+    },
+    {
         id: 'tutoring-greek',
         type: 'project',
         title: 'Education & Tutoring',
@@ -102,6 +247,24 @@ const DEMO_PROJECTS = [
         href: '/demos/tutoring-greek',
         date: '2024-02-05T12:00:00Z',
         engagement: { views: 150, likes: 20, comments: 3 }
+    },
+    {
+        id: 'studio-greek',
+        type: 'project',
+        title: 'Yoga & Pilates Studio',
+        slug: 'studio-greek',
+        description: 'Calm and balanced design for wellness studios. Class schedules, instructor bios, gallery, and pricing.',
+        content: '',
+        image: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2069&auto=format&fit=crop',
+        images: [],
+        tags: ['Wellness', 'Fitness', 'Greek', 'Classes'],
+        category: 'Health & Fitness',
+        technologies: ['React', 'Tailwind'],
+        githubUrl: '',
+        liveUrl: '/demos/studio-greek',
+        href: '/demos/studio-greek',
+        date: '2024-02-10T12:00:00Z',
+        engagement: { views: 130, likes: 19, comments: 2 }
     }
 ];
 

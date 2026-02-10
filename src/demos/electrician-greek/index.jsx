@@ -77,7 +77,7 @@ const Services = () => (
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
                 <span className="text-orange-400 font-mono text-sm uppercase tracking-widest">Υπηρεσίες</span>
-                <h2 className="text-4xl md:text-5xl font-black mt-2">OUR SERVICES</h2>
+                <h2 className="text-4xl md:text-5xl font-black mt-2">ΟΙ ΥΠΗΡΕΣΙΕΣ ΜΑΣ</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -105,7 +105,7 @@ const Team = () => (
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
                 <span className="text-orange-400 font-mono text-sm uppercase tracking-widest">Η Ομάδα</span>
-                <h2 className="text-4xl md:text-5xl font-black mt-2">CERTIFIED EXPERTS</h2>
+                <h2 className="text-4xl md:text-5xl font-black mt-2">Η ΟΜΑΔΑ ΜΑΣ</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
@@ -119,7 +119,7 @@ const Team = () => (
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-6 w-full">
                             <h3 className="text-lg font-bold">{member.name}</h3>
-                            <p className="text-orange-400 text-sm">Master Electrician</p>
+                            <p className="text-orange-400 text-sm">Αδειούχος Ηλεκτρολόγος</p>
                         </div>
                     </div>
                 ))}
@@ -134,7 +134,7 @@ const Gallery = () => (
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
                 <span className="text-orange-400 font-mono text-sm uppercase tracking-widest">Portfolio</span>
-                <h2 className="text-4xl md:text-5xl font-black mt-2">OUR WORK</h2>
+                <h2 className="text-4xl md:text-5xl font-black mt-2">ΤΑ ΕΡΓΑ ΜΑΣ</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
@@ -166,7 +166,7 @@ const Testimonials = () => (
         <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-16">
                 <span className="text-orange-400 font-mono text-sm uppercase tracking-widest">Reviews</span>
-                <h2 className="text-4xl md:text-5xl font-black mt-2">WHAT CLIENTS SAY</h2>
+                <h2 className="text-4xl md:text-5xl font-black mt-2">ΤΙ ΛΕΝΕ ΟΙ ΠΕΛΑΤΕΣ</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -191,22 +191,22 @@ const Pricing = () => (
         <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-16">
                 <span className="text-orange-400 font-mono text-sm uppercase tracking-widest">Τιμοκατάλογος</span>
-                <h2 className="text-4xl md:text-5xl font-black mt-2">PRICING</h2>
+                <h2 className="text-4xl md:text-5xl font-black mt-2">ΧΡΕΩΣΕΙΣ</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                    { name: 'BASIC', price: '80', unit: '/visit', features: ['Diagnostic Check', 'Minor Repairs', 'Safety Inspection'] },
-                    { name: 'STANDARD', price: '150', unit: '/project', popular: true, features: ['Full Installation', 'Panel Upgrade', 'Certification', 'Warranty'] },
-                    { name: 'PREMIUM', price: '300', unit: '/project', features: ['Smart Home Setup', 'Full Rewiring', 'Solar Integration', '24/7 Support'] }
+                    { name: 'BASIC', price: '80', unit: '/επίσκεψη', features: ['Διαγνωστικός Έλεγχος', 'Μικροεπισκευές', 'Έλεγχος Ασφαλείας'] },
+                    { name: 'STANDARD', price: '150', unit: '/έργο', popular: true, features: ['Πλήρης Εγκατάσταση', 'Αλλαγή Πίνακα', 'Πιστοποίηση', 'Εγγύηση'] },
+                    { name: 'PREMIUM', price: '300', unit: '/έργο', features: ['Smart Home Setup', 'Καλωδίωση', 'Φωτοβολταϊκά', '24/7 Υποστήριξη'] }
                 ].map((p, i) => (
                     <div key={i} className={`p-8 rounded-3xl border flex flex-col ${p.popular ? 'bg-orange-500/10 border-orange-500' : 'bg-white/5 border-white/10'}`}>
-                        {p.popular && <div className="text-center text-xs font-bold text-orange-400 uppercase tracking-widest mb-4">Most Popular</div>}
+                        {p.popular && <div className="text-center text-xs font-bold text-orange-400 uppercase tracking-widest mb-4">ΔΗΜΟΦΙΛΕΣ</div>}
                         <h3 className="text-xl font-black mb-2">{p.name}</h3>
                         <div className="mb-8"><span className="text-4xl font-black">€{p.price}</span><span className="text-gray-400">{p.unit}</span></div>
                         <ul className="space-y-3 mb-8 flex-1">
-                            {p.features.map((f, j) => <li key={j} className="flex items-center gap-3 text-sm text-gray-300"><CheckCircle size={14} className="text-orange-400" />{f}</li>)}
+                            {p.features.map((f, j) => <li key={j} className="flex items-center gap-3 text-sm text-gray-300"><CheckCircle2 size={14} className="text-orange-400" />{f}</li>)}
                         </ul>
-                        <button className={`w-full py-4 rounded-xl font-bold uppercase tracking-wider transition-all ${p.popular ? 'bg-orange-500 text-black hover:bg-orange-400' : 'bg-white/10 hover:bg-white/20'}`}>Select</button>
+                        <button className={`w-full py-4 rounded-xl font-bold uppercase tracking-wider transition-all ${p.popular ? 'bg-orange-500 text-black hover:bg-orange-400' : 'bg-white/10 hover:bg-white/20'}`}>ΕΠΙΛΟΓΗ</button>
                     </div>
                 ))}
             </div>
@@ -220,7 +220,7 @@ const Contact = () => (
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
                 <span className="text-orange-400 font-mono text-sm uppercase tracking-widest">Επικοινωνία</span>
-                <h2 className="text-4xl font-black mt-2 mb-8">GET IN TOUCH</h2>
+                <h2 className="text-4xl font-black mt-2 mb-8">ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΜΑΖΙ ΜΑΣ</h2>
                 <div className="space-y-6 text-gray-400">
                     <div className="flex items-center gap-4"><Phone size={20} className="text-orange-400" /> +30 210 000 0000</div>
                     <div className="flex items-center gap-4"><Mail size={20} className="text-orange-400" /> info@gmelectric.gr</div>
@@ -232,7 +232,7 @@ const Contact = () => (
                 <input className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500 outline-none transition-colors" placeholder="Ονοματεπώνυμο" />
                 <input className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500 outline-none transition-colors" placeholder="Τηλέφωνο" />
                 <textarea className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500 outline-none transition-colors h-32 resize-none" placeholder="Περιγραφή βλάβης..." />
-                <button className="w-full bg-orange-500 text-black py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-orange-400 transition-colors">Αποστολή</button>
+                <button className="w-full bg-orange-500 text-black py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-orange-400 transition-colors">ΑΠΟΣΤΟΛΗ</button>
             </div>
         </div>
     </section>

@@ -106,11 +106,23 @@ git add -A; git commit -m "your message"; git push origin master
 ## 🛠 Tech Stack
 
 - **React 19** + **Vite 7**
-- **Tailwind CSS v4**
+- **Tailwind CSS v3.4** (Optimized for Shadcn UI)
+- **Shadcn UI** & **Radix Primitives**
 - **Framer Motion**
 - **Lucide React** icons
 - **React Router v7**
 - **Firebase Hosting**
+
+## 🎨 Available Demo Templates
+
+The following templates are currently active and ported:
+
+1. **Electrician Services** (`/demos/electrician-greek`)
+2. **Restaurant & Dining** (`/demos/restaurant-greek`)
+3. **Modern Cafe** (`/demos/cafe-greek`)
+4. **Education & Tutoring** (`/demos/tutoring-greek`)
+
+*More templates are being ported from the legacy system.*
 
 ---
 

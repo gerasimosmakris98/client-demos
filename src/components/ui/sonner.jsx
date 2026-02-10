@@ -1,7 +1,7 @@
 
 "use client"
 
-import { useTheme } from "next-themes" // Wait, I don't have next-themes installed. I should check if I need it or mock it.
+// import { useTheme } from "next-themes" // Removed unused import
 import { Toaster as Sonner } from "sonner"
 
 // Mock useTheme for now, or install next-themes if needed.
