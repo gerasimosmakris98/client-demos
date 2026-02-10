@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import TutoringHero from './components/Hero';
 import Programs from './components/Programs';
 import Educators from './components/Educators';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
-import Dashboard from './components/Dashboard';
 import AIChat from '../../components/common/AIChat';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const TutoringDemo = () => {
     const { viewMode } = useOutletContext() || {};
@@ -15,20 +15,30 @@ const TutoringDemo = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    // If "Admin", "Teacher", or "Student" view is selected in the future Overlay
-    // For now, we'll build the Dashboard component to handle its own internal state
-    // but if the global viewMode is 'admin', we show the Dashboard directly.
     if (viewMode === 'admin') {
         return (
-            <>
-                <Dashboard initialRole="admin" />
-                <AIChat brandName="GM Tutoring" />
-            </>
+            <UniversalAdmin config={{
+                brandName: 'GM Tutoring',
+                brandLogo: '🎓',
+                accentColor: 'emerald',
+                roles: [{ id: 'admin', label: 'Director' }, { id: 'staff', label: 'Teacher' }, { id: 'user', label: 'Student' }],
+                stats: [
+                    { label: 'Active Students', value: '1,247', trend: 12 },
+                    { label: 'Revenue (Month)', value: '€45.2k', trend: 8 },
+                    { label: 'Enrolled Courses', value: '86', trend: 5 },
+                    { label: 'Pass Rate', value: '98.7%', trend: 2 }
+                ],
+                kpis: [
+                    { label: 'Student Satisfaction', value: '96%', progress: 96 },
+                    { label: 'Teacher Retention', value: '94%', progress: 94 },
+                    { label: 'Course Completion', value: '89%', progress: 89 }
+                ]
+            }} />
         );
     }
 
     return (
-        <div className="font-sans text-gray-900 bg-white">
+        <div className="font-sans text-gray-900 bg-white" style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>
             <TutoringHero />
             <Programs />
             <Educators />
