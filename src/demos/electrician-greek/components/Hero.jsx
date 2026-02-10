@@ -25,8 +25,11 @@ const LawHero = () => {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-playfair font-bold leading-tight mb-8 drop-shadow-2xl">
-                        GM <span className="text-yellow-500">LAW</span> <br />
-                        <span className="text-4xl text-slate-300 block mt-2">PARTNERS</span>
+                        Δικαιοσύνη με <br />
+                        <span className="text-yellow-500 relative inline-block">
+                            Ακεραιότητα
+                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-yellow-600/50" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7501 2.99991 74.5 -2.00002 198 2.00007" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </span>
                     </h1>
 
                     <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-lg border-l-4 border-yellow-600/50 pl-6">

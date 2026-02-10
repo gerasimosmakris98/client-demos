@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Phone, Mail } from 'lucide-react';
 import LawHero from './components/Hero';
 import PracticeAreas from './components/PracticeAreas';
+import Attorneys from './components/Attorneys';
+import CaseStudies from './components/CaseStudies';
+import Testimonials from './components/Testimonials';
+import Contact from './components/Contact';
 import AdminMock from '../../components/demos/AdminMock';
+import AIChat from '../../components/common/AIChat';
 
 const LawDemo = () => {
     const { viewMode } = useOutletContext() || {};
@@ -28,22 +32,11 @@ const LawDemo = () => {
         <div style={{ fontFamily: "'Inter', sans-serif", color: '#0f172a' }}>
             <LawHero />
             <PracticeAreas />
-
-            <section style={{ padding: '4rem 2rem', background: '#0a192f', color: 'white' }}>
-                <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-                    <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', marginBottom: '2rem' }}>
-                        Εμπιστευθείτε την υπόθεσή σας σε εμάς
-                    </h2>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.2rem' }}>
-                            <Phone color="#c5a059" /> <span>210 9876543</span>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.2rem' }}>
-                            <Mail color="#c5a059" /> <span>law@office.gr</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Attorneys />
+            <CaseStudies />
+            <Testimonials />
+            <Contact />
+            <AIChat brandName="GM Law" />
         </div>
     );
 };

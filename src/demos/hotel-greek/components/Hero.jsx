@@ -29,7 +29,7 @@ const CafeHero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
-            GM <span className="text-amber-500">CAFE</span>
+            AROMA <span className="text-amber-500">CAFE</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-8 font-light italic tracking-wide">

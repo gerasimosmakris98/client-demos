@@ -30,8 +30,8 @@ const SalonHero = () => {
                         </div>
                     </motion.div>
 
-                    <h1 className="text-5xl md:text-7xl font-playfair font-black text-white mb-4 tracking-wider uppercase drop-shadow-lg">
-                        GM <span className="text-rose-400">SALON</span>
+                    <h1 className="text-5xl md:text-7xl font-playfair font-thin text-white mb-4 tracking-wider uppercase drop-shadow-lg">
+                        Elite Styles
                     </h1>
 
                     <div className="flex items-center justify-center gap-2 mb-6 text-rose-300/80">

@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import CafeHero from './components/Hero';
+import CafeAbout from './components/About';
 import CafeMenu from './components/Menu';
 import CafeGallery from './components/Gallery';
+import CafeTestimonials from './components/Testimonials';
+import CafeLocation from './components/Location';
+import CafeFooter from './components/Footer';
 import AdminMock from '../../components/demos/AdminMock';
+import AIChat from '../../components/common/AIChat';
 
 const CafeDemo = () => {
     const { viewMode } = useOutletContext() || {};
@@ -27,8 +32,13 @@ const CafeDemo = () => {
     return (
         <div style={{ background: '#0c0a09', minHeight: '100vh', color: '#e7e5e4', fontFamily: 'system-ui, sans-serif' }}>
             <CafeHero />
+            <CafeAbout />
             <CafeMenu />
             <CafeGallery />
+            <CafeTestimonials />
+            <CafeLocation />
+            <CafeFooter />
+            <AIChat brandName="GM Cafe" />
         </div>
     );
 };

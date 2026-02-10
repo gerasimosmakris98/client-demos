@@ -53,92 +53,89 @@ const DemoLayout = () => {
         <div className="relative min-h-screen">
             {/* --- Overlay UI --- */}
 
-            {/* Top Left: Back */}
-            <div className="fixed top-4 left-4 z-50">
-                <Link to="/" className="glass-panel p-3 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors" title="Back to Studio">
-                    <ArrowLeft size={20} className="text-white" />
-                </Link>
-            </div>
+            {/* --- New Top Glassmorphic Menu Bar --- */}
+            <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 p-2 rounded-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/80">
 
-            {/* Top Right: Menu */}
-            <div className="fixed top-4 right-4 z-50">
+                {/* Back to Studio */}
+                <Link to="/" className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors" title="Back to Studio">
+                    <ArrowLeft size={18} />
+                </Link>
+
+                <div className="w-px h-4 bg-white/10"></div>
+
+                {/* Template Info */}
+                <div className="flex flex-col px-2">
+                    <span className="text-xs font-bold text-white tracking-wide uppercase">
+                        {templateId.replace(/-/g, ' ')}
+                    </span>
+                    <span className="text-[10px] text-gray-500 font-mono">
+                        v1.0.0 • {viewMode.toUpperCase()}
+                    </span>
+                </div>
+
+                <div className="w-px h-4 bg-white/10"></div>
+
+                {/* View Toggles */}
+                <div className="flex items-center gap-1 bg-white/5 rounded-full p-1">
+                    <button
+                        onClick={() => setViewMode('desktop')}
+                        className={`p-1.5 rounded-full transition-all ${viewMode === 'desktop' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
+                        title="Desktop View"
+                    >
+                        <Monitor size={14} />
+                    </button>
+                    <button
+                        onClick={() => setViewMode('mobile')}
+                        className={`p-1.5 rounded-full transition-all ${viewMode === 'mobile' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
+                        title="Mobile View"
+                    >
+                        <Smartphone size={14} />
+                    </button>
+                    <button
+                        onClick={() => setViewMode('admin')}
+                        className={`p-1.5 rounded-full transition-all ${viewMode === 'admin' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
+                        title="Admin View"
+                    >
+                        <LayoutDashboard size={14} />
+                    </button>
+                </div>
+
+                <div className="w-px h-4 bg-white/10"></div>
+
+                {/* Actions */}
                 <button
                     onClick={() => setShowMenu(!showMenu)}
-                    className="glass-panel p-3 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+                    className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors relative"
                 >
-                    <MoreVertical size={20} className="text-white" />
-                </button>
-
-                <AnimatePresence>
+                    <Info size={18} />
                     {showMenu && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                            className="absolute right-0 mt-2 w-72 glass-panel rounded-xl border border-white/10 overflow-hidden shadow-2xl"
-                            style={{ background: 'rgba(10, 10, 10, 0.95)', backdropFilter: 'blur(20px)' }}
+                            className="absolute right-0 top-full mt-4 w-64 glass-panel rounded-xl border border-white/10 overflow-hidden shadow-2xl p-4 text-left"
+                            style={{ background: 'rgba(10, 10, 10, 0.95)' }}
                         >
-                            <div className="p-4 border-b border-white/10">
-                                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Template Info</h3>
-                                <p className="text-white font-medium truncate">{templateId.replace(/-/g, ' ').toUpperCase()}</p>
-                                <p className="text-xs text-gray-500 mt-1">ID: {templateId}</p>
-                            </div>
+                            <h4 className="text-white font-bold mb-1">About this Demo</h4>
+                            <p className="text-xs text-gray-400 mb-4 leading-relaxed">
+                                This template is fully responsive and customizable. It uses React, Tailwind CSS, and Framer Motion.
+                            </p>
 
-                            <div className="p-2">
-                                <button className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-colors text-left" onClick={() => setViewMode('desktop')}>
-                                    <Monitor size={18} /> Desktop View
-                                </button>
-                                <button className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-colors text-left" onClick={() => setViewMode('mobile')}>
-                                    <Smartphone size={18} /> Mobile App (PWA)
-                                </button>
-                                <button className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white transition-colors text-left" onClick={() => setViewMode('admin')}>
-                                    <LayoutDashboard size={18} /> Admin View
-                                </button>
-                            </div>
-
-                            <div className="p-4 bg-white/5 text-xs text-gray-400">
-                                <div className="flex items-start gap-2">
-                                    <Info size={14} className="mt-0.5 shrink-0" />
-                                    <p>This is a demonstration template. All data is randomized for display purposes.</p>
+                            <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                                <span className="text-[10px] text-gray-500">Created for you</span>
+                                <div className="flex items-center gap-1.5 px-2 py-1 bg-green-500/10 rounded text-green-400 text-[10px] font-bold border border-green-500/20">
+                                    <ShieldCheck size={10} />
+                                    GM Certified
                                 </div>
                             </div>
                         </motion.div>
                     )}
-                </AnimatePresence>
-            </div>
+                </button>
 
-            {/* Bottom: Watermark */}
-            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-                <div className="glass-panel px-4 py-2 rounded-full text-xs font-medium text-white/50 border border-white/5" style={{ background: 'rgba(0,0,0,0.6)' }}>
-                    Designed by Gerasimos Makris
+                <div className="pl-2 pr-1">
+                    <img src="/favicon.svg" alt="GM" className="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity" />
                 </div>
             </div>
-
-            {/* Disclaimer Toast */}
-            <AnimatePresence>
-                {showDisclaimer && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 50 }}
-                        className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md"
-                    >
-                        <div className="glass-panel p-4 rounded-xl flex items-start gap-3 border border-yellow-500/30 bg-black/80">
-                            <ShieldCheck className="text-yellow-500 shrink-0" size={20} />
-                            <div className="flex-1">
-                                <h4 className="text-sm font-bold text-white mb-1">Demo Environment</h4>
-                                <p className="text-xs text-gray-400">
-                                    You are viewing a fully customized template populated with sample data.
-                                    Everything you see is configurable.
-                                </p>
-                            </div>
-                            <button onClick={() => setShowDisclaimer(false)} className="text-gray-500 hover:text-white">
-                                <X size={16} />
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
 
             {/* --- Content Area --- */}
             <div className={`relative transition-all duration-500 ${viewMode === 'mobile' ? 'max-w-md mx-auto border-x border-gray-800 shadow-2xl min-h-screen my-8 overflow-hidden rounded-[40px]' : ''}`}>

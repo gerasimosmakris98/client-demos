@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import SalonHero from './components/Hero';
 import SalonServices from './components/Services';
+import SalonTestimonials from './components/Testimonials';
+import SalonBooking from './components/Booking';
+import SalonFooter from './components/Footer';
 import AdminMock from '../../components/demos/AdminMock';
+import AIChat from '../../components/common/AIChat';
 
 const SalonDemo = () => {
     const { viewMode } = useOutletContext() || {};
@@ -27,6 +31,10 @@ const SalonDemo = () => {
         <div style={{ fontFamily: "'Inter', sans-serif" }}>
             <SalonHero />
             <SalonServices />
+            <SalonTestimonials />
+            <SalonBooking />
+            <SalonFooter />
+            <AIChat brandName="GM Salon" />
         </div>
     );
 };

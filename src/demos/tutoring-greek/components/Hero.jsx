@@ -1,104 +1,100 @@
 import React from 'react';
-import { BookOpen, Award } from 'lucide-react';
+import { BookOpen, Award, Sparkles, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const TutoringHero = () => {
     return (
-        <section style={{
-            background: 'linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)',
-            color: 'white',
-            padding: '6rem 2rem',
-            position: 'relative',
-            overflow: 'hidden',
-            minHeight: '90vh',
-            display: 'flex',
-            alignItems: 'center'
-        }}>
-            {/* Abstract Background Shapes */}
-            <div style={{
-                position: 'absolute',
-                top: '-10%',
-                right: '-5%',
-                width: '500px',
-                height: '500px',
-                background: 'rgba(255,255,255,0.05)',
-                borderRadius: '50%',
-                filter: 'blur(80px)'
-            }} />
-            <div style={{
-                position: 'absolute',
-                bottom: '-10%',
-                left: '-5%',
-                width: '400px',
-                height: '400px',
-                background: 'rgba(255,255,255,0.03)',
-                borderRadius: '50%',
-                filter: 'blur(60px)'
-            }} />
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white">
+            {/* Dynamic Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-blue-500 to-sky-400" />
 
-            <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 1fr', gap: '4rem', alignItems: 'center', width: '100%', position: 'relative', zIndex: 1 }}>
-                <div className="animate-fade-in glass-panel" style={{ padding: '2.5rem', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)' }}>
-                    <div style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
-                        background: 'rgba(255,255,255,0.2)',
-                        padding: '0.5rem 1rem',
-                        borderRadius: '999px',
-                        fontSize: '0.8rem',
-                        marginBottom: '1.5rem',
-                        fontWeight: 700,
-                        letterSpacing: '0.05em'
-                    }}>
-                        <Award size={14} /> 100% ΕΠΙΤΥΧΙΑ
-                    </div>
+            {/* Animated Shapes */}
+            <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full border-2 border-white/10 blur-sm"
+            />
+            <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full border border-white/20 blur-sm opacity-50"
+            />
 
-                    <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.1 }}>
+            <div className="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+                {/* Text Content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-white pt-20 lg:pt-0"
+                >
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs md:text-sm font-bold mb-6 md:mb-8 border border-white/30"
+                    >
+                        <Award size={16} className="text-yellow-300" />
+                        <span>100% ΕΠΙΤΥΧΙΑ</span>
+                    </motion.div>
+
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
                         Χτίζουμε το <br />
-                        <span style={{ color: '#fbbf24', textShadow: '0 2px 10px rgba(251, 191, 36, 0.4)' }}>Μέλλον</span> μαζί.
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 filter drop-shadow-sm">Μέλλον</span> μαζί.
                     </h1>
 
-                    <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem', opacity: 0.9, lineHeight: 1.6 }}>
+                    <p className="text-lg md:text-xl text-blue-50 mb-8 md:mb-10 max-w-lg leading-relaxed">
                         Ολοκληρωμένο σύστημα εκπαίδευσης για μαθητές Γυμνασίου και Λυκείου.
                         Εξειδικευμένοι καθηγητές και σύγχρονα εποπτικά μέσα.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '1rem' }}>
-                        <button className="btn-primary" style={{
-                            padding: '1rem 2rem',
-                            background: 'white',
-                            color: '#4f46e5',
-                            border: 'none',
-                            borderRadius: '8px',
-                            fontWeight: 700,
-                            fontSize: '1rem',
-                            cursor: 'pointer',
-                            boxShadow: '0 4px 15px rgba(255, 255, 255, 0.3)'
-                        }}
-                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.5)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(255, 255, 255, 0.3)'; }}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
                         >
-                            Εγγραφές 2025-26
+                            Εγγραφές 2025-26 <ArrowRight size={20} />
+                        </motion.button>
+                        <button className="px-8 py-4 rounded-xl font-bold text-white border-2 border-white/30 hover:bg-white/10 transition-colors">
+                            Πρόγραμμα Σπουδών
                         </button>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Hero Image/Illustration */}
-                <div className="animate-fade-in" style={{ animationDelay: '0.2s', position: 'relative' }}>
-                    <div style={{ position: 'absolute', inset: -20, background: 'rgba(255,255,255,0.2)', filter: 'blur(40px)', zIndex: 0, borderRadius: '50%' }} />
-                    <img
-                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"
-                        alt="Students studying"
-                        style={{
-                            width: '100%',
-                            borderRadius: '24px',
-                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-                            transform: 'rotate(2deg)',
-                            position: 'relative',
-                            zIndex: 1,
-                            border: '4px solid rgba(255,255,255,0.2)'
-                        }}
-                    />
-                </div>
+                {/* Hero Image Group */}
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="relative hidden lg:block"
+                >
+                    {/* Floating Badge */}
+                    <motion.div
+                        animate={{ y: [0, -15, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-10 -left-10 z-20 glass-panel bg-white/90 backdrop-blur text-blue-900 p-4 rounded-2xl shadow-xl flex items-center gap-3"
+                    >
+                        <div className="bg-blue-100 p-2 rounded-full">
+                            <Sparkles size={24} className="text-blue-600" />
+                        </div>
+                        <div>
+                            <p className="font-bold text-sm">Πρωτοπορία</p>
+                            <p className="text-xs text-gray-500">Στην εκπαίδευση</p>
+                        </div>
+                    </motion.div>
+
+                    <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-white/20 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img
+                            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"
+                            alt="Student Success"
+                            className="w-full h-[600px] object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent" />
+                    </div>
+
+                    {/* Decorative Blob */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/5 rounded-full blur-3xl -z-10" />
+                </motion.div>
             </div>
         </section>
     );
