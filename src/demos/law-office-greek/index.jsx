@@ -6,7 +6,7 @@ import Attorneys from './components/Attorneys';
 import CaseStudies from './components/CaseStudies';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 import AIChat from '../../components/common/AIChat';
 
 const LawDemo = () => {
@@ -17,15 +17,23 @@ const LawDemo = () => {
     }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock
-            title="Legal Partners"
-            stats={[
+        return <UniversalAdmin config={{
+            brandName: 'GM Law Partners',
+            brandLogo: '⚖️',
+            accentColor: 'slate',
+            roles: [{ id: 'admin', label: 'Partner' }, { id: 'staff', label: 'Associate' }, { id: 'user', label: 'Paralegal' }],
+            stats: [
                 { label: 'Active Cases', value: '45', trend: 2 },
                 { label: 'Consultations', value: '12', trend: 5 },
                 { label: 'Billable Hours', value: '128', trend: 8 },
                 { label: 'Doc Requests', value: '24', trend: -2 }
-            ]}
-        />;
+            ],
+            kpis: [
+                { label: 'Case Win Rate', value: '89%', progress: 89 },
+                { label: 'Billing Collection', value: '94%', progress: 94 },
+                { label: 'Client Satisfaction', value: '96%', progress: 96 }
+            ]
+        }} />;
     }
 
     return (

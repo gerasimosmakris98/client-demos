@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Calculator, FileText, TrendingUp, Users, Phone, Mail, MapPin, Clock, Star, CheckCircle, BarChart3, PieChart, Shield, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0c0e1a] text-white">
@@ -36,7 +36,7 @@ const About = () => (
                     ))}
                 </div>
             </div>
-            <div className="rounded-3xl overflow-hidden h-[400px] bg-indigo-950 flex items-center justify-center"><BarChart3 size={120} className="text-indigo-500/30" /></div>
+            <div className="rounded-3xl overflow-hidden h-[400px]"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop" alt="Accounting office" className="w-full h-full object-cover" /></div>
         </div>
     </section>
 );
@@ -166,12 +166,23 @@ const AccountingDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Accounting" stats={[
-            { label: 'Active Clients', value: '342', trend: 5 },
-            { label: 'Pending Returns', value: '28', trend: -3 },
-            { label: 'Revenue (Month)', value: '€18k', trend: 12 },
-            { label: 'Deadlines (Week)', value: '5', trend: 0 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Accounting',
+            brandLogo: '📊',
+            accentColor: 'indigo',
+            roles: [{ id: 'admin', label: 'Partner' }, { id: 'staff', label: 'Accountant' }, { id: 'user', label: 'Clerk' }],
+            stats: [
+                { label: 'Active Clients', value: '342', trend: 5 },
+                { label: 'Pending Returns', value: '28', trend: -3 },
+                { label: 'Revenue (Month)', value: '€18k', trend: 12 },
+                { label: 'Deadlines (Week)', value: '5', trend: 0 }
+            ],
+            kpis: [
+                { label: 'Filing Accuracy', value: '99.8%', progress: 99 },
+                { label: 'Client Retention', value: '94%', progress: 94 },
+                { label: 'Deadline Compliance', value: '100%', progress: 100 }
+            ]
+        }} />;
     }
 
     return (

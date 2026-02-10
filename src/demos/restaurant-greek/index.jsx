@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { UtensilsCrossed, Wine, ChefHat, Star, Phone, Mail, MapPin, Clock, Calendar, Instagram, Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1a0a0a] text-white">
@@ -86,8 +86,15 @@ const Gallery = () => (
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16"><span className="text-red-400 font-mono text-xs tracking-[0.3em] uppercase">Gallery</span><h2 className="text-4xl font-serif mt-4">MOMENTS</h2></div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {[1, 2, 3, 4, 5, 6].map(i => (
-                    <div key={i} className="aspect-square rounded-2xl bg-[#1a0a0a] border border-white/5 overflow-hidden flex items-center justify-center"><Camera size={32} className="text-red-500/30" /></div>
+                {[
+                    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop'
+                ].map((src, i) => (
+                    <div key={i} className="aspect-square rounded-2xl overflow-hidden group"><img src={src} alt={`Food ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" /></div>
                 ))}
             </div>
         </div>
@@ -154,12 +161,23 @@ const RestaurantDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Restaurant" stats={[
-            { label: 'Covers Tonight', value: '86', trend: 15 },
-            { label: 'Reservations', value: '24', trend: 8 },
-            { label: 'Avg Ticket', value: '€42', trend: 5 },
-            { label: 'Reviews', value: '4.9★', trend: 2 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Restaurant',
+            brandLogo: '🍽️',
+            accentColor: 'red',
+            roles: [{ id: 'admin', label: 'Owner' }, { id: 'staff', label: 'Chef' }, { id: 'user', label: 'Waiter' }],
+            stats: [
+                { label: 'Covers Tonight', value: '86', trend: 15 },
+                { label: 'Reservations', value: '24', trend: 8 },
+                { label: 'Avg Ticket', value: '€42', trend: 5 },
+                { label: 'Reviews', value: '4.9★', trend: 2 }
+            ],
+            kpis: [
+                { label: 'Kitchen Efficiency', value: '92%', progress: 92 },
+                { label: 'Table Turnover', value: '2.4x', progress: 80 },
+                { label: 'Waste Reduction', value: '-15%', progress: 65 }
+            ]
+        }} />;
     }
 
     return (

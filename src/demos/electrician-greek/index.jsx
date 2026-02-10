@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Zap, Shield, Phone, Clock, Star, Wrench, CheckCircle, MapPin, Mail, ArrowRight, ChevronDown, Users, Award, ThumbsUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 /* ───────── HERO ───────── */
 const Hero = () => (
@@ -218,12 +218,23 @@ const ElectricianDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Electric" stats={[
-            { label: 'Jobs Today', value: '8', trend: 10 },
-            { label: 'Revenue', value: '€2.4k', trend: 12 },
-            { label: 'Pending Quotes', value: '14', trend: -3 },
-            { label: 'Avg Rating', value: '4.9', trend: 2 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Electric',
+            brandLogo: '⚡',
+            accentColor: 'orange',
+            roles: [{ id: 'admin', label: 'Owner' }, { id: 'staff', label: 'Field Tech' }, { id: 'user', label: 'Dispatcher' }],
+            stats: [
+                { label: 'Jobs Today', value: '8', trend: 10 },
+                { label: 'Revenue', value: '€2.4k', trend: 12 },
+                { label: 'Pending Quotes', value: '14', trend: -3 },
+                { label: 'Avg Rating', value: '4.9', trend: 2 }
+            ],
+            kpis: [
+                { label: 'Job Completion Rate', value: '96%', progress: 96 },
+                { label: 'Response Time', value: '< 2h', progress: 88 },
+                { label: 'Customer Retention', value: '91%', progress: 91 }
+            ]
+        }} />;
     }
 
     return (

@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Star, MapPin, Phone, Mail, Clock, Wifi, Coffee, UtensilsCrossed, Waves, ChevronDown, Calendar, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1a1814] text-[#d4cbb8]">
@@ -156,12 +156,23 @@ const HotelDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Hotel" stats={[
-            { label: 'Occupancy', value: '87%', trend: 5 },
-            { label: 'Check-ins Today', value: '14', trend: 10 },
-            { label: 'RevPAR', value: '€185', trend: 8 },
-            { label: 'Reviews', value: '4.8★', trend: 2 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Hotel',
+            brandLogo: '🏨',
+            accentColor: 'stone',
+            roles: [{ id: 'admin', label: 'GM' }, { id: 'staff', label: 'Concierge' }, { id: 'user', label: 'Housekeeping' }],
+            stats: [
+                { label: 'Occupancy', value: '87%', trend: 5 },
+                { label: 'Check-ins Today', value: '14', trend: 10 },
+                { label: 'RevPAR', value: '€185', trend: 8 },
+                { label: 'Reviews', value: '4.8★', trend: 2 }
+            ],
+            kpis: [
+                { label: 'Room Readiness', value: '99%', progress: 99 },
+                { label: 'ADR', value: '€210', progress: 84 },
+                { label: 'Guest Return Rate', value: '42%', progress: 42 }
+            ]
+        }} />;
     }
 
     return (

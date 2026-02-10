@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Heart, Stethoscope, Phone, Mail, MapPin, Clock, Star, Users, Calendar, Shield, CheckCircle, ChevronDown, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-950 via-slate-950 to-cyan-950 text-white">
@@ -159,12 +159,23 @@ const MedicalDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Medical" stats={[
-            { label: 'Appointments Today', value: '42', trend: 8 },
-            { label: 'Patients (Month)', value: '1,200', trend: 12 },
-            { label: 'Doctors Active', value: '18/25', trend: 0 },
-            { label: 'Revenue', value: '€28k', trend: 15 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Medical',
+            brandLogo: '🏥',
+            accentColor: 'teal',
+            roles: [{ id: 'admin', label: 'Director' }, { id: 'staff', label: 'Doctor' }, { id: 'user', label: 'Nurse' }],
+            stats: [
+                { label: 'Appointments Today', value: '42', trend: 8 },
+                { label: 'Patients (Month)', value: '1,200', trend: 12 },
+                { label: 'Doctors Active', value: '18/25', trend: 0 },
+                { label: 'Revenue', value: '€28k', trend: 15 }
+            ],
+            kpis: [
+                { label: 'Patient Satisfaction', value: '96%', progress: 96 },
+                { label: 'Wait Time (Avg)', value: '12 min', progress: 40 },
+                { label: 'Bed Occupancy', value: '78%', progress: 78 }
+            ]
+        }} />;
     }
 
     return (

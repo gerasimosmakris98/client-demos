@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Home, Key, MapPin, Phone, Mail, Clock, Star, Users, TrendingUp, Building, CheckCircle, ChevronDown, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 /* ───────── HERO ───────── */
 const Hero = () => (
@@ -168,12 +168,23 @@ const RealEstateDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Estates" stats={[
-            { label: 'Active Listings', value: '64', trend: 8 },
-            { label: 'Viewings (Week)', value: '23', trend: 15 },
-            { label: 'Offers Pending', value: '7', trend: 5 },
-            { label: 'Revenue', value: '€48k', trend: 20 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Estates',
+            brandLogo: '🏠',
+            accentColor: 'amber',
+            roles: [{ id: 'admin', label: 'Broker' }, { id: 'staff', label: 'Agent' }, { id: 'user', label: 'Appraiser' }],
+            stats: [
+                { label: 'Active Listings', value: '64', trend: 8 },
+                { label: 'Viewings (Week)', value: '23', trend: 15 },
+                { label: 'Offers Pending', value: '7', trend: 5 },
+                { label: 'Revenue', value: '€48k', trend: 20 }
+            ],
+            kpis: [
+                { label: 'Listing-to-Sale Rate', value: '34%', progress: 34 },
+                { label: 'Avg Days on Market', value: '28d', progress: 55 },
+                { label: 'Client Satisfaction', value: '97%', progress: 97 }
+            ]
+        }} />;
     }
 
     return (

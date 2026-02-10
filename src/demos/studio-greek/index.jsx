@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Star, Phone, Mail, MapPin, Clock, Heart, Flame, Wind, Leaf, Users, Calendar, Camera, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
-import AdminMock from '../../components/demos/AdminMock';
+import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0015] text-white">
@@ -93,8 +93,15 @@ const GallerySection = () => (
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16"><span className="text-fuchsia-400 font-mono text-sm uppercase tracking-widest">Space</span><h2 className="text-4xl font-black mt-2">OUR STUDIO</h2></div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {[1, 2, 3, 4, 5, 6].map(i => (
-                    <div key={i} className="aspect-video rounded-2xl bg-[#0d0015] border border-white/5 overflow-hidden flex items-center justify-center"><Camera size={32} className="text-purple-500/30" /></div>
+                {[
+                    'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1588286840104-8957b019727f?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop'
+                ].map((src, i) => (
+                    <div key={i} className="aspect-video rounded-2xl overflow-hidden group"><img src={src} alt={`Studio ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" /></div>
                 ))}
             </div>
         </div>
@@ -180,12 +187,23 @@ const StudioDemo = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     if (viewMode === 'admin') {
-        return <AdminMock title="GM Fitness Studio" stats={[
-            { label: 'Active Members', value: '185', trend: 10 },
-            { label: 'Classes Today', value: '8', trend: 0 },
-            { label: 'New Signups', value: '12', trend: 20 },
-            { label: 'Revenue', value: '€8.4k', trend: 15 }
-        ]} />;
+        return <UniversalAdmin config={{
+            brandName: 'GM Fitness Studio',
+            brandLogo: '🧘',
+            accentColor: 'purple',
+            roles: [{ id: 'admin', label: 'Owner' }, { id: 'staff', label: 'Instructor' }, { id: 'user', label: 'Front Desk' }],
+            stats: [
+                { label: 'Active Members', value: '185', trend: 10 },
+                { label: 'Classes Today', value: '8', trend: 0 },
+                { label: 'New Signups', value: '12', trend: 20 },
+                { label: 'Revenue', value: '€8.4k', trend: 15 }
+            ],
+            kpis: [
+                { label: 'Member Retention', value: '95%', progress: 95 },
+                { label: 'Class Fill Rate', value: '78%', progress: 78 },
+                { label: 'NPS Score', value: '82', progress: 82 }
+            ]
+        }} />;
     }
 
     return (
