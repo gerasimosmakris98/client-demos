@@ -1,16 +1,117 @@
-# React + Vite
+# GM Group — Client Demo Templates
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **13 production-ready, mobile-first React landing pages** for diverse industries.  
+> Built with React, Vite, Framer Motion, Tailwind CSS v4, and Firebase Hosting.
 
-Currently, two official plugins are available:
+**🔗 Live:** [client-demos-gm.web.app](https://client-demos-gm.web.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Clone
+git clone https://github.com/gerasimosmakris98/client-demos.git
+cd client-demos
 
-## Expanding the ESLint configuration
+# Install & Run
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── common/          # Shared components (AIChat widget)
+│   ├── dashboard/       # Landing page grid (FilterBar, TemplateCard)
+│   ├── demos/           # AdminMock shared component
+│   └── layout/          # MainLayout, DemoLayout, Navbar
+├── demos/
+│   ├── premium-template/   # GM Premium SaaS
+│   ├── cafe-greek/         # GM Cafe
+│   ├── hair-salon-greek/   # GM Salon
+│   ├── law-office-greek/   # GM Law Partners
+│   ├── tutoring-greek/     # GM Tutoring (with Dashboard)
+│   ├── gym-greek/          # GM Gym
+│   ├── electrician-greek/  # GM Electric
+│   ├── real-estate-greek/  # GM Estates
+│   ├── medical-greek/      # GM Medical
+│   ├── hotel-greek/        # GM Hotel
+│   ├── accounting-greek/   # GM Accounting
+│   ├── restaurant-greek/   # GM Restaurant
+│   └── studio-greek/       # GM Fitness Studio
+├── pages/
+│   └── Dashboard.jsx       # Main landing page grid
+└── App.jsx                 # Route definitions
+```
+
+## 🎨 Demo Templates (13 Total)
+
+Each template includes **8-9 fully responsive sections** + AI Chat + Admin Dashboard:
+
+| # | Template | Industry | Accent Color | Sections |
+|---|----------|----------|---------|----------|
+| 1 | **GM Premium SaaS** | Tech/Startup | Blue/Indigo | Hero, Features, Pricing, CTA |
+| 2 | **GM Cafe** | Hospitality | Amber/Orange | Hero, About, Menu, Gallery, Testimonials, Location, Footer |
+| 3 | **GM Salon** | Beauty | Rose/Pink | Hero, Services, Testimonials, Booking, Footer |
+| 4 | **GM Law Partners** | Legal | Slate | Hero, Practice Areas, Attorneys, Case Studies, Testimonials, Contact |
+| 5 | **GM Tutoring** | Education | Emerald | Hero, Programs, Educators, Pricing, FAQ, Dashboard (Admin/Teacher/Student) |
+| 6 | **GM Gym** | Fitness | Lime/Neon | Hero, Programs, Trainers, Pricing, FAQ |
+| 7 | **GM Electric** | Trades | Orange | Hero, About, Services, Team, Gallery, Testimonials, Pricing, Contact, Footer |
+| 8 | **GM Estates** | Real Estate | Gold/Amber | Hero, About, Listings, Services, Agents, Testimonials, Contact, Footer |
+| 9 | **GM Medical** | Healthcare | Teal/Cyan | Hero, About, Specialties, Doctors, Testimonials, Booking, Contact, Footer |
+| 10 | **GM Hotel** | Hospitality | Warm/Sepia | Hero, About, Rooms, Amenities, Testimonials, Reservation, Contact, Footer |
+| 11 | **GM Accounting** | Finance | Indigo/Violet | Hero, About, Services, Team, Testimonials, Pricing, Contact, Footer |
+| 12 | **GM Restaurant** | Food & Dining | Red | Hero, About, Menu, Chef, Gallery, Testimonials, Reservation, Footer |
+| 13 | **GM Studio** | Wellness | Purple/Fuchsia | Hero, About, Classes, Instructors, Gallery, Testimonials, Pricing, Contact, Footer |
+
+## 🤖 Shared Features
+
+- **AI Chat Widget** — Reusable chat bubble (`brandName` prop) on every demo
+- **Admin Dashboard** — Simulated admin view with KPIs via view toggle
+- **Dark Mode** — All demos use dark/premium aesthetics
+- **Mobile-First** — Fully responsive with Tailwind breakpoints
+- **Framer Motion** — Hero animations and section transitions
+- **Lucide Icons** — Consistent icon system across all demos
+
+## 🔧 Personalization Guide
+
+To clone and customize any template:
+
+1. **Copy** a demo folder from `src/demos/` and rename it
+2. **Update** the brand name, colors, and content in each component
+3. **Register** the new route in `src/App.jsx` and add to `src/pages/Dashboard.jsx`
+4. **Deploy** via `npm run build` + Firebase
+
+### Key Files to Edit:
+- `index.jsx` — Main demo entry point (component composition + AdminMock stats)
+- `components/Hero.jsx` — Brand name, tagline, hero image
+- Color tokens: Search/replace the accent color class (e.g., `text-orange-400` → `text-blue-400`)
+
+## 📦 Build & Deploy
+
+```bash
+# Production build
+npm run build
+
+# Deploy to Firebase
+npx firebase-tools deploy --only hosting
+
+# Push to GitHub
+git add -A; git commit -m "your message"; git push origin master
+```
+
+## 🛠 Tech Stack
+
+- **React 19** + **Vite 7**
+- **Tailwind CSS v4**
+- **Framer Motion**
+- **Lucide React** icons
+- **React Router v7**
+- **Firebase Hosting**
+
+---
+
+Made with ❤️ by GM Group • Designed by Antigravity
