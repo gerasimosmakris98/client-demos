@@ -1,87 +1,58 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowRight, Github, Linkedin, MessageCircle, Instagram, Facebook, ShieldCheck, Search, Bell } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 const MainLayout = ({ children }) => {
     const location = useLocation();
-    const isDashboard = location.pathname === '/';
     const currentYear = new Date().getFullYear();
 
     return (
-        <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <div className="relative min-h-screen flex flex-col">
 
             {/* Branded Header */}
-            <header className="glass-header" style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                zIndex: 9999,
-                padding: '0 2rem',
-                height: '4rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                background: 'rgba(2, 8, 23, 0.85)',
-                backdropFilter: 'blur(12px)',
-                borderBottom: '1px solid rgba(255,255,255,0.08)'
-            }}>
+            <header className="fixed top-0 left-0 w-full z-[9999] px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between"
+                style={{ background: 'rgba(2, 8, 23, 0.9)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                 {/* Logo */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <span style={{
-                            fontFamily: "'Playfair Display', serif",
-                            fontSize: '1.75rem',
-                            fontWeight: 900,
-                            color: 'white',
-                            letterSpacing: '-0.05em'
-                        }}>GM</span>
-                    </Link>
-                </div>
+                <Link to="/" className="flex items-center gap-2 no-underline">
+                    <span className="font-playfair text-xl sm:text-2xl font-black text-white tracking-tight">GM</span>
+                    <span className="hidden sm:inline text-xs text-gray-500 font-medium">Client Demos</span>
+                </Link>
 
-                {/* Simplified Nav - Just Contact */}
-                <nav style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <a href="https://g-makris.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
-                        Main Site
+                {/* Nav */}
+                <nav className="flex items-center gap-2 sm:gap-4">
+                    <a href="https://github.com/gerasimosmakris98/client-demos" target="_blank" rel="noopener noreferrer"
+                        className="p-2 text-gray-400 hover:text-white transition-colors">
+                        <Github size={18} />
+                    </a>
+                    <a href="https://g-makris.com" target="_blank" rel="noopener noreferrer"
+                        className="text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                        g-makris.com
                     </a>
                 </nav>
             </header>
 
             {/* Main Content */}
-            <main style={{ flex: 1, marginTop: '5rem' }}>
+            <main className="flex-1 mt-14 sm:mt-16">
                 {children}
             </main>
 
-            {/* Watermark Overlay (Only on demos - handled by DemoLayout now, keeping just in case or removing if redundant) */}
-
-            {/* Standard Footer */}
-            <footer style={{ background: '#020617', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '3rem 2rem' }}>
-                <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
-
+            {/* Footer */}
+            <footer className="border-t border-white/5 py-8 sm:py-12 px-4 sm:px-6" style={{ background: '#020617' }}>
+                <div className="max-w-[1400px] mx-auto flex flex-col items-center gap-4 text-center">
                     <div>
-                        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem', color: 'white' }}>GM</div>
-                        <p style={{ color: '#64748b', fontSize: '0.875rem' }}>
-                            AI Web Developer & FinTech Specialist
-                        </p>
+                        <div className="font-playfair text-lg font-bold text-white mb-1">GM</div>
+                        <p className="text-gray-500 text-xs sm:text-sm">AI Web Developer & FinTech Specialist</p>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.875rem', color: '#94a3b8' }}>
+                    <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
                         <a href="https://g-makris.com/portfolio" className="hover:text-white transition-colors">Portfolio</a>
                         <a href="https://g-makris.com/services" className="hover:text-white transition-colors">Services</a>
                         <a href="https://g-makris.com/contact" className="hover:text-white transition-colors">Contact</a>
                     </div>
                 </div>
 
-                <div style={{
-                    maxWidth: '1400px',
-                    margin: '2rem auto 0',
-                    paddingTop: '2rem',
-                    borderTop: '1px solid rgba(255,255,255,0.05)',
-                    textAlign: 'center',
-                    color: '#475569',
-                    fontSize: '0.8rem'
-                }}>
-                    <span>&copy; {currentYear} Gerasimos Makris. All rights reserved.</span>
+                <div className="max-w-[1400px] mx-auto mt-6 pt-6 border-t border-white/5 text-center">
+                    <span className="text-gray-600 text-[10px] sm:text-xs">&copy; {currentYear} Gerasimos Makris. All rights reserved.</span>
                 </div>
             </footer>
         </div>

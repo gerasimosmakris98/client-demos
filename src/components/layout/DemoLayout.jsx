@@ -1,153 +1,114 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { ArrowLeft, MoreVertical, Info, Smartphone, LayoutDashboard, Monitor, ShieldCheck, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, Info, Smartphone, LayoutDashboard, Monitor, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const DemoLayout = () => {
     const [showMenu, setShowMenu] = useState(false);
-    const [showDisclaimer, setShowDisclaimer] = useState(true);
-    const [viewMode, setViewMode] = useState('desktop'); // desktop, mobile, admin
+    const [viewMode, setViewMode] = useState('desktop');
     const location = useLocation();
 
-    // Determine current template ID/Name based on URL
     const templateId = location.pathname.split('/demos/')[1] || 'unknown-template';
+    const templateName = templateId.replace(/-/g, ' ');
 
-    // Auto-hide disclaimer after 5 seconds
-    useEffect(() => {
-        const timer = setTimeout(() => setShowDisclaimer(false), 8000);
-        return () => clearTimeout(timer);
-    }, []);
-
-    // Dynamic Palette Injection
+    // Dynamic palette
     useEffect(() => {
         const root = document.documentElement;
-        switch (templateId) {
-            case 'cafe-greek':
-                root.style.setProperty('--primary', '#d4a373'); // Amber/Brown
-                root.style.setProperty('--secondary', '#78350f');
-                root.style.setProperty('--accent', '#fcd34d');
-                break;
-            case 'hair-salon-greek':
-                root.style.setProperty('--primary', '#be123c'); // Rose
-                root.style.setProperty('--secondary', '#881337');
-                root.style.setProperty('--accent', '#fda4af');
-                break;
-            case 'law-office-greek':
-                root.style.setProperty('--primary', '#ca8a04'); // Gold
-                root.style.setProperty('--secondary', '#0f172a'); // Slate
-                root.style.setProperty('--accent', '#eab308');
-                break;
-            case 'tutoring-greek':
-                root.style.setProperty('--primary', '#059669'); // Emerald
-                root.style.setProperty('--secondary', '#064e3b');
-                root.style.setProperty('--accent', '#34d399');
-                break;
-            default: // Premium / Default
-                root.style.setProperty('--primary', '#3b82f6'); // Blue
-                root.style.setProperty('--secondary', '#1d4ed8');
-                root.style.setProperty('--accent', '#60a5fa');
-        }
+        const palettes = {
+            'cafe-greek': ['#d4a373', '#78350f', '#fcd34d'],
+            'hair-salon-greek': ['#be123c', '#881337', '#fda4af'],
+            'law-office-greek': ['#ca8a04', '#0f172a', '#eab308'],
+            'tutoring-greek': ['#059669', '#064e3b', '#34d399'],
+            'gym-greek': ['#65a30d', '#1a2e05', '#a3e635'],
+            'electrician-greek': ['#ea580c', '#431407', '#fb923c'],
+            'real-estate-greek': ['#d97706', '#451a03', '#fbbf24'],
+            'medical-greek': ['#0d9488', '#042f2e', '#2dd4bf'],
+            'hotel-greek': ['#a8a29e', '#1c1917', '#d6d3d1'],
+            'accounting-greek': ['#6366f1', '#1e1b4b', '#818cf8'],
+            'restaurant-greek': ['#dc2626', '#450a0a', '#f87171'],
+            'studio-greek': ['#c026d3', '#4a044e', '#e879f9'],
+        };
+        const [p, s, a] = palettes[templateId] || ['#3b82f6', '#1d4ed8', '#60a5fa'];
+        root.style.setProperty('--primary', p);
+        root.style.setProperty('--secondary', s);
+        root.style.setProperty('--accent', a);
     }, [templateId]);
 
     return (
         <div className="relative min-h-screen">
-            {/* --- Overlay UI --- */}
+            {/* ═══ MOBILE-FRIENDLY TOP BAR ═══ */}
+            <div className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-4 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/80 max-w-[95vw]">
 
-            {/* --- New Top Glassmorphic Menu Bar --- */}
-            <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 p-2 rounded-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/80">
-
-                {/* Back to Studio */}
-                <Link to="/" className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors" title="Back to Studio">
-                    <ArrowLeft size={18} />
+                {/* Back */}
+                <Link to="/" className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors shrink-0" title="Back">
+                    <ArrowLeft size={16} />
                 </Link>
 
-                <div className="w-px h-4 bg-white/10"></div>
+                <div className="w-px h-4 bg-white/10 hidden sm:block" />
 
-                {/* Template Info */}
-                <div className="flex flex-col px-2">
-                    <span className="text-xs font-bold text-white tracking-wide uppercase">
-                        {templateId.replace(/-/g, ' ')}
+                {/* Template name — truncated on mobile */}
+                <div className="flex-col px-1 sm:px-2 hidden min-[400px]:flex">
+                    <span className="text-[10px] sm:text-xs font-bold text-white tracking-wide uppercase truncate max-w-[100px] sm:max-w-[180px]">
+                        {templateName}
                     </span>
-                    <span className="text-[10px] text-gray-500 font-mono">
-                        v1.0.0 • {viewMode.toUpperCase()}
+                    <span className="text-[8px] sm:text-[10px] text-gray-500 font-mono">
+                        {viewMode.toUpperCase()}
                     </span>
                 </div>
 
-                <div className="w-px h-4 bg-white/10"></div>
+                <div className="w-px h-4 bg-white/10" />
 
-                {/* View Toggles */}
-                <div className="flex items-center gap-1 bg-white/5 rounded-full p-1">
-                    <button
-                        onClick={() => setViewMode('desktop')}
-                        className={`p-1.5 rounded-full transition-all ${viewMode === 'desktop' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
-                        title="Desktop View"
-                    >
-                        <Monitor size={14} />
-                    </button>
-                    <button
-                        onClick={() => setViewMode('mobile')}
-                        className={`p-1.5 rounded-full transition-all ${viewMode === 'mobile' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
-                        title="Mobile View"
-                    >
-                        <Smartphone size={14} />
-                    </button>
-                    <button
-                        onClick={() => setViewMode('admin')}
-                        className={`p-1.5 rounded-full transition-all ${viewMode === 'admin' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
-                        title="Admin View"
-                    >
-                        <LayoutDashboard size={14} />
-                    </button>
+                {/* View toggles */}
+                <div className="flex items-center gap-0.5 sm:gap-1 bg-white/5 rounded-full p-0.5 sm:p-1">
+                    {[
+                        { mode: 'desktop', icon: Monitor, label: 'Desktop' },
+                        { mode: 'mobile', icon: Smartphone, label: 'Mobile' },
+                        { mode: 'admin', icon: LayoutDashboard, label: 'Admin' }
+                    ].map(({ mode, icon: Icon, label }) => (
+                        <button key={mode}
+                            onClick={() => setViewMode(mode)}
+                            className={`p-1 sm:p-1.5 rounded-full transition-all ${viewMode === mode ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:text-gray-300'}`}
+                            title={label}
+                        >
+                            <Icon size={12} className="sm:w-[14px] sm:h-[14px]" />
+                        </button>
+                    ))}
                 </div>
 
-                <div className="w-px h-4 bg-white/10"></div>
+                <div className="w-px h-4 bg-white/10" />
 
-                {/* Actions */}
+                {/* Info */}
                 <button
                     onClick={() => setShowMenu(!showMenu)}
-                    className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors relative"
+                    className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors relative shrink-0"
                 >
-                    <Info size={18} />
+                    <Info size={16} />
                     {showMenu && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                            className="absolute right-0 top-full mt-4 w-64 glass-panel rounded-xl border border-white/10 overflow-hidden shadow-2xl p-4 text-left"
+                            className="absolute right-0 top-full mt-3 w-56 sm:w-64 rounded-xl border border-white/10 overflow-hidden shadow-2xl p-4 text-left"
                             style={{ background: 'rgba(10, 10, 10, 0.95)' }}
                         >
-                            <h4 className="text-white font-bold mb-1">About this Demo</h4>
-                            <p className="text-xs text-gray-400 mb-4 leading-relaxed">
-                                This template is fully responsive and customizable. It uses React, Tailwind CSS, and Framer Motion.
+                            <h4 className="text-white font-bold mb-1 text-sm">About this Demo</h4>
+                            <p className="text-[10px] sm:text-xs text-gray-400 mb-4 leading-relaxed">
+                                Fully responsive & customizable. Built with React, Tailwind CSS, and Framer Motion.
                             </p>
-
                             <div className="pt-3 border-t border-white/10 flex items-center justify-between">
                                 <span className="text-[10px] text-gray-500">Created for you</span>
                                 <div className="flex items-center gap-1.5 px-2 py-1 bg-green-500/10 rounded text-green-400 text-[10px] font-bold border border-green-500/20">
-                                    <ShieldCheck size={10} />
-                                    GM Certified
+                                    <ShieldCheck size={10} /> GM Certified
                                 </div>
                             </div>
                         </motion.div>
                     )}
                 </button>
-
-                <div className="pl-2 pr-1">
-                    <img src="/favicon.svg" alt="GM" className="w-6 h-6 opacity-80 hover:opacity-100 transition-opacity" />
-                </div>
             </div>
 
-            {/* --- Content Area --- */}
+            {/* ═══ CONTENT ═══ */}
             <div className={`relative transition-all duration-500 ${viewMode === 'mobile' ? 'max-w-md mx-auto border-x border-gray-800 shadow-2xl min-h-screen my-8 overflow-hidden rounded-[40px]' : ''}`}>
                 <Outlet context={{ viewMode }} />
             </div>
-
-            {/* Mobile Frame Decoration (only visible in mobile mode) */}
-            {viewMode === 'mobile' && (
-                <div className="fixed inset-0 pointer-events-none z-40 flex items-center justify-center">
-                    {/* Can add phone bezel frame here later if needed */}
-                </div>
-            )}
         </div>
     );
 };
