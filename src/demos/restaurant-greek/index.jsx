@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { UtensilsCrossed, Wine, ChefHat, Star, Phone, Mail, MapPin, Clock, Calendar, Instagram, Camera } from 'lucide-react';
+import { UtensilsCrossed, Wine, ChefHat, Star, Phone, Mail, MapPin, Clock, Calendar, Instagram, ClipboardList, ShoppingCart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const restaurantTabs = [
+    {
+        id: 'reservations', label: 'Reservations', icon: Calendar, columns: ['Guest', 'Status', 'Time', 'Covers'],
+        rows: [['Maria K.', 'Confirmed', '20:00', '4'], ['John D.', 'Confirmed', '20:30', '2'], ['Elena P.', 'Pending', '21:00', '6'], ['George S.', 'Confirmed', '19:30', '3'], ['Anna M.', 'Cancelled', '21:30', '2']]
+    },
+    {
+        id: 'menu', label: 'Menu', icon: UtensilsCrossed, columns: ['Dish', 'Status', 'Category', 'Price'],
+        rows: [['Moussaka Classic', 'Active', 'Main', '€18'], ['Grilled Octopus', 'Active', 'Starter', '€16'], ['Lamb Kleftiko', 'Active', 'Main', '€24'], ['Baklava', 'Active', 'Dessert', '€8'], ['Greek Salad', 'Active', 'Starter', '€12']]
+    },
+    {
+        id: 'kitchen', label: 'Kitchen', icon: ChefHat, columns: ['Order', 'Status', 'Table', 'Time'],
+        rows: [['#1042', 'In Progress', 'Table 5', '8 min'], ['#1043', 'Pending', 'Table 8', '3 min'], ['#1044', 'Completed', 'Table 2', '22 min'], ['#1045', 'In Progress', 'Table 12', '5 min'], ['#1046', 'Pending', 'Table 1', '1 min']]
+    },
+    {
+        id: 'orders', label: 'Orders', icon: ShoppingCart, columns: ['Order', 'Status', 'Items', 'Total'],
+        rows: [['#1042', 'Active', '3 items', '€68'], ['#1043', 'Pending', '5 items', '€124'], ['#1044', 'Completed', '2 items', '€42'], ['#1045', 'Active', '4 items', '€86'], ['#1046', 'Pending', '1 item', '€18']]
+    },
+];
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1a0a0a] text-white">
@@ -176,7 +195,8 @@ const RestaurantDemo = () => {
                 { label: 'Kitchen Efficiency', value: '92%', progress: 92 },
                 { label: 'Table Turnover', value: '2.4x', progress: 80 },
                 { label: 'Waste Reduction', value: '-15%', progress: 65 }
-            ]
+            ],
+            customTabs: restaurantTabs,
         }} />;
     }
 

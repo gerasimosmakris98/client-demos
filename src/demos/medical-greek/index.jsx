@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Heart, Stethoscope, Phone, Mail, MapPin, Clock, Star, Users, Calendar, Shield, CheckCircle, ChevronDown, Activity } from 'lucide-react';
+import { Heart, Stethoscope, Phone, Mail, MapPin, Clock, Star, Users, Calendar, Shield, CheckCircle, ChevronDown, Activity, CalendarDays, FileText, FlaskConical } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const medicalTabs = [
+    {
+        id: 'patients', label: 'Patients', icon: Users, columns: ['Patient', 'Status', 'Doctor', 'Visit'],
+        rows: [['Maria K.', 'Active', 'Dr. Papadopoulos', 'Follow-up'], ['John D.', 'Active', 'Dr. Alexiou', 'New patient'], ['Elena P.', 'Pending', 'Dr. Georgiou', 'Lab review'], ['George S.', 'Active', 'Dr. Papadopoulos', 'Checkup'], ['Anna M.', 'Completed', 'Dr. Stavrou', 'Referral']]
+    },
+    {
+        id: 'appointments', label: 'Appointments', icon: CalendarDays, columns: ['Patient', 'Status', 'Time', 'Doctor'],
+        rows: [['Maria K.', 'Confirmed', '09:00', 'Dr. P.'], ['John D.', 'Confirmed', '09:30', 'Dr. A.'], ['Elena P.', 'Pending', '10:00', 'Dr. G.'], ['George S.', 'Confirmed', '11:00', 'Dr. P.'], ['Anna M.', 'Completed', '08:30', 'Dr. S.']]
+    },
+    {
+        id: 'records', label: 'Records', icon: FileText, columns: ['Patient', 'Status', 'Type', 'Date'],
+        rows: [['Maria K.', 'Active', 'Blood work', 'Feb 10'], ['John D.', 'Active', 'X-Ray', 'Feb 9'], ['Elena P.', 'Pending', 'MRI', 'Feb 12'], ['George S.', 'Completed', 'ECG', 'Feb 8']]
+    },
+    {
+        id: 'lab', label: 'Lab', icon: FlaskConical, columns: ['Test', 'Status', 'Patient', 'Results'],
+        rows: [['CBC Panel', 'Completed', 'Maria K.', 'Normal'], ['Thyroid', 'In Progress', 'John D.', 'Pending'], ['Cholesterol', 'Completed', 'Elena P.', 'High'], ['Glucose', 'Completed', 'George S.', 'Normal'], ['HbA1c', 'Pending', 'Anna M.', 'Awaiting']]
+    },
+];
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-950 via-slate-950 to-cyan-950 text-white">
@@ -174,7 +193,8 @@ const MedicalDemo = () => {
                 { label: 'Patient Satisfaction', value: '96%', progress: 96 },
                 { label: 'Wait Time (Avg)', value: '12 min', progress: 40 },
                 { label: 'Bed Occupancy', value: '78%', progress: 78 }
-            ]
+            ],
+            customTabs: medicalTabs,
         }} />;
     }
 

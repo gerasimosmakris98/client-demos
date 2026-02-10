@@ -258,6 +258,25 @@ const Dashboard = () => {
                         </div>
                     </div>
                 )}
+
+                {/* ═══ FAQ SECTION ═══ */}
+                <div className="mt-32 max-w-3xl mx-auto">
+                    <h2 className="text-3xl font-black text-center mb-12 text-white">Frequently Asked Questions</h2>
+                    <div className="space-y-4">
+                        {[
+                            { q: 'Can I clone these templates for new clients?', a: 'Yes! Each demo is a self-contained module. Simply duplicate the folder, rename it, and duplicate the route in App.jsx to start a new client project.' },
+                            { q: 'Is the Admin Panel customizable?', a: 'Absolutely. The UniversalAdmin component is fully configuration-driven. You can toggle roles, change branding, KPIs, and define custom tabs with specific industry data.' },
+                            { q: 'Are the images licensed?', a: 'The current images are from Unsplash (free for commercial use). For a real client, you would simply replace the URLs with their provided assets.' },
+                            { q: 'How do I deploy a new client site?', a: 'These demos are part of a monorepo. For a dedicated client site, you can either deploy this entire suite or extract the specific demo folder into a fresh Vite project.' },
+                            { q: 'Is it mobile responsive?', a: 'Yes, all 13 templates are built with a "mobile-first" approach using Tailwind CSS, ensuring 100% responsiveness on all devices.' }
+                        ].map((faq, i) => (
+                            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
+                                <h3 className="text-lg font-bold text-white mb-2">{faq.q}</h3>
+                                <p className="text-gray-400 leading-relaxed">{faq.a}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

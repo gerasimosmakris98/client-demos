@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Star, MapPin, Phone, Mail, Clock, Wifi, Coffee, UtensilsCrossed, Waves, ChevronDown, Calendar, Check } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, Clock, Wifi, Coffee, UtensilsCrossed, Waves, ChevronDown, Calendar, Check, CalendarDays, BedDouble, Users, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const hotelTabs = [
+    {
+        id: 'bookings', label: 'Bookings', icon: CalendarDays, columns: ['Guest', 'Status', 'Room', 'Dates'],
+        rows: [['Maria K.', 'Confirmed', 'Suite 201', 'Feb 10-14'], ['John D.', 'Confirmed', 'Deluxe 305', 'Feb 11-13'], ['Elena P.', 'Pending', 'Standard 108', 'Feb 12-15'], ['George S.', 'Confirmed', 'Suite 401', 'Feb 10-17'], ['Anna M.', 'Cancelled', 'Deluxe 302', 'Feb 13-14']]
+    },
+    {
+        id: 'rooms', label: 'Rooms', icon: BedDouble, columns: ['Room', 'Status', 'Type', 'Rate'],
+        rows: [['Suite 201', 'Active', 'Suite', '€280/night'], ['Deluxe 305', 'Active', 'Deluxe', '€180/night'], ['Standard 108', 'Active', 'Standard', '€120/night'], ['Suite 401', 'Active', 'Penthouse', '€450/night'], ['Deluxe 302', 'Pending', 'Deluxe', '€180/night']]
+    },
+    {
+        id: 'guests', label: 'Guests', icon: Users, columns: ['Guest', 'Status', 'VIP', 'Requests'],
+        rows: [['Maria K.', 'Active', 'Gold', 'Late checkout'], ['John D.', 'Active', 'Silver', 'Extra pillows'], ['Elena P.', 'Pending', '--', 'Airport transfer'], ['George S.', 'Active', 'Platinum', 'Spa package']]
+    },
+    {
+        id: 'housekeeping', label: 'Housekeeping', icon: Sparkles, columns: ['Room', 'Status', 'Assigned', 'Priority'],
+        rows: [['Suite 201', 'Completed', 'Maria T.', 'High'], ['Deluxe 305', 'In Progress', 'Elena K.', 'Normal'], ['Standard 108', 'Pending', 'Anna P.', 'Normal'], ['Suite 401', 'Pending', 'Maria T.', 'High'], ['Deluxe 302', 'Completed', 'Sofia K.', 'Low']]
+    },
+];
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1a1814] text-[#d4cbb8]">
@@ -171,7 +190,8 @@ const HotelDemo = () => {
                 { label: 'Room Readiness', value: '99%', progress: 99 },
                 { label: 'ADR', value: '€210', progress: 84 },
                 { label: 'Guest Return Rate', value: '42%', progress: 42 }
-            ]
+            ],
+            customTabs: hotelTabs,
         }} />;
     }
 

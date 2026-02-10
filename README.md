@@ -78,11 +78,11 @@ Each template includes **8-9 fully responsive sections** + AI Chat + Admin Dashb
 
 ## 🔧 Personalization Guide
 
-To clone and customize any template:
+To clone and customize any template, please refer to the detailed [Cloning Guide](CLONING_GUIDE.md).
 
 1. **Copy** a demo folder from `src/demos/` and rename it
-2. **Update** the brand name, colors, and content in each component
-3. **Register** the new route in `src/App.jsx` and add to `src/pages/Dashboard.jsx`
+2. **Update** the brand name, colors, and content
+3. **Register** the new route in `src/App.jsx`
 4. **Deploy** via `npm run build` + Firebase
 
 ### Key Files to Edit:

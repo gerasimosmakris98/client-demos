@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Calculator, FileText, TrendingUp, Users, Phone, Mail, MapPin, Clock, Star, CheckCircle, BarChart3, PieChart, Shield, Award } from 'lucide-react';
+import { Calculator, FileText, TrendingUp, Users, Phone, Mail, MapPin, Clock, Star, CheckCircle, BarChart3, PieChart, Shield, Award, Receipt, Landmark, ClipboardList } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const accountingTabs = [
+    {
+        id: 'clients', label: 'Clients', icon: Users, columns: ['Client', 'Status', 'Type', 'Revenue'],
+        rows: [['Acme Corp', 'Active', 'Business', '€4,200/yr'], ['Maria K.', 'Active', 'Individual', '€600/yr'], ['Tech Ltd', 'Active', 'Business', '€8,400/yr'], ['Café Nova', 'Pending', 'Business', '€2,100/yr'], ['John D.', 'Active', 'Individual', '€450/yr']]
+    },
+    {
+        id: 'invoices', label: 'Invoices', icon: Receipt, columns: ['Invoice', 'Status', 'Client', 'Amount'],
+        rows: [['INV-2024-042', 'Paid', 'Acme Corp', '€1,200'], ['INV-2024-043', 'Pending', 'Tech Ltd', '€2,800'], ['INV-2024-044', 'Overdue', 'Café Nova', '€750'], ['INV-2024-045', 'Paid', 'Maria K.', '€200'], ['INV-2024-046', 'Pending', 'John D.', '€150']]
+    },
+    {
+        id: 'tax', label: 'Tax', icon: Landmark, columns: ['Filing', 'Status', 'Client', 'Deadline'],
+        rows: [['VAT Q1 2026', 'In Progress', 'Acme Corp', 'Mar 31'], ['Income Tax', 'Pending', 'Maria K.', 'Jun 30'], ['Corporate Tax', 'Completed', 'Tech Ltd', 'Feb 28'], ['VAT Q1 2026', 'Scheduled', 'Café Nova', 'Mar 31']]
+    },
+    {
+        id: 'reports', label: 'Reports', icon: ClipboardList, columns: ['Report', 'Status', 'Period', 'Type'],
+        rows: [['P&L Statement', 'Completed', 'Jan 2026', 'Financial'], ['Balance Sheet', 'Completed', 'Q4 2025', 'Financial'], ['Cash Flow', 'In Progress', 'Jan 2026', 'Financial'], ['Tax Summary', 'Pending', 'FY 2025', 'Tax'], ['Audit Report', 'Scheduled', 'FY 2025', 'Compliance']]
+    },
+];
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0c0e1a] text-white">
@@ -181,7 +200,8 @@ const AccountingDemo = () => {
                 { label: 'Filing Accuracy', value: '99.8%', progress: 99 },
                 { label: 'Client Retention', value: '94%', progress: 94 },
                 { label: 'Deadline Compliance', value: '100%', progress: 100 }
-            ]
+            ],
+            customTabs: accountingTabs,
         }} />;
     }
 

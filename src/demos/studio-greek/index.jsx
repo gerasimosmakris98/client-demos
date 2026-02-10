@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Star, Phone, Mail, MapPin, Clock, Heart, Flame, Wind, Leaf, Users, Calendar, Camera, CheckCircle } from 'lucide-react';
+import { Star, Phone, Mail, MapPin, Clock, Heart, Flame, Wind, Leaf, Users, Calendar, CheckCircle, Dumbbell, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const studioTabs = [
+    {
+        id: 'members', label: 'Members', icon: Users, columns: ['Member', 'Status', 'Plan', 'Since'],
+        rows: [['Maria K.', 'Active', 'Unlimited', 'Jan 2025'], ['Sofia P.', 'Active', '10-Class', 'Mar 2025'], ['Anna M.', 'Active', 'Unlimited', 'Dec 2024'], ['Dimitra G.', 'Pending', 'Trial', 'Feb 2026'], ['Elena D.', 'Active', '10-Class', 'Nov 2025']]
+    },
+    {
+        id: 'classes', label: 'Classes', icon: Dumbbell, columns: ['Class', 'Status', 'Instructor', 'Spots'],
+        rows: [['Vinyasa Yoga', 'Active', 'Maria T.', '12/15'], ['Pilates Mat', 'Scheduled', 'Elena K.', '8/12'], ['Hot Yoga', 'Active', 'Sofia A.', '15/15'], ['Barre Fusion', 'Scheduled', 'Anna P.', '6/10'], ['Yin Yoga', 'Active', 'Maria T.', '10/12']]
+    },
+    {
+        id: 'schedule', label: 'Schedule', icon: Calendar, columns: ['Day', 'Status', 'Classes', 'Bookings'],
+        rows: [['Monday', 'Active', '6 classes', '52'], ['Tuesday', 'Active', '5 classes', '45'], ['Wednesday', 'Active', '7 classes', '58'], ['Thursday', 'Active', '5 classes', '42'], ['Friday', 'Active', '4 classes', '35'], ['Saturday', 'Scheduled', '3 classes', '28']]
+    },
+    {
+        id: 'instructors', label: 'Instructors', icon: Award, columns: ['Instructor', 'Status', 'Specialty', 'Rating'],
+        rows: [['Maria T.', 'Active', 'Yoga', '4.9★'], ['Elena K.', 'Active', 'Pilates', '4.8★'], ['Sofia A.', 'Active', 'Hot Yoga', '4.9★'], ['Anna P.', 'Active', 'Barre', '4.7★']]
+    },
+];
 
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0015] text-white">
@@ -202,7 +221,8 @@ const StudioDemo = () => {
                 { label: 'Member Retention', value: '95%', progress: 95 },
                 { label: 'Class Fill Rate', value: '78%', progress: 78 },
                 { label: 'NPS Score', value: '82', progress: 82 }
-            ]
+            ],
+            customTabs: studioTabs,
         }} />;
     }
 

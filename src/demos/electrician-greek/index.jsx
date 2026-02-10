@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Zap, Shield, Phone, Clock, Star, Wrench, CheckCircle, MapPin, Mail, ArrowRight, ChevronDown, Users, Award, ThumbsUp } from 'lucide-react';
+import { Zap, Shield, Phone, Clock, Star, Wrench, CheckCircle, MapPin, Mail, ArrowRight, ChevronDown, Users, Award, ThumbsUp, FileText, Truck, Package } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const electricianTabs = [
+    {
+        id: 'jobs', label: 'Jobs', icon: Wrench, columns: ['Job', 'Status', 'Address', 'Tech'],
+        rows: [['Panel Upgrade', 'Active', 'Kifisias 42', 'Nikos K.'], ['Wiring Repair', 'In Progress', 'Vouliagmenis 18', 'George P.'], ['EV Charger', 'Scheduled', 'Poseidonos 7', 'Nikos K.'], ['Lighting Install', 'Completed', 'Syggrou 120', 'Stavros D.'], ['Emergency Call', 'Active', 'Amalias 33', 'George P.']]
+    },
+    {
+        id: 'estimates', label: 'Estimates', icon: FileText, columns: ['Client', 'Status', 'Work', 'Amount'],
+        rows: [['Maria K.', 'Pending', 'Full rewire', '€3,200'], ['John D.', 'Confirmed', 'Panel upgrade', '€1,800'], ['Elena P.', 'Pending', 'Lighting', '€650'], ['Corp. Ltd', 'Confirmed', 'Office wiring', '€5,400']]
+    },
+    {
+        id: 'dispatch', label: 'Dispatch', icon: Truck, columns: ['Tech', 'Status', 'Current Job', 'Next Job'],
+        rows: [['Nikos K.', 'Active', 'Kifisias 42', 'Poseidonos 7'], ['George P.', 'Active', 'Vouliagmenis 18', 'Amalias 33'], ['Stavros D.', 'Completed', 'Syggrou 120', 'Available'], ['Dimitri M.', 'Pending', 'Day off', '--']]
+    },
+    {
+        id: 'inventory', label: 'Inventory', icon: Package, columns: ['Item', 'Status', 'Stock', 'Reorder'],
+        rows: [['Cable 2.5mm', 'Active', '200m', 'No'], ['Circuit Breakers', 'Active', '24 pcs', 'No'], ['Junction Boxes', 'Pending', '5 pcs', 'Yes'], ['RCD Units', 'Active', '8 pcs', 'No'], ['Conduit Pipe', 'Pending', '10m', 'Yes']]
+    },
+];
 
 /* ───────── HERO ───────── */
 const Hero = () => (
@@ -233,7 +252,8 @@ const ElectricianDemo = () => {
                 { label: 'Job Completion Rate', value: '96%', progress: 96 },
                 { label: 'Response Time', value: '< 2h', progress: 88 },
                 { label: 'Customer Retention', value: '91%', progress: 91 }
-            ]
+            ],
+            customTabs: electricianTabs,
         }} />;
     }
 

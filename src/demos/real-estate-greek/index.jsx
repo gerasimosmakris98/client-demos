@@ -1,9 +1,28 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Home, Key, MapPin, Phone, Mail, Clock, Star, Users, TrendingUp, Building, CheckCircle, ChevronDown, Search } from 'lucide-react';
+import { Home, Key, MapPin, Phone, Mail, Clock, Star, Users, TrendingUp, Building, CheckCircle, ChevronDown, Search, Eye, FileSignature } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const realEstateTabs = [
+    {
+        id: 'listings', label: 'Listings', icon: Building, columns: ['Property', 'Status', 'Type', 'Price'],
+        rows: [['Villa Kifisia', 'Active', 'Villa', '€1,200,000'], ['Apt Kolonaki', 'Active', 'Apartment', '€450,000'], ['Office Marousi', 'Pending', 'Commercial', '€680,000'], ['Penthouse Glyfada', 'Active', 'Penthouse', '€980,000'], ['Studio Plaka', 'Active', 'Studio', '€180,000']]
+    },
+    {
+        id: 'leads', label: 'Leads', icon: Users, columns: ['Lead', 'Status', 'Interest', 'Budget'],
+        rows: [['Maria K.', 'Active', 'Villa', '€1M-1.5M'], ['John D.', 'Active', 'Apartment', '€400-500K'], ['Elena P.', 'Pending', 'Commercial', '€600-800K'], ['Corp. Ltd', 'Active', 'Office', '€1M+'], ['George S.', 'Active', 'Penthouse', '€800K-1M']]
+    },
+    {
+        id: 'showings', label: 'Showings', icon: Eye, columns: ['Property', 'Status', 'Client', 'Date'],
+        rows: [['Villa Kifisia', 'Confirmed', 'Maria K.', 'Feb 12'], ['Apt Kolonaki', 'Confirmed', 'John D.', 'Feb 13'], ['Office Marousi', 'Scheduled', 'Corp. Ltd', 'Feb 14'], ['Penthouse Glyfada', 'Completed', 'George S.', 'Feb 10']]
+    },
+    {
+        id: 'contracts', label: 'Contracts', icon: FileSignature, columns: ['Contract', 'Status', 'Property', 'Value'],
+        rows: [['Purchase Agr.', 'Active', 'Studio Plaka', '€180,000'], ['Lease Agr.', 'Pending', 'Office Marousi', '€3,200/mo'], ['Sale Contract', 'Completed', 'Apt Pagrati', '€320,000'], ['Prelim. Agr.', 'In Progress', 'Villa Kifisia', '€1,200,000']]
+    },
+];
 
 /* ───────── HERO ───────── */
 const Hero = () => (
@@ -183,7 +202,8 @@ const RealEstateDemo = () => {
                 { label: 'Listing-to-Sale Rate', value: '34%', progress: 34 },
                 { label: 'Avg Days on Market', value: '28d', progress: 55 },
                 { label: 'Client Satisfaction', value: '97%', progress: 97 }
-            ]
+            ],
+            customTabs: realEstateTabs,
         }} />;
     }
 

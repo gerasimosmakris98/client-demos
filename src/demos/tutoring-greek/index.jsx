@@ -1,5 +1,6 @@
 import React, { useEffect, Suspense } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { Users, BookOpen, Calendar, TrendingUp } from 'lucide-react';
 import TutoringHero from './components/Hero';
 import Programs from './components/Programs';
 import Educators from './components/Educators';
@@ -7,6 +8,25 @@ import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
+
+const tutoringTabs = [
+    {
+        id: 'students', label: 'Students', icon: Users, columns: ['Student', 'Status', 'Program', 'Grade'],
+        rows: [['Maria K.', 'Active', 'IELTS Prep', 'A'], ['John D.', 'Active', 'Math Advanced', 'B+'], ['Elena P.', 'Active', 'Greek Literature', 'A-'], ['George S.', 'Pending', 'Physics 101', '--'], ['Anna M.', 'Active', 'English B2', 'A'], ['Nikos T.', 'Active', 'Algebra', 'B']]
+    },
+    {
+        id: 'lessons', label: 'Lessons', icon: BookOpen, columns: ['Lesson', 'Status', 'Teacher', 'Time'],
+        rows: [['IELTS Writing', 'Scheduled', 'Dr. Papadopoulos', '10:00'], ['Math Analysis', 'In Progress', 'K. Stavros', '11:30'], ['Greek Lit.', 'Completed', 'M. Alexiou', '09:00'], ['Physics Lab', 'Scheduled', 'N. Georgiou', '14:00'], ['English Conv.', 'Completed', 'S. Williams', '08:00']]
+    },
+    {
+        id: 'calendar', label: 'Calendar', icon: Calendar, columns: ['Day', 'Status', 'Lessons', 'Students'],
+        rows: [['Monday', 'Active', '12 lessons', '28'], ['Tuesday', 'Active', '10 lessons', '24'], ['Wednesday', 'Active', '14 lessons', '32'], ['Thursday', 'Active', '11 lessons', '26'], ['Friday', 'Active', '8 lessons', '18'], ['Saturday', 'Pending', '4 lessons', '10']]
+    },
+    {
+        id: 'progress', label: 'Progress', icon: TrendingUp, columns: ['Student', 'Status', 'Score', 'Improvement'],
+        rows: [['Maria K.', 'Active', '92%', '+8%'], ['John D.', 'Active', '85%', '+12%'], ['Elena P.', 'Active', '94%', '+5%'], ['George S.', 'Pending', '71%', '+3%'], ['Anna M.', 'Active', '89%', '+7%'], ['Nikos T.', 'Active', '78%', '+15%']]
+    },
+];
 
 const TutoringDemo = () => {
     const { viewMode } = useOutletContext() || {};
@@ -32,7 +52,8 @@ const TutoringDemo = () => {
                     { label: 'Student Satisfaction', value: '96%', progress: 96 },
                     { label: 'Teacher Retention', value: '94%', progress: 94 },
                     { label: 'Course Completion', value: '89%', progress: 89 }
-                ]
+                ],
+                customTabs: tutoringTabs,
             }} />
         );
     }
