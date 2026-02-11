@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Clock, Shield, Star, Award, Zap, CheckCircle2, Arr
 import { motion } from 'framer-motion';
 import SEO from '../../components/common/SEO';
 import AIChat from '../../components/common/AIChat';
+import Hero from './components/Hero';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 import { useLanguage } from '@/context/LanguageContext';
@@ -12,9 +13,13 @@ const translations = {
     en: {
         hero: {
             badge: "24/7 Emergency Service",
+            title: "Expert Electrical",
+            subtitle: "Reliable Solutions",
             desc: "Certified electricians with 20+ years experience. Residential & commercial installations.",
-            cta_call: "Call Now",
-            cta_services: "Services"
+            ctaPrimary: "Call Now",
+            ctaSecondary: "View Services",
+            feat1: "Certified Pros",
+            feat2: "Quality Work"
         },
         about: {
             label: "Who We Are",
@@ -80,9 +85,13 @@ const translations = {
     el: {
         hero: {
             badge: "24/7 Εξυπηρέτηση",
+            title: "Εξειδικευμένοι",
+            subtitle: "Ηλεκτρολόγοι",
             desc: "Πιστοποιημένοι ηλεκτρολόγοι με εμπειρία 20+ ετών. Οικιακές & εμπορικές εγκαταστάσεις.",
-            cta_call: "Κλήση Τώρα",
-            cta_services: "Υπηρεσίες"
+            ctaPrimary: "Κλήση Τώρα",
+            ctaSecondary: "Υπηρεσίες",
+            feat1: "Πιστοποιημένοι",
+            feat2: "Εγγυημένη Δουλειά"
         },
         about: {
             label: "Ποιοι Είμαστε",
@@ -148,9 +157,13 @@ const translations = {
     es: {
         hero: {
             badge: "Servicio de Emergencia 24/7",
+            title: "Electricistas",
+            subtitle: "Expertos",
             desc: "Electricistas certificados con más de 20 años de experiencia. Instalaciones residenciales y comerciales.",
-            cta_call: "Llamar Ahora",
-            cta_services: "Servicios"
+            ctaPrimary: "Llamar Ahora",
+            ctaSecondary: "Servicios",
+            feat1: "Profesionales",
+            feat2: "Calidad Garantizada"
         },
         about: {
             label: "Quiénes Somos",
@@ -220,33 +233,6 @@ const useElectricianT = () => {
     return translations[language] || translations['en'];
 };
 
-/* ───────── HERO ───────── */
-const Hero = () => {
-    const t = useElectricianT();
-    return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 text-white">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(251,146,60,0.15),transparent_50%)]" />
-            <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 border border-orange-500/30 rounded-full bg-orange-500/10 text-orange-400 font-mono text-[10px] md:text-xs tracking-widest uppercase mb-6 md:mb-8">
-                        <motion.div animate={{ opacity: [1, 0.3, 1], scale: [1, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity }}><Zap size={14} /></motion.div> {t.hero.badge}
-                    </div>
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6">
-                        GM <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">ELECTRIC</span>
-                    </h1>
-                    <p className="text-sm md:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 px-2">{t.hero.desc}</p>
-                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-                        <button className="bg-orange-500 text-black px-8 md:px-10 py-3.5 md:py-4 rounded-full font-black uppercase tracking-wider hover:bg-orange-400 transition-colors shadow-lg shadow-orange-500/30 flex items-center gap-2 justify-center text-sm"><Phone size={18} /> {t.hero.cta_call}</button>
-                        <button className="border border-white/20 px-8 md:px-10 py-3.5 md:py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-sm">{t.hero.cta_services}</button>
-                    </div>
-                </motion.div>
-            </div>
-            <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }} className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 text-white/30"><ChevronDown size={28} /></motion.div>
-        </section>
-    );
-};
 
 /* ───────── ABOUT ───────── */
 const About = () => {
@@ -487,7 +473,7 @@ const ElectricianDemo = () => {
 
     return (
         <div className="bg-slate-950 min-h-screen text-white font-sans">
-            <Hero /><About /><Services /><Team /><Gallery /><Testimonials /><Pricing /><Contact /><Footer />
+            <Hero t={t} /><About /><Services /><Team /><Gallery /><Testimonials /><Pricing /><Contact /><Footer />
             <AIChat
                 brandName="GM Electric"
                 botName="Sparky AI"

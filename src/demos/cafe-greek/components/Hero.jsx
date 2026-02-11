@@ -22,17 +22,17 @@ const CafeHero = ({ t }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="glass-panel p-6 md:p-12 rounded-2xl border border-amber-500/20 backdrop-blur-md bg-black/40 shadow-2xl"
+          className="glass-panel p-5 md:p-12 rounded-2xl border border-amber-500/20 backdrop-blur-md bg-black/40 shadow-2xl"
         >
-          <div className="flex justify-center mb-6 text-amber-500">
-            <Coffee size={32} strokeWidth={1.5} className="md:w-10 md:h-10" />
+          <div className="flex justify-center mb-4 md:mb-6 text-amber-500">
+            <Coffee size={28} strokeWidth={1.5} className="md:w-10 md:h-10" />
           </div>
 
-          <h1 className="text-4xl md:text-7xl lg:text-8xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
             GM <span className="text-amber-500">CAFE</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 font-light italic tracking-wide">
+          <p className="text-lg md:text-2xl text-gray-200 mb-6 md:mb-8 font-light italic tracking-wide">
             {t.hero.subtitle}
           </p>
 

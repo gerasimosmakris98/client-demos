@@ -1,52 +1,47 @@
 import React from 'react';
-import { Scale, ArrowRight, Shield, Gavel } from 'lucide-react';
+import { Zap, Shield, Phone, ArrowRight, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const LawHero = () => {
+const ElectricianHero = ({ t }) => {
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-900 text-white">
-            {/* Dynamic Background */}
-            <div className="absolute inset-0 opacity-40">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2612&auto=format&fit=crop')] bg-cover bg-center" />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-slate-900/70" />
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0d1117] text-white px-4 md:px-6 py-20">
+            {/* Dark Tech Background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(234,179,8,0.1)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-            <div className="relative z-10 container mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between gap-12">
-
-                {/* Text Content */}
+            <div className="relative z-10 container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                {/* Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-2xl"
+                    className="text-center lg:text-left"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-600/10 border border-yellow-600/30 rounded text-yellow-500 text-xs font-bold uppercase tracking-widest mb-8">
-                        <Scale size={16} /> Νομικη Συμβουλευτικη
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-yellow-500 text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                        <Zap size={16} fill="currentColor" /> {t.hero.badge}
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-playfair font-bold leading-tight mb-8 drop-shadow-2xl">
-                        Δικαιοσύνη με <br />
-                        <span className="text-yellow-500 relative inline-block">
-                            Ακεραιότητα
-                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-yellow-600/50" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7501 2.99991 74.5 -2.00002 198 2.00007" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        </span>
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black leading-[0.95] mb-6 tracking-tighter">
+                        {t.hero.title} <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">{t.hero.subtitle}</span>
                     </h1>
 
-                    <p className="text-xl text-slate-300 mb-10 leading-relaxed max-w-lg border-l-4 border-yellow-600/50 pl-6">
-                        Προστατεύουμε τα δικαιώματά σας με εμπειρία 25 ετών.
-                        Εξειδικευμένες νομικές υπηρεσίες για ιδιώτες και επιχειρήσεις.
+                    <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                        {t.hero.desc}
                     </p>
 
-                    <div className="flex flex-wrap gap-4">
-                        <motion.button
-                            whileHover={{ x: 5 }}
-                            className="bg-yellow-600 hover:bg-yellow-500 text-slate-950 px-8 py-4 rounded font-bold flex items-center gap-3 shadow-lg shadow-yellow-900/20 transition-all"
-                        >
-                            Δωρεάν Συμβουλή <ArrowRight size={20} />
-                        </motion.button>
-                        <button className="px-8 py-4 border border-slate-700 hover:border-yellow-600 text-slate-300 hover:text-yellow-500 rounded font-semibold transition-all backdrop-blur-sm bg-white/5">
-                            Οι Υπηρεσίες Μας
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button className="bg-yellow-500 hover:bg-yellow-400 text-black px-8 py-4 rounded-xl font-black transition-all shadow-xl shadow-yellow-500/20 flex items-center justify-center gap-2 group uppercase tracking-wider text-sm">
+                            {t.hero.ctaPrimary} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </button>
+                        <button className="bg-white/5 border border-white/10 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold transition-all backdrop-blur-md text-sm">
+                            {t.hero.ctaSecondary}
+                        </button>
+                    </div>
+
+                    <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-6 opacity-60">
+                        <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest"><CheckCircle size={18} className="text-yellow-500" /> {t.hero.feat1}</div>
+                        <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest"><Shield size={18} className="text-yellow-500" /> {t.hero.feat2}</div>
                     </div>
                 </motion.div>
 
@@ -55,21 +50,24 @@ const LawHero = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="relative hidden md:block"
+                    className="relative hidden lg:block"
                 >
-                    <div className="relative w-[500px] h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
-                        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover" alt="Law Office" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                    <div className="relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                        <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2669&auto=format&fit=crop" className="w-full h-full object-cover" alt="Electrician Work" />
+                            <div className="absolute inset-0 bg-yellow-500/10 mix-blend-overlay" />
+                        </div>
+                    </div>
 
-                        {/* Floating Cards */}
+                    {/* Emergency Call Button Overlay */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150">
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute bottom-12 left-8 p-6 glass-panel bg-slate-900/90 backdrop-blur-xl border border-slate-700 rounded-xl max-w-xs shadow-xl"
+                            animate={{ scale: [1, 1.1, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="bg-yellow-500 text-black p-4 rounded-full shadow-2xl"
                         >
-                            <Shield className="text-yellow-500 mb-3" size={32} />
-                            <h4 className="text-white font-bold mb-1">Πλήρης Προστασία</h4>
-                            <p className="text-slate-400 text-sm">Νομική κάλυψη για κάθε σας βήμα.</p>
+                            <Phone size={24} fill="currentColor" />
                         </motion.div>
                     </div>
                 </motion.div>
@@ -78,4 +76,4 @@ const LawHero = () => {
     );
 };
 
-export default LawHero;
+export default ElectricianHero;

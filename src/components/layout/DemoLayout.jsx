@@ -37,10 +37,17 @@ const DemoLayout = () => {
         root.style.setProperty('--accent', a);
     }, [templateId]);
 
+    // Check if we are inside an iframe (to hide the chrome)
+    const isInIframe = window.self !== window.top;
+
+    if (isInIframe) {
+        return <Outlet context={{ viewMode, language }} />;
+    }
+
     return (
         <div className="relative min-h-screen">
             {/* ═══ MOBILE-FRIENDLY TOP BAR ═══ */}
-            <div className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-4 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/80 max-w-[95vw]">
+            <div className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 sm:gap-4 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/80 max-w-[95vw]">
 
                 {/* Back */}
                 <Link to="/" className="p-1.5 sm:p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors shrink-0" title="Back">
@@ -108,8 +115,18 @@ const DemoLayout = () => {
             </div>
 
             {/* ═══ CONTENT ═══ */}
-            <div className={`relative transition-all duration-500 ${viewMode === 'mobile' ? 'max-w-md mx-auto border-x border-gray-800 shadow-2xl min-h-screen my-8 overflow-hidden rounded-[40px]' : ''}`}>
-                <Outlet context={{ viewMode, language }} />
+            <div className={`relative transition-all duration-500 ${viewMode === 'mobile' ? 'max-w-md mx-auto border-x border-gray-800 shadow-2xl min-h-[calc(100vh-200px)] my-20 overflow-hidden rounded-[32px] ring-8 ring-gray-900' : ''}`}>
+                {viewMode === 'mobile' ? (
+                    <div className="w-full h-[800px] bg-black">
+                        <iframe
+                            src={window.location.href}
+                            className="w-full h-full border-none"
+                            title="Mobile Preview"
+                        />
+                    </div>
+                ) : (
+                    <Outlet context={{ viewMode, language }} />
+                )}
             </div>
         </div>
     );

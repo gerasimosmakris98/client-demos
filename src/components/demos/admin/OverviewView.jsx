@@ -25,17 +25,17 @@ const OverviewView = ({ stats, recentItems, kpis, c, brandName, brandLogo, role,
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
-                        <p className="text-white/60 text-xs font-black uppercase tracking-[0.2em] mb-2">{greeting}</p>
-                        <h2 className="text-3xl md:text-3xl font-black tracking-tight mb-1">Gerasimos! 👋</h2>
+                        <p className="text-white/60 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-2">{greeting}</p>
+                        <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-1">Gerasimos! 👋</h2>
                         <p className="text-white/70 text-sm font-medium">
                             <span className="font-bold text-white/90 capitalize">{roleName}</span> {t.dashboard} — {brandName}
                         </p>
                     </div>
-                    <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto mt-2 md:mt-0">
-                        <button className="flex-1 md:flex-initial bg-white/10 hover:bg-white/20 backdrop-blur-xl px-4 py-3 rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 border border-white/10 shadow-xl">
+                    <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto mt-2 md:mt-0">
+                        <button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-xl px-4 py-3.5 rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 border border-white/10 shadow-xl">
                             <Calendar size={16} /> {t.schedule}
                         </button>
-                        <button className="flex-1 md:flex-initial bg-white text-gray-900 hover:bg-white/90 px-4 py-3 rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-2xl">
+                        <button className="w-full sm:w-auto bg-white text-gray-900 hover:bg-white/90 px-4 py-3.5 rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-2xl">
                             <Zap size={16} fill="currentColor" /> {t.quickAction}
                         </button>
                     </div>
