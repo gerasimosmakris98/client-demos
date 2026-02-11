@@ -3,7 +3,10 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ArrowLeft, Info, Smartphone, LayoutDashboard, Monitor, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const DemoLayout = ({ language }) => {
+import { useLanguage } from '@/context/LanguageContext';
+
+const DemoLayout = () => {
+    const { language } = useLanguage();
     const [showMenu, setShowMenu] = useState(false);
     const [viewMode, setViewMode] = useState('desktop');
     const location = useLocation();

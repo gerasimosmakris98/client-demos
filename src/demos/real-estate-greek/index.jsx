@@ -1,129 +1,204 @@
 import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Home, Key, MapPin, Phone, Mail, Clock, Star, Users, TrendingUp, Building, CheckCircle, ChevronDown, Search, Eye, FileSignature } from 'lucide-react';
+import { Home, Phone, Mail, MapPin, Star, ArrowRight, Building2, Key, TrendingUp, Users, CalendarDays, FileText, Handshake, Search, ChevronDown, Bath, BedDouble, Maximize } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
-const realEstateTabs = [
+const reTabs = [
     {
-        id: 'listings', label: 'Listings', icon: Building, columns: ['Property', 'Status', 'Type', 'Price'],
-        rows: [['Villa Kifisia', 'Active', 'Villa', '€1,200,000'], ['Apt Kolonaki', 'Active', 'Apartment', '€450,000'], ['Office Marousi', 'Pending', 'Commercial', '€680,000'], ['Penthouse Glyfada', 'Active', 'Penthouse', '€980,000'], ['Studio Plaka', 'Active', 'Studio', '€180,000']]
+        id: 'listings', label: 'Listings', icon: Building2, columns: ['Property', 'Status', 'Price', 'Type'],
+        rows: [['Kifisia Villa', 'Active', '€1,200,000', 'Sale'], ['Glyfada Apt', 'Active', '€1,500/mo', 'Rent'], ['Kolonaki Studio', 'Pending', '€350,000', 'Sale'], ['Maroussi Penthouse', 'Active', '€780,000', 'Sale'], ['Vouliagmeni House', 'Sold', '€2,100,000', 'Sale']]
     },
     {
-        id: 'leads', label: 'Leads', icon: Users, columns: ['Lead', 'Status', 'Interest', 'Budget'],
-        rows: [['Maria K.', 'Active', 'Villa', '€1M-1.5M'], ['John D.', 'Active', 'Apartment', '€400-500K'], ['Elena P.', 'Pending', 'Commercial', '€600-800K'], ['Corp. Ltd', 'Active', 'Office', '€1M+'], ['George S.', 'Active', 'Penthouse', '€800K-1M']]
+        id: 'leads', label: 'Leads', icon: Users, columns: ['Contact', 'Status', 'Interest', 'Budget'],
+        rows: [['Maria K.', 'Hot', 'Villa Kifisia', '€1.2M'], ['John D.', 'Warm', 'Glyfada area', '€1,800/mo'], ['Elena P.', 'New', 'Central Athens', '€400K'], ['George S.', 'Hot', 'Seaside', '€2M']]
     },
     {
-        id: 'showings', label: 'Showings', icon: Eye, columns: ['Property', 'Status', 'Client', 'Date'],
-        rows: [['Villa Kifisia', 'Confirmed', 'Maria K.', 'Feb 12'], ['Apt Kolonaki', 'Confirmed', 'John D.', 'Feb 13'], ['Office Marousi', 'Scheduled', 'Corp. Ltd', 'Feb 14'], ['Penthouse Glyfada', 'Completed', 'George S.', 'Feb 10']]
+        id: 'showings', label: 'Showings', icon: CalendarDays, columns: ['Property', 'Status', 'Client', 'Date'],
+        rows: [['Kifisia Villa', 'Confirmed', 'Maria K.', 'Feb 12'], ['Glyfada Apt', 'Confirmed', 'John D.', 'Feb 13'], ['Kolonaki Studio', 'Pending', 'Elena P.', 'Feb 14'], ['Maroussi Penthouse', 'Confirmed', 'George S.', 'Feb 15']]
     },
     {
-        id: 'contracts', label: 'Contracts', icon: FileSignature, columns: ['Contract', 'Status', 'Property', 'Value'],
-        rows: [['Purchase Agr.', 'Active', 'Studio Plaka', '€180,000'], ['Lease Agr.', 'Pending', 'Office Marousi', '€3,200/mo'], ['Sale Contract', 'Completed', 'Apt Pagrati', '€320,000'], ['Prelim. Agr.', 'In Progress', 'Villa Kifisia', '€1,200,000']]
+        id: 'contracts', label: 'Contracts', icon: FileText, columns: ['Property', 'Status', 'Buyer', 'Value'],
+        rows: [['Vouliagmeni House', 'Completed', 'Nikos A.', '€2.1M'], ['Kifisia Villa', 'In Progress', 'Maria K.', '€1.2M'], ['Palaio Faliro', 'Completed', 'Anna P.', '€560K']]
     },
 ];
 
-/* ───────── HERO ───────── */
+/* ───────── HERO with search pills ───────── */
 const Hero = () => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2675&auto=format&fit=crop')] bg-cover bg-center opacity-40" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-        <div className="relative z-10 container mx-auto px-6 text-center">
+        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
             <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <div className="text-amber-500 font-mono text-xs tracking-[0.4em] uppercase mb-8">Luxury Real Estate</div>
-                <h1 className="text-5xl md:text-8xl font-black tracking-tight mb-6">
-                    GM <span className="text-amber-500">ESTATES</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 border border-amber-500/30 rounded-full bg-amber-500/10 text-amber-400 font-mono text-[10px] md:text-xs tracking-widest uppercase mb-6 md:mb-8">
+                    <Home size={14} /> Premium Real Estate
+                </div>
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6">
+                    GM <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">ESTATES</span>
                 </h1>
-                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">Ανακαλύψτε πολυτελή ακίνητα σε Αθήνα, νησιά και Ευρώπη.</p>
-                <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-4 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
-                    <div className="flex items-center gap-2 flex-1 bg-white/5 rounded-xl px-4"><Search size={16} className="text-gray-400" /><input className="bg-transparent w-full py-3 outline-none text-sm" placeholder="Location, type, or keyword..." /></div>
-                    <button className="bg-amber-600 text-black px-8 py-3 rounded-xl font-bold hover:bg-amber-500 transition-colors">Search</button>
+                <p className="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto mb-6 md:mb-8 px-2">
+                    Βρείτε το σπίτι των ονείρων σας. Πολυτελή ακίνητα στις καλύτερες περιοχές της Αθήνας.
+                </p>
+
+                {/* Property filter pills */}
+                <div className="flex flex-wrap gap-2 justify-center mb-6 md:mb-10 px-4">
+                    {['All', 'Villa', 'Apartment', 'Penthouse', 'Commercial'].map((p, i) => (
+                        <button key={i} className={`px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all ${i === 0 ? 'bg-amber-500 text-black' : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'}`}>
+                            {p}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Search bar — stacks vertically on mobile */}
+                <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl md:rounded-full p-3 md:p-2 flex flex-col md:flex-row gap-2 md:gap-0">
+                    <div className="flex items-center gap-2 flex-1 px-3 md:px-4 py-2">
+                        <MapPin size={16} className="text-amber-400 flex-shrink-0" />
+                        <input className="bg-transparent outline-none flex-1 text-sm placeholder-gray-500 min-w-0" placeholder="Περιοχή..." />
+                    </div>
+                    <div className="hidden md:block w-px bg-white/10" />
+                    <div className="flex items-center gap-2 flex-1 px-3 md:px-4 py-2">
+                        <Building2 size={16} className="text-amber-400 flex-shrink-0" />
+                        <select className="bg-transparent outline-none flex-1 text-sm text-gray-400 appearance-none">
+                            <option>Type</option><option>Villa</option><option>Apartment</option>
+                        </select>
+                    </div>
+                    <button className="bg-amber-500 text-black px-6 py-2.5 md:py-3 rounded-xl md:rounded-full font-bold flex items-center justify-center gap-2 text-sm hover:bg-amber-400 transition-colors">
+                        <Search size={16} /> Search
+                    </button>
                 </div>
             </motion.div>
         </div>
     </section>
 );
 
-/* ───────── ABOUT ───────── */
-const About = () => (
-    <section className="py-24 bg-neutral-950 text-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+const AboutSection = () => (
+    <section className="py-16 md:py-24 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
-                <span className="text-amber-500 font-mono text-sm uppercase tracking-widest">Η Εταιρεία</span>
-                <h2 className="text-4xl font-black mt-2 mb-6">Αξιοπιστία Από Το <span className="text-amber-500">2005</span></h2>
-                <p className="text-gray-400 leading-relaxed mb-8">Η GM Estates εξειδικεύεται σε πολυτελή ακίνητα, εμπορικά κτήρια και επενδύσεις real estate. Προσωπική εξυπηρέτηση, πλήρης νομική κάλυψη, και πρόσβαση σε αποκλειστικές αγορές.</p>
-                <div className="grid grid-cols-3 gap-6">
-                    {[{ num: '€250M+', label: 'Portfolio Value' }, { num: '800+', label: 'Properties Sold' }, { num: '18', label: 'Years Active' }].map((s, i) => (
-                        <div key={i} className="text-center"><div className="text-2xl font-black text-amber-500">{s.num}</div><div className="text-gray-500 text-xs mt-1">{s.label}</div></div>
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">About Us</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2 mb-4 md:mb-6">Trusted <span className="text-amber-400">Since 2005</span></h2>
+                <p className="text-gray-400 leading-relaxed mb-5 md:mb-8 text-sm md:text-base">Η GM Estates είναι μία από τις κορυφαίες μεσιτικές εταιρείες στην Αττική. Εξειδικευόμαστε σε πολυτελή ακίνητα και παρέχουμε πλήρη νομική υποστήριξη.</p>
+                <div className="grid grid-cols-3 gap-3 md:gap-6">
+                    {[{ num: '500+', label: 'Properties' }, { num: '18', label: 'Years' }, { num: '95%', label: 'Success' }].map((s, i) => (
+                        <div key={i} className="p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                            <div className="text-lg md:text-xl font-black text-amber-400">{s.num}</div>
+                            <div className="text-gray-500 text-[10px] md:text-xs">{s.label}</div>
+                        </div>
                     ))}
                 </div>
             </div>
-            <div className="rounded-3xl overflow-hidden h-[400px]"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover" alt="Luxury property" /></div>
+            <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2675&auto=format&fit=crop" className="w-full h-full object-cover" alt="Real estate" />
+            </div>
         </div>
     </section>
 );
 
-/* ───────── LISTINGS ───────── */
+/* ───────── LISTINGS — staggered layout on desktop ───────── */
 const Listings = () => (
-    <section className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16"><span className="text-amber-500 font-mono text-sm uppercase tracking-widest">Featured</span><h2 className="text-4xl font-black mt-2">EXCLUSIVE LISTINGS</h2></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="py-16 md:py-24 bg-neutral-950 text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="text-center mb-10 md:mb-16">
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Portfolio</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">FEATURED LISTINGS</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {[
-                    { loc: 'Κολωνάκι, Αθήνα', price: '€1,200,000', beds: 4, sqm: 220, img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop' },
-                    { loc: 'Σαντορίνη, Οία', price: '€2,500,000', beds: 5, sqm: 350, img: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop' },
-                    { loc: 'Γλυφάδα, Αττική', price: '€850,000', beds: 3, sqm: 180, img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop' }
+                    { title: 'Villa Κηφισιά', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' },
+                    { title: 'Penthouse Γλυφάδα', price: '€1,500/μήνα', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'For Rent' },
+                    { title: 'Studio Κολωνάκι', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' },
                 ].map((p, i) => (
-                    <div key={i} className="group rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all cursor-pointer">
-                        <div className="h-64 relative overflow-hidden">
-                            <img src={p.img} alt={p.loc} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div className="absolute top-4 left-4 bg-amber-600 text-black px-3 py-1 rounded-full text-xs font-bold">{p.price}</div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                    <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                        className={`group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all ${i === 1 ? 'md:translate-y-6' : ''}`}>
+                        <div className="h-48 md:h-56 relative overflow-hidden">
+                            <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div className="absolute top-3 left-3 px-3 py-1 bg-amber-500 text-black text-xs font-bold rounded-full">{p.tag}</div>
                         </div>
-                        <div className="p-6">
-                            <h3 className="text-lg font-bold mb-2">{p.loc}</h3>
-                            <div className="flex gap-4 text-sm text-gray-400"><span>{p.beds} Beds</span><span>{p.sqm} m²</span></div>
+                        <div className="p-4 md:p-6">
+                            <h3 className="text-base md:text-lg font-bold mb-2">{p.title}</h3>
+                            <p className="text-amber-400 font-black text-lg md:text-xl mb-3">{p.price}</p>
+                            <div className="flex items-center gap-3 md:gap-4 text-xs md:text-sm text-gray-500">
+                                <span className="flex items-center gap-1"><BedDouble size={14} /> {p.beds}</span>
+                                <span className="flex items-center gap-1"><Bath size={14} /> {p.baths}</span>
+                                <span className="flex items-center gap-1"><Maximize size={14} /> {p.size}</span>
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
     </section>
 );
 
-/* ───────── AGENTS ───────── */
-const Agents = () => (
-    <section className="py-24 bg-neutral-950 text-white">
-        <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16"><span className="text-amber-500 font-mono text-sm uppercase tracking-widest">Our Team</span><h2 className="text-4xl font-black mt-2">TOP AGENTS</h2></div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {['Sophia L.', 'Andreas M.', 'Christina K.', 'Michalis D.'].map((name, i) => (
-                    <div key={i} className="text-center p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/30 transition-colors">
-                        <div className="w-20 h-20 rounded-full bg-amber-500/20 mx-auto mb-4 flex items-center justify-center"><Users size={32} className="text-amber-500" /></div>
-                        <h3 className="font-bold text-lg">{name}</h3>
-                        <p className="text-amber-400 text-sm">Senior Agent</p>
-                    </div>
-                ))}
+const OurServices = () => (
+    <section className="py-16 md:py-24 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="text-center mb-10 md:mb-16">
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Services</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">WHAT WE OFFER</h2>
             </div>
-        </div>
-    </section>
-);
-
-/* ───────── TESTIMONIALS ───────── */
-const Testimonials = () => (
-    <section className="py-24 bg-black text-white">
-        <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center mb-16"><span className="text-amber-500 font-mono text-sm uppercase tracking-widest">Reviews</span><h2 className="text-4xl font-black mt-2">CLIENT STORIES</h2></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
                 {[
-                    { name: 'Αντώνης Γ.', text: 'Βρήκαν το τέλειο ακίνητο σε χρόνο ρεκόρ. 100% αφοσίωση.' },
-                    { name: 'Κατερίνα Σ.', text: 'Η πιο ομαλή αγορά σπιτιού που έχω κάνει ποτέ.' },
-                    { name: 'John W.', text: 'Professional, transparent, and incredibly responsive.' }
+                    { icon: Key, title: 'Sales', desc: 'Πλήρης διαχείριση πώλησης ακινήτου.' },
+                    { icon: Building2, title: 'Rentals', desc: 'Ενοικίαση κατοικιών & επαγγελματικών χώρων.' },
+                    { icon: TrendingUp, title: 'Investment', desc: 'Επενδυτικές ευκαιρίες & portfolio management.' }
+                ].map((s, i) => (
+                    <div key={i} className="group p-5 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all hover:-translate-y-1">
+                        <div className="mb-4 md:mb-6 p-3 md:p-4 bg-amber-500/10 w-fit rounded-xl md:rounded-2xl text-amber-400 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+                            <s.icon size={24} />
+                        </div>
+                        <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3">{s.title}</h3>
+                        <p className="text-gray-500 text-xs md:text-sm">{s.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+);
+
+const Agents = () => (
+    <section className="py-16 md:py-24 bg-neutral-950 text-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="text-center mb-10 md:mb-16">
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Team</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">OUR AGENTS</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                {[
+                    { name: 'Δημήτρης Π.', role: 'Senior Agent' },
+                    { name: 'Κατερίνα Μ.', role: 'Luxury Specialist' },
+                    { name: 'Αλέξανδρος Κ.', role: 'Investment Advisor' }
+                ].map((a, i) => (
+                    <div key={i} className="text-center p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/30 transition-colors">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-500/20 mx-auto mb-4 flex items-center justify-center">
+                            <Users size={28} className="text-amber-400 md:w-8 md:h-8" />
+                        </div>
+                        <h3 className="font-bold text-sm md:text-base">{a.name}</h3>
+                        <p className="text-amber-400 text-xs md:text-sm">{a.role}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+);
+
+const Testimonials = () => (
+    <section className="py-16 md:py-24 bg-black text-white">
+        <div className="max-w-5xl mx-auto px-4 md:px-6">
+            <div className="text-center mb-10 md:mb-16">
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Reviews</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">CLIENT STORIES</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+                {[
+                    { name: 'Νίκος Α.', text: 'Βρήκαν το ιδανικό σπίτι μέσα σε 2 εβδομάδες!' },
+                    { name: 'Μαρία Ε.', text: 'Εξαιρετικά επαγγελματική εξυπηρέτηση.' },
+                    { name: 'Alex B.', text: 'Best real estate experience in Athens, hands down.' }
                 ].map((t, i) => (
-                    <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10">
-                        <div className="flex gap-1 text-amber-500 mb-4">{[...Array(5)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}</div>
-                        <p className="text-gray-300 mb-6 italic">"{t.text}"</p>
+                    <div key={i} className="p-5 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10">
+                        <div className="flex gap-1 text-amber-400 mb-3 md:mb-4">{[...Array(5)].map((_, j) => <Star key={j} size={12} fill="currentColor" />)}</div>
+                        <p className="text-gray-300 mb-4 md:mb-6 italic text-sm md:text-base">"{t.text}"</p>
                         <p className="font-bold text-sm">{t.name}</p>
                     </div>
                 ))}
@@ -132,69 +207,37 @@ const Testimonials = () => (
     </section>
 );
 
-/* ───────── SERVICES ───────── */
-const OurServices = () => (
-    <section className="py-24 bg-neutral-950 text-white">
-        <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16"><span className="text-amber-500 font-mono text-sm uppercase tracking-widest">What We Do</span><h2 className="text-4xl font-black mt-2">OUR SERVICES</h2></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                    { icon: Key, title: 'Buy & Sell', desc: 'Αγοραπωλησίες ακινήτων με πλήρη νομική κάλυψη.' },
-                    { icon: Building, title: 'Property Management', desc: 'Διαχείριση ακινήτων, ενοικιάσεις, Airbnb.' },
-                    { icon: TrendingUp, title: 'Investment Advisory', desc: 'Επενδυτικός σχεδιασμός και χαρτοφυλάκια ακινήτων.' }
-                ].map((s, i) => (
-                    <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all">
-                        <div className="mb-6 p-4 bg-amber-500/10 w-fit rounded-2xl text-amber-500"><s.icon size={28} /></div>
-                        <h3 className="text-xl font-bold mb-3">{s.title}</h3>
-                        <p className="text-gray-500 text-sm">{s.desc}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </section>
-);
-
-/* ───────── CONTACT ───────── */
 const Contact = () => (
-    <section className="py-24 bg-black text-white">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div>
-                <span className="text-amber-500 font-mono text-sm uppercase tracking-widest">Contact</span>
-                <h2 className="text-4xl font-black mt-2 mb-8">SCHEDULE A VIEWING</h2>
-                <div className="space-y-6 text-gray-400">
-                    <div className="flex items-center gap-4"><Phone size={20} className="text-amber-500" /> +30 210 000 0000</div>
-                    <div className="flex items-center gap-4"><Mail size={20} className="text-amber-500" /> info@gmestates.gr</div>
-                    <div className="flex items-center gap-4"><MapPin size={20} className="text-amber-500" /> Βουκουρεστίου 8, Κολωνάκι</div>
+    <section className="py-16 md:py-24 bg-neutral-950 text-white">
+        <div className="max-w-3xl mx-auto px-4 md:px-6 text-center">
+            <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Contact</span>
+            <h2 className="text-3xl md:text-4xl font-black mt-2 mb-8 md:mb-12">LET'S TALK</h2>
+            <div className="space-y-3 md:space-y-4 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    <input className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none text-sm" placeholder="Full Name" />
+                    <input className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none text-sm" placeholder="Phone / Email" />
                 </div>
-            </div>
-            <div className="space-y-4">
-                <input className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none transition-colors" placeholder="Full Name" />
-                <input className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none transition-colors" placeholder="Email" />
-                <textarea className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none transition-colors h-32 resize-none" placeholder="I'm interested in..." />
-                <button className="w-full bg-amber-600 text-black py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-amber-500 transition-colors">Request Viewing</button>
+                <textarea className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none h-28 md:h-32 text-sm" placeholder="Your Message" />
+                <button className="w-full bg-amber-500 text-black py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors text-sm">Send Message</button>
             </div>
         </div>
     </section>
 );
 
-/* ───────── FOOTER ───────── */
 const FooterSection = () => (
-    <footer className="bg-black py-12 border-t border-amber-500/20 text-center">
-        <h3 className="text-4xl font-black text-neutral-800 tracking-widest mb-4">GM ESTATES</h3>
-        <p className="text-gray-700 text-xs">© 2026 GM Estates. All rights reserved.</p>
+    <footer className="bg-black py-10 md:py-12 border-t border-amber-500/20 text-center px-4">
+        <h3 className="text-3xl md:text-4xl font-black text-neutral-800 mb-3 md:mb-4">GM ESTATES</h3>
+        <p className="text-gray-700 text-[10px] md:text-xs">© 2026 GM Estates. All rights reserved.</p>
     </footer>
 );
 
-/* ───────── MAIN ───────── */
 const RealEstateDemo = () => {
     const { viewMode } = useOutletContext() || {};
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
-    // Admin view removed - consolidated to Universal Admin demo
-
     return (
         <div className="bg-black min-h-screen text-white font-sans">
-            <Hero /><About /><Listings /><OurServices /><Agents /><Testimonials /><Contact /><FooterSection />
+            <Hero /><AboutSection /><Listings /><OurServices /><Agents /><Testimonials /><Contact /><FooterSection />
             <AIChat brandName="GM Estates" />
         </div>
     );

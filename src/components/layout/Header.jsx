@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AccessibilityToggle } from "./AccessibilityToggle";
+import { LanguageSelector } from "./LanguageSelector";
 import { Separator } from "../ui/separator";
 import { Notifications } from '@/components/layout/Notifications';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
@@ -252,6 +253,7 @@ export function Header() {
                 </Tooltip>
             </TooltipProvider>
             <Notifications />
+            <LanguageSelector />
             <HelpButton />
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -365,6 +367,7 @@ export function Header() {
                                         </Tooltip>
                                     </TooltipProvider>
                                     <Notifications />
+                                    <LanguageSelector />
                                     <HelpButton />
                                     <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                                         <SheetTrigger asChild>

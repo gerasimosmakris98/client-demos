@@ -109,6 +109,55 @@ const translations = {
             links: { title: "Σύνδεσμοι", home: "Αρχική", menu: "Μενού", about: "Σχετικά", contact: "Επικοινωνία" },
             legal: { title: "Νομικά", privacy: "Πολιτική Απορρήτου", terms: "Όροι Χρήσης", cookies: "Cookies" }
         }
+    },
+    es: {
+        hero: {
+            title: "GM CAFE",
+            subtitle: "El arte del café en el corazón de la ciudad.",
+            hours: "Lun - Dom: 08:00 - 23:00",
+            address: "Aristotelous 12, Centro",
+            cta: "VER MENÚ"
+        },
+        about: {
+            badge: "Nuestra Historia",
+            title: "Auténtica Cultura Griega del Café, Reinventada.",
+            desc: "Ubicado en el corazón de la ciudad, nuestro café reúne la calidez de la hospitalidad griega tradicional con la artesanía moderna del café. Cada grano proviene de granjas sostenibles y cada taza se prepara con pasión.",
+            roasts: { title: "Tostados Artesanales", desc: "Granos seleccionados a mano y tostados localmente para máxima frescura." },
+            brunch: { title: "Brunch Todo el Día", desc: "Sirviendo tus favoritos desde el amanecer hasta el atardecer." },
+            cta: "LEER MÁS"
+        },
+        menu: {
+            title: "Nuestras Sugerencias",
+            items: [
+                { title: 'Mezcla Espresso', desc: 'Mezcla única 100% Arábica de Brasil y Etiopía.', price: '€ 2.50' },
+                { title: 'Especial Brunch', desc: 'Huevos Benedict en pan brioche recién horneado.', price: '€ 8.00' },
+                { title: 'Cócteles de Autor', desc: 'Cócteles artesanales para tus noches.', price: 'desde € 9.00' }
+            ]
+        },
+        gallery: { badge: "Galería", title: "MOMENTOS" },
+        testimonials: {
+            badge: "Testimonios",
+            title: "Amado por los Locales",
+            reviews: [
+                { name: "Elena P.", role: "Crítica Gastronómica", text: "El espresso freddo aquí es inigualable. El ambiente me recuerda a la vieja Atenas pero con un toque moderno." },
+                { name: "Giorgos K.", role: "Habitual", text: "El mejor lugar de brunch de la ciudad. ¡Tienes que probar las Kayanas, es absolutamente delicioso!" },
+                { name: "Maria S.", role: "Diseñadora", text: "Trabajo desde aquí casi todos los días. Excelente wifi, café increíble y el personal es súper amable." }
+            ]
+        },
+        location: {
+            badge: "Visítanos",
+            title: "Encuentra tu Camino al Sabor.",
+            desc: "Estamos ubicados en el centro histórico, a solo unos minutos a pie de la estación de metro. Pasa por un espresso rápido o quédate para un almuerzo largo.",
+            address: { title: "Dirección", value: "Mitropoleos 45, Atenas 105 56" },
+            phone: { title: "Teléfono", value: "+30 210 123 4567" },
+            hours: { title: "Horario", week: "Lun-Vie: 08:00 - 23:00", weekend: "Sáb-Dom: 09:00 - 00:00" },
+            email: { title: "Email", value: "hola@cafe-greek.com" }
+        },
+        footer: {
+            desc: "Experimenta el verdadero sabor de Grecia en cada taza. Café artesanal, pasteles caseros y un ambiente acogedor.",
+            links: { title: "Enlaces Rápidos", home: "Inicio", menu: "Menú", about: "Nosotros", contact: "Contacto" },
+            legal: { title: "Legal", privacy: "Política de Privacidad", terms: "Términos de Servicio", cookies: "Política de Cookies" }
+        }
     }
 };
 

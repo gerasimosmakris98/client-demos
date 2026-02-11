@@ -109,7 +109,7 @@ const Hero = ({ t }) => (
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
             <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                 <div className="text-red-400 font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase mb-8">{t.hero.subtitle}</div>
-                <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tight mb-6 font-serif">GM <span className="text-red-500">RESTAURANT</span></h1>
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tight mb-4 md:mb-6 font-serif">GM <span className="text-red-500">RESTAURANT</span></h1>
                 <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 italic font-serif px-4">{t.hero.description}</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center px-6">
                     <button className="bg-red-700 hover:bg-red-600 px-8 py-3 md:px-10 md:py-4 font-bold tracking-widest uppercase text-xs md:text-sm transition-colors border border-red-500/50 flex items-center gap-2 justify-center rounded-sm">

@@ -30,14 +30,22 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 
-// Mock Data for Demos (mapped to Project structure)
-const DEMO_PROJECTS = [
+// Multi-language Data for Demos
+const DEMO_PROJECTS_DATA = [
     {
         id: 'premium-template',
         type: 'project',
-        title: 'Universal Admin Dashboard',
+        title: {
+            en: 'Universal Admin Dashboard',
+            el: 'Universal Admin Dashboard',
+            es: 'Panel de Administración Universal'
+        },
         slug: 'premium-template',
-        description: 'A comprehensive SaaS admin dashboard with analytics, user management, and settings. Features light/dark mode and data visualization.',
+        description: {
+            en: 'A comprehensive SaaS admin dashboard with analytics, user management, and settings. Features light/dark mode and data visualization.',
+            el: 'Ένας ολοκληρωμένος πίνακας ελέγχου SaaS με αναλυτικά στοιχεία, διαχείριση χρηστών και ρυθμίσεις. Διαθέτει light/dark mode.',
+            es: 'Un panel de administración SaaS completo con análisis, gestión de usuarios y configuraciones. Cuenta con modo claro/oscuro.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
         images: [],
@@ -53,9 +61,17 @@ const DEMO_PROJECTS = [
     {
         id: 'hair-salon-greek',
         type: 'project',
-        title: 'Beauty & Hair Salon',
+        title: {
+            en: 'Beauty & Hair Salon',
+            el: 'Κομμωτήριο & Αισθητική',
+            es: 'Salón de Belleza y Peluquería'
+        },
         slug: 'hair-salon-greek',
-        description: 'Modern booking and showcase template for beauty salons. Includes service menu, stylist profiles, and appointment requests.',
+        description: {
+            en: 'Modern booking and showcase template for beauty salons. Includes service menu, stylist profiles, and appointment requests.',
+            el: 'Μοντέρνο πρότυπο για κομμωτήρια. Περιλαμβάνει μενού υπηρεσιών, προφίλ στυλιτσών και αιτήματα ραντεβού.',
+            es: 'Plantilla moderna de reservas y exhibición para salones de belleza. Incluye menú de servicios y perfiles de estilistas.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop',
         images: [],
@@ -71,9 +87,17 @@ const DEMO_PROJECTS = [
     {
         id: 'law-office-greek',
         type: 'project',
-        title: 'Law Partners',
+        title: {
+            en: 'Law Partners',
+            el: 'Δικηγορικό Γραφείο',
+            es: 'Socios Legales'
+        },
         slug: 'law-office-greek',
-        description: 'Professional presence for legal firms. Features practice areas, attorney profiles, case studies, and consultation booking.',
+        description: {
+            en: 'Professional presence for legal firms. Features practice areas, attorney profiles, case studies, and consultation booking.',
+            el: 'Επαγγελματική παρουσία για δικηγορικά γραφεία. Περιλαμβάνει τομείς δικαίου, προφίλ δικηγόρων και κράτηση ραντεβού.',
+            es: 'Presencia profesional para firmas legales. Incluye áreas de práctica, perfiles de abogados y reserva de consultas.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2012&auto=format&fit=crop',
         images: [],
@@ -89,9 +113,17 @@ const DEMO_PROJECTS = [
     {
         id: 'electrician-greek',
         type: 'project',
-        title: 'Electrician Services Demo',
+        title: {
+            en: 'Electrician Services',
+            el: 'Ηλεκτρολογικές Υπηρεσίες',
+            es: 'Servicios de Electricista'
+        },
         slug: 'electrician-greek',
-        description: 'A professional website template for electricians and technical service providers. Features a clean design, service showcase, and contact forms.',
+        description: {
+            en: 'A professional website template for electricians and technical service providers. Features a clean design, service showcase, and contact forms.',
+            el: 'Επαγγελματικό πρότυπο ιστοσελίδας για ηλεκτρολόγους. Καθαρός σχεδιασμός, παρουσίαση υπηρεσιών και φόρμες επικοινωνίας.',
+            es: 'Una plantilla de sitio web profesional para electricistas. Diseño limpio, exhibición de servicios y formularios de contacto.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop',
         images: [],
@@ -107,9 +139,17 @@ const DEMO_PROJECTS = [
     {
         id: 'gym-greek',
         type: 'project',
-        title: 'Pro Fitness Gym',
+        title: {
+            en: 'Pro Fitness Gym',
+            el: 'Γυμναστήριο Pro Fitness',
+            es: 'Gimnasio Pro Fitness'
+        },
         slug: 'gym-greek',
-        description: 'Energetic design for gyms and fitness centers. Class schedules, trainer profiles, membership pricing, and trial sign-ups.',
+        description: {
+            en: 'Energetic design for gyms and fitness centers. Class schedules, trainer profiles, membership pricing, and trial sign-ups.',
+            el: 'Δυναμικός σχεδιασμός για γυμναστήρια. Προγράμματα μαθημάτων, προφίλ γυμναστών, τιμές συνδρομών και εγγραφές.',
+            es: 'Diseño energético para gimnasios. Horarios de clases, perfiles de entrenadores, precios de membresía e inscripciones.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
         images: [],
@@ -125,9 +165,17 @@ const DEMO_PROJECTS = [
     {
         id: 'real-estate-greek',
         type: 'project',
-        title: 'Prime Real Estate',
+        title: {
+            en: 'Prime Real Estate',
+            el: 'Μεσιτικό Γραφείο',
+            es: 'Bienes Raíces Prime'
+        },
         slug: 'real-estate-greek',
-        description: 'Property listing platform for agencies. Search filters, property details, agent contact, and map integration.',
+        description: {
+            en: 'Property listing platform for agencies. Search filters, property details, agent contact, and map integration.',
+            el: 'Πλατφόρμα αγγελιών ακινήτων. Φίλτρα αναζήτησης, λεπτομέρειες ακινήτων, επικοινωνία με πράκτορες και χάρτης.',
+            es: 'Plataforma de listado de propiedades. Filtros de búsqueda, detalles de la propiedad, contacto con el agente y mapa.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop',
         images: [],
@@ -143,9 +191,17 @@ const DEMO_PROJECTS = [
     {
         id: 'restaurant-greek',
         type: 'project',
-        title: 'Restaurant & Dining Demo',
+        title: {
+            en: 'Restaurant & Dining',
+            el: 'Εστιατόριο & Γεύση',
+            es: 'Restaurante y Cena'
+        },
         slug: 'restaurant-greek',
-        description: 'An elegant template for restaurants and cafes. Includes menu display, reservation system, and gallery integration.',
+        description: {
+            en: 'An elegant template for restaurants and cafes. Includes menu display, reservation system, and gallery integration.',
+            el: 'Κομψό πρότυπο για εστιατόρια. Περιλαμβάνει μενού, σύστημα κρατήσεων και συλλογή φωτογραφιών.',
+            es: 'Una plantilla elegante para restaurantes. Incluye visualización de menú, sistema de reservas e integración de galería.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop',
         images: [],
@@ -161,9 +217,17 @@ const DEMO_PROJECTS = [
     {
         id: 'medical-greek',
         type: 'project',
-        title: 'Medical Clinic',
+        title: {
+            en: 'Medical Clinic',
+            el: 'Ιατρικό Κέντρο',
+            es: 'Clínica Médica'
+        },
         slug: 'medical-greek',
-        description: 'Trustworthy design for clinics and doctors. Specialties, doctor profiles, online appointment booking, and health blog.',
+        description: {
+            en: 'Trustworthy design for clinics and doctors. Specialties, doctor profiles, online appointment booking, and health blog.',
+            el: 'Αξιόπιστος σχεδιασμός για κλινικές. Ειδικότητες, προφίλ γιατρών, online ραντεβού και blog υγείας.',
+            es: 'Diseño confiable para clínicas. Especialidades, perfiles de médicos, reserva de citas en línea y blog de salud.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop',
         images: [],
@@ -179,9 +243,17 @@ const DEMO_PROJECTS = [
     {
         id: 'hotel-greek',
         type: 'project',
-        title: 'Luxury Hotel',
+        title: {
+            en: 'Luxury Hotel',
+            el: 'Πολυτελές Ξενοδοχείο',
+            es: 'Hotel de Lujo'
+        },
         slug: 'hotel-greek',
-        description: 'Immersive experience for hotels. Room showcases, amenities, booking engine integration, and local guide.',
+        description: {
+            en: 'Immersive experience for hotels. Room showcases, amenities, booking engine integration, and local guide.',
+            el: 'Μοναδική εμπειρία για ξενοδοχεία. Παρουσίαση δωματίων, παροχές, μηχανή κρατήσεων και τοπικός οδηγός.',
+            es: 'Experiencia inmersiva para hoteles. Exhibición de habitaciones, comodidades, motor de reservas y guía local.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop',
         images: [],
@@ -197,9 +269,17 @@ const DEMO_PROJECTS = [
     {
         id: 'cafe-greek',
         type: 'project',
-        title: 'Modern Cafe Demo',
+        title: {
+            en: 'Modern Cafe',
+            el: 'Modern Cafe',
+            es: 'Cafetería Moderna'
+        },
         slug: 'cafe-greek',
-        description: 'A cozy and modern design for coffee shops and bakeries. specialized in highlighting products and atmosphere.',
+        description: {
+            en: 'A cozy and modern design for coffee shops and bakeries. specialized in highlighting products and atmosphere.',
+            el: 'Ζεστός και μοντέρνος σχεδιασμός για καφετέριες. Εξειδικευμένο στην ανάδειξη προϊόντων και ατμόσφαιρας.',
+            es: 'Un diseño acogedor y moderno para cafeterías. Especializado en resaltar productos y ambiente.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop',
         images: [],
@@ -215,9 +295,17 @@ const DEMO_PROJECTS = [
     {
         id: 'accounting-greek',
         type: 'project',
-        title: 'Accounting Firm',
+        title: {
+            en: 'Accounting Firm',
+            el: 'Λογιστικό Γραφείο',
+            es: 'Firma de Contabilidad'
+        },
         slug: 'accounting-greek',
-        description: 'Corporate design for accountants and financial advisors. Services, team, tax calculators, and resources.',
+        description: {
+            en: 'Corporate design for accountants and financial advisors. Services, team, tax calculators, and resources.',
+            el: 'Εταιρικός σχεδιασμός για λογιστές. Υπηρεσίες, ομάδα, φορολογικοί υπολογιστές και πόροι.',
+            es: 'Diseño corporativo para contadores. Servicios, equipo, calculadoras de impuestos y recursos.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop',
         images: [],
@@ -233,9 +321,17 @@ const DEMO_PROJECTS = [
     {
         id: 'tutoring-greek',
         type: 'project',
-        title: 'Education & Tutoring',
+        title: {
+            en: 'Education & Tutoring',
+            el: 'Εκπαίδευση & Φροντιστήριο',
+            es: 'Educación y Tutoría'
+        },
         slug: 'tutoring-greek',
-        description: 'A professional platform for private tutors and educational centers. Course listings, teacher profiles, and scheduling.',
+        description: {
+            en: 'A professional platform for private tutors and educational centers. Course listings, teacher profiles, and scheduling.',
+            el: 'Επαγγελματική πλατφόρμα για φροντιστήρια. Λίστες μαθημάτων, προφίλ εκπαιδευτικών και πρόγραμμα.',
+            es: 'Una plataforma profesional para tutores. Listados de cursos, perfiles de profesores y horarios.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop',
         images: [],
@@ -251,9 +347,17 @@ const DEMO_PROJECTS = [
     {
         id: 'studio-greek',
         type: 'project',
-        title: 'Yoga & Pilates Studio',
+        title: {
+            en: 'Yoga & Pilates Studio',
+            el: 'Στούντιο Yoga & Pilates',
+            es: 'Estudio de Yoga y Pilates'
+        },
         slug: 'studio-greek',
-        description: 'Calm and balanced design for wellness studios. Class schedules, instructor bios, gallery, and pricing.',
+        description: {
+            en: 'Calm and balanced design for wellness studios. Class schedules, instructor bios, gallery, and pricing.',
+            el: 'Ήρεμος σχεδιασμός για στούντιο ευεξίας. Πρόγραμμα μαθημάτων, βιογραφικά εκπαιδευτών, συλλογή και τιμές.',
+            es: 'Diseño tranquilo para estudios de bienestar. Horarios de clases, biografías de instructores, galería y precios.'
+        },
         content: '',
         image: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2069&auto=format&fit=crop',
         images: [],
@@ -277,11 +381,23 @@ const getUniqueCategories = (items) => {
 }
 
 
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Dashboard() {
+    const { language } = useLanguage();
     const [viewMode, setViewMode] = useState('gallery'); // 'gallery' | 'list' | 'compact'
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedTags, setSelectedTags] = useState([]);
+
+    // Translate Projects
+    const DEMO_PROJECTS = useMemo(() => {
+        return DEMO_PROJECTS_DATA.map(p => ({
+            ...p,
+            title: p.title[language] || p.title['en'],
+            description: p.description[language] || p.description['en']
+        }));
+    }, [language]);
 
     // Filtering logic
     const filteredProjects = useMemo(() => {
@@ -293,10 +409,10 @@ export default function Dashboard() {
 
             return matchesSearch && matchesCategory && matchesTags;
         });
-    }, [searchQuery, selectedCategory, selectedTags]);
+    }, [searchQuery, selectedCategory, selectedTags, DEMO_PROJECTS]);
 
-    const allTags = useMemo(() => getUniqueValues(DEMO_PROJECTS, 'tags'), []);
-    const allCategories = useMemo(() => ['All', ...getUniqueCategories(DEMO_PROJECTS)], []);
+    const allTags = useMemo(() => getUniqueValues(DEMO_PROJECTS, 'tags'), [DEMO_PROJECTS]);
+    const allCategories = useMemo(() => ['All', ...getUniqueCategories(DEMO_PROJECTS)], [DEMO_PROJECTS]);
 
     const toggleTag = (tag) => {
         setSelectedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
