@@ -355,7 +355,13 @@ const RestaurantDemo = () => {
             <TestimonialsSection t={t} />
             <Reservation t={t} />
             <FooterSection />
-            <AIChat brandName="GM Restaurant" />
+            <AIChat
+                brandName="GM Restaurant"
+                botName="Restaurant Captain AI"
+                accentColor="red"
+                botIcon={UtensilsCrossed}
+                welcomeMessage="Welcome to a world of flavors! 🍷 I'm your Restaurant Captain. Would you like to reserve a table or browse our seasonal tasting menu?"
+            />
         </div>
     );
 };

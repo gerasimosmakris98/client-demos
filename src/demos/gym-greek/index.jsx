@@ -183,7 +183,13 @@ const GymDemo = () => {
             <Educators t={t} />
             <Pricing t={t} />
             <FAQ t={t} />
-            <AIChat brandName="GM Gym" />
+            <AIChat
+                brandName="GM Gym"
+                botName="Coach AI"
+                accentColor="amber"
+                botIcon={Dumbbell}
+                welcomeMessage="Push your limits! 💪 I'm Coach AI. Ready to smash your fitness goals? Ask me about our classes or membership plans!"
+            />
         </div>
     );
 };

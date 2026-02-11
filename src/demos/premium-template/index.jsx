@@ -99,7 +99,12 @@ const PremiumTemplate = () => {
                 <Features t={t} />
                 <Pricing t={t} />
                 <Contact t={t} />
-                <AIChat brandName="Premium Template" />
+                <AIChat
+                    brandName="Prooptiki SaaS"
+                    botName="System Core AI"
+                    accentColor="blue"
+                    welcomeMessage="Welcome to the Prooptiki Admin Console. I am the System Core AI. How can I assist your workflow today? 🚀"
+                />
             </div>
         );
     }
@@ -128,7 +133,12 @@ const PremiumTemplate = () => {
             <IndustrySwitcher />
 
             <UniversalAdmin config={currentConfig} language={language} switcher={<IndustrySwitcher isMobile />} />
-            <AIChat brandName={currentConfig.brandName} />
+            <AIChat
+                brandName={currentConfig.brandName}
+                botName={`${currentConfig.brandName} Assistant`}
+                accentColor={currentConfig.accentColor}
+                welcomeMessage={`Hello! I'm your ${currentConfig.brandName} assistant. How can I help you explore this ${mode} dashboard?`}
+            />
         </div>
     );
 };

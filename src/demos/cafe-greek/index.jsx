@@ -178,7 +178,12 @@ const CafeDemo = () => {
             <CafeTestimonials t={t} />
             <CafeLocation t={t} />
             <CafeFooter t={t} />
-            <AIChat brandName="GM Cafe" />
+            <AIChat
+                brandName="GM Cafe"
+                botName="Barista AI"
+                accentColor="amber"
+                welcomeMessage="Welcome to GM Cafe! ☕ I'm your Barista AI. Would you like to see our special brunch menu or today's artisanal roasts?"
+            />
         </div>
     );
 };

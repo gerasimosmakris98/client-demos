@@ -171,7 +171,12 @@ const SalonDemo = () => {
             <SalonTestimonials t={t} />
             <SalonBooking t={t} />
             <SalonFooter t={t} />
-            <AIChat brandName="GM Salon" />
+            <AIChat
+                brandName="GM Salon"
+                botName="Style Assistant AI"
+                accentColor="rose"
+                welcomeMessage="Welcome to luxury hair care! ✨ I'm your Style Assistant. Need help booking a color treatment or choosing a stylist?"
+            />
         </div>
     );
 };

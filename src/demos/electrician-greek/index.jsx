@@ -488,7 +488,13 @@ const ElectricianDemo = () => {
     return (
         <div className="bg-slate-950 min-h-screen text-white font-sans">
             <Hero /><About /><Services /><Team /><Gallery /><Testimonials /><Pricing /><Contact /><Footer />
-            <AIChat brandName="GM Electric" />
+            <AIChat
+                brandName="GM Electric"
+                botName="Sparky AI"
+                accentColor="orange"
+                botIcon={Zap}
+                welcomeMessage="24/7 Emergency Service! ⚡ I'm Sparky AI. Do you have an electrical emergency or need a quote for a new installation?"
+            />
         </div>
     );
 };

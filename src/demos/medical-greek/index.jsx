@@ -422,7 +422,13 @@ const MedicalDemo = () => {
     return (
         <div className="bg-slate-950 min-h-screen text-white font-sans">
             <Hero t={t} /><About t={t} /><Specialties t={t} /><Doctors t={t} /><TestimonialsSection t={t} /><Booking t={t} /><ContactSection t={t} /><FooterSection t={t} />
-            <AIChat brandName="GM Medical" />
+            <AIChat
+                brandName="GM Medical"
+                botName="Medical Assistant AI"
+                accentColor="teal"
+                botIcon={Stethoscope}
+                welcomeMessage="Your health is our priority. 🩺 I'm your Medical Assistant. Do you need help booking an appointment with one of our specialists?"
+            />
         </div>
     );
 };

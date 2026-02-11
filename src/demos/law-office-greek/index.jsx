@@ -200,7 +200,12 @@ const LawDemo = () => {
             <CaseStudies t={t} />
             <Testimonials t={t} />
             <Contact t={t} />
-            <AIChat brandName="GM Law" />
+            <AIChat
+                brandName="GM Law"
+                botName="Legal Clerk AI"
+                accentColor="blue"
+                welcomeMessage="Justice & Integrity. ⚖️ I'm your Legal Clerk AI. How can I assist with your legal inquiry or consultation today?"
+            />
         </div>
     );
 };

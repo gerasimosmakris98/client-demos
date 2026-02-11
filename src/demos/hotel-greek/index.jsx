@@ -382,7 +382,13 @@ const HotelDemo = () => {
     return (
         <div className="bg-[#1a1814] min-h-screen text-[#d4cbb8] font-serif">
             <Hero t={t} /><About t={t} /><Rooms t={t} /><Amenities t={t} /><TestimonialsSection t={t} /><Reservation t={t} /><ContactSection t={t} /><FooterSection t={t} />
-            <AIChat brandName="GM Hotel" />
+            <AIChat
+                brandName="GM Hotel"
+                botName="Concierge AI"
+                accentColor="amber"
+                botIcon={BedDouble}
+                welcomeMessage="Welcome to GM Hotel! 🏨 I'm your Concierge AI. May I assist you with your room reservation or perhaps tell you more about our rooftop view?"
+            />
         </div>
     );
 };

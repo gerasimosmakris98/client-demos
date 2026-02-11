@@ -436,7 +436,13 @@ const StudioDemo = () => {
             <Pricing t={t} />
             <Contact t={t} />
             <FooterSection t={t} />
-            <AIChat brandName="GM Fitness Studio" />
+            <AIChat
+                brandName="GM Fitness Studio"
+                botName="Wellness Guide AI"
+                accentColor="purple"
+                botIcon={Heart}
+                welcomeMessage="Body, Mind, and Soul in harmony. ✨ I'm your Wellness Guide AI. Ready to start your journey? Ask me about our classes or trial memberships!"
+            />
         </div>
     );
 };

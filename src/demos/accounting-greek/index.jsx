@@ -405,7 +405,13 @@ const AccountingDemo = () => {
             <Pricing t={t} />
             <Contact t={t} />
             <FooterSection t={t} />
-            <AIChat brandName="GM Accounting" />
+            <AIChat
+                brandName="GM Accounting"
+                botName="Accounting Assistant AI"
+                accentColor="blue"
+                botIcon={Calculator}
+                welcomeMessage="Precision in every number. 📊 I'm your Accounting Assistant AI. Do you have a question about tax returns or our bookkeeping services?"
+            />
         </div>
     );
 };

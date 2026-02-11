@@ -340,7 +340,12 @@ const TutoringDemo = () => {
                 </div>
             </section>
 
-            <AIChat brandName="GM Tutoring" />
+            <AIChat
+                brandName="GM Tutoring"
+                botName="Education Mentor AI"
+                accentColor="emerald"
+                welcomeMessage="Building the Future together! 🎓 I'm your Education Mentor. Need help with enrollments or course details?"
+            />
         </div>
     );
 };

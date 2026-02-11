@@ -409,7 +409,13 @@ const RealEstateDemo = () => {
     return (
         <div className="bg-black min-h-screen text-white font-sans">
             <Hero t={t} /><AboutSection t={t} /><Listings t={t} /><OurServices t={t} /><Agents t={t} /><Testimonials t={t} /><Contact t={t} /><FooterSection t={t} />
-            <AIChat brandName="GM Estates" />
+            <AIChat
+                brandName="GM Estates"
+                botName="Estate Agent AI"
+                accentColor="amber"
+                botIcon={Home}
+                welcomeMessage="Welcome to luxury living! 🏠 I'm your Estate Agent AI. Looking for a villa in Kifisia or a penthouse in Glyfada? I'm here to guide you."
+            />
         </div>
     );
 };
