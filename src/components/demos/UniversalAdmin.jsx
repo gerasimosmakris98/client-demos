@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
     LayoutDashboard, Users, DollarSign, Settings, Bell, Search, Menu,
     TrendingUp, ArrowUpRight, ShieldCheck, Calendar, FileText, Activity,
-    Package, BarChart3, ChevronRight, MoreVertical, X, Palette, LogOut,
+    Package, BarChart3, ChevronRight, ChevronLeft, ChevronDown, MoreVertical, X, Palette, LogOut,
     Sparkles, Clock, Zap, Target, Award, CheckCircle, AlertCircle,
     CreditCard, Globe, PieChart, Eye, GitBranch, GitCommit, GitPullRequest, Terminal
 } from 'lucide-react';
@@ -65,10 +65,25 @@ const adminTranslations = {
         performance: 'Απόδοση',
         recentActivity: 'Πρόσφατη Δραστηριότητα',
         add: 'Προσθήκη'
+    },
+    es: {
+        menu: 'MENÚ',
+        switchRole: 'CAMBIAR ROL',
+        search: 'Buscar algo...',
+        live: 'EN VIVO',
+        settings: 'Ajustes',
+        logout: 'Cerrar sesión',
+        greeting: { m: 'Buenos días', a: 'Buenas tardes', e: 'Buenas noches' },
+        dashboard: 'panel',
+        schedule: 'Agenda',
+        quickAction: 'Acción Rápida',
+        performance: 'Rendimiento',
+        recentActivity: 'Actividad Reciente',
+        add: 'Añadir'
     }
 };
 
-const UniversalAdmin = ({ config, language = 'en' }) => {
+const UniversalAdmin = ({ config, language = 'en', switcher = null }) => {
     const {
         brandName = 'GM Admin',
         brandLogo = 'GM',
@@ -88,7 +103,11 @@ const UniversalAdmin = ({ config, language = 'en' }) => {
         const base = customTabs.length > 0
             ? [{ id: 'overview', label: 'Overview', icon: LayoutDashboard }, ...customTabs.map(t => ({ id: t.id, label: t.label, icon: t.icon || Package }))]
             : rawNavItems || defaultNavItems;
-        if (!base.find(n => n.id === 'settings')) base.push({ id: 'settings', label: t.settings, icon: Settings });
+        if (!base.find(n => n.id === 'settings')) {
+            const arr = [...base];
+            arr.push({ id: 'settings', label: t.settings, icon: Settings });
+            return arr;
+        }
         return base;
     }, [customTabs, rawNavItems, t]);
 
@@ -96,102 +115,153 @@ const UniversalAdmin = ({ config, language = 'en' }) => {
     const [activeRole, setActiveRole] = useState(roles[0]?.id || 'admin');
     const [activeTab, setActiveTab] = useState('overview');
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [headerVisible, setHeaderVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
     const [searchOpen, setSearchOpen] = useState(false);
+
+    // Header scroll logic
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setHeaderVisible(false);
+            } else {
+                setHeaderVisible(true);
+            }
+            setLastScrollY(currentScrollY);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     useEffect(() => setActiveTab('overview'), [activeRole]);
 
     const SidebarContent = ({ mobile = false }) => (
         <>
             {/* Brand Header */}
-            <div className={`${mobile ? 'h-14' : 'h-[72px]'} flex items-center px-5 border-b border-white/[0.06] gap-3`}>
-                <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${c.gradient} flex items-center justify-center text-white font-black text-sm shadow-lg ${c.shadow} ring-2 ring-white/10`}>
+            <div className={`${mobile ? 'h-16' : 'h-[72px]'} flex items-center px-5 border-b border-white/[0.06] gap-3`}>
+                <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${c.gradient} flex items-center justify-center text-white font-black text-sm shadow-lg ${c.shadow} ring-2 ring-white/10 shrink-0`}>
                     {brandLogo.length <= 3 ? brandLogo : brandLogo.charAt(0)}
                 </div>
-                <div className="overflow-hidden flex-1">
-                    <p className="text-white font-bold text-sm truncate leading-tight">{brandName}</p>
-                    <p className={`${c.text} text-[10px] font-semibold tracking-wide`}>Admin Panel</p>
-                </div>
-                {mobile && <button onClick={() => setSidebarOpen(false)} className="text-slate-400 hover:text-white"><X size={18} /></button>}
+                {!isCollapsed && (
+                    <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="overflow-hidden flex-1">
+                        <p className="text-white font-bold text-sm truncate leading-tight tracking-tight">{brandName}</p>
+                        <p className={`${c.text} text-[10px] font-black tracking-widest uppercase opacity-80 mt-0.5`}>Admin Panel</p>
+                    </motion.div>
+                )}
+                {mobile && <button onClick={() => setSidebarOpen(false)} className="text-slate-400 hover:text-white p-2 hover:bg-white/5 rounded-xl transition-colors"><X size={20} /></button>}
+                {!mobile && (
+                    <button
+                        onClick={() => setIsCollapsed(!isCollapsed)}
+                        className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/5 transition-colors absolute -right-3 top-[26px] bg-[#0c1122] border border-white/10 z-50 shadow-xl hidden md:block"
+                    >
+                        {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
+                    </button>
+                )}
             </div>
 
-            {/* Quick Stats Mini */}
-            <div className="px-4 pt-4 pb-2">
-                <div className={`rounded-xl p-3 bg-gradient-to-br ${c.gradient} relative overflow-hidden`}>
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2" />
-                    <div className="relative flex items-center justify-between">
-                        <div>
-                            <p className="text-white/60 text-[10px] font-bold uppercase tracking-wider">Today</p>
-                            <p className="text-white text-lg font-black">{stats[0]?.value || '0'}</p>
-                        </div>
-                        <div className="text-white/80"><TrendingUp size={20} /></div>
-                    </div>
+            {/* Switcher Injection for Mobile Sidebar */}
+            {mobile && switcher && (
+                <div className="px-5 py-4 border-b border-white/[0.06] bg-white/[0.02]">
+                    {switcher}
                 </div>
-            </div>
+            )}
+
+            {/* Quick Stats Mini - Only if not collapsed */}
+            {!isCollapsed && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="px-4 pt-4 pb-2">
+                    <div className={`rounded-xl p-3 bg-gradient-to-br ${c.gradient} relative overflow-hidden group cursor-pointer`}>
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform" />
+                        <div className="relative flex items-center justify-between">
+                            <div>
+                                <p className="text-white/60 text-[10px] font-bold uppercase tracking-wider">Today</p>
+                                <p className="text-white text-lg font-black">{stats[0]?.value || '0'}</p>
+                            </div>
+                            <div className="text-white/80"><TrendingUp size={20} /></div>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
 
             {/* Navigation */}
-            <nav className="flex-1 py-2 px-3 space-y-0.5 overflow-y-auto">
-                <p className="text-[9px] text-slate-500 uppercase tracking-[0.2em] font-bold px-4 pt-2 pb-2">{t.menu}</p>
+            <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto custom-scrollbar">
+                {!isCollapsed && <p className="text-[9px] text-slate-500 uppercase tracking-[0.2em] font-bold px-4 pt-2 pb-2">{t.menu}</p>}
                 {navItems.map(item => {
                     const Icon = item.icon || LayoutDashboard;
                     const isActive = activeTab === item.id;
                     return (
                         <button key={item.id} onClick={() => { setActiveTab(item.id); if (mobile) setSidebarOpen(false); }}
-                            className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-semibold transition-all duration-200 ${isActive
+                            title={isCollapsed ? item.label : ''}
+                            className={`w-full flex items-center gap-3 ${isCollapsed ? 'justify-center px-0' : 'px-4'} py-3 rounded-xl text-[13px] font-semibold transition-all duration-200 group relative ${isActive
                                 ? `bg-gradient-to-r ${c.gradient} text-white shadow-lg ${c.shadow}`
                                 : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                                 }`}>
-                            <div className={`${isActive ? 'text-white' : ''}`}><Icon size={17} /></div>
-                            {item.label}
-                            {isActive && <ChevronRight size={14} className="ml-auto opacity-60" />}
+                            <div className={`${isActive ? 'text-white' : 'group-hover:scale-110 transition-transform'}`}><Icon size={18} /></div>
+                            {!isCollapsed && <span>{item.label}</span>}
+                            {isActive && !isCollapsed && <ChevronRight size={14} className="ml-auto opacity-60" />}
+                            {isActive && isCollapsed && (
+                                <motion.div layoutId="activeIndicator" className={`absolute -left-1 w-1 h-6 rounded-r-full bg-white`} />
+                            )}
                         </button>
                     );
                 })}
             </nav>
 
             {/* Role Switcher */}
-            <div className="px-4 py-3 border-t border-white/[0.06]">
-                <p className="text-[9px] text-slate-500 uppercase tracking-[0.2em] font-bold mb-2">{t.switchRole}</p>
-                <div className="flex gap-1.5 bg-[#0a0e1a] rounded-xl p-1">
-                    {roles.map(role => (
-                        <button key={role.id} onClick={() => setActiveRole(role.id)}
-                            className={`flex-1 px-2 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-200 ${activeRole === role.id
-                                ? `bg-gradient-to-r ${c.gradient} text-white shadow-md`
-                                : 'text-slate-500 hover:text-slate-300'
-                                }`}>
-                            {role.label}
-                        </button>
-                    ))}
-                </div>
+            <div className={`px-4 py-4 border-t border-white/[0.06] ${isCollapsed ? 'flex justify-center' : ''}`}>
+                {!isCollapsed ? (
+                    <>
+                        <p className="text-[9px] text-slate-500 uppercase tracking-[0.2em] font-bold mb-3">{t.switchRole}</p>
+                        <div className="flex gap-1 bg-[#0a0e1a] rounded-xl p-1 border border-white/[0.02]">
+                            {roles.map(role => (
+                                <button key={role.id} onClick={() => setActiveRole(role.id)}
+                                    className={`flex-1 px-2 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-200 ${activeRole === role.id
+                                        ? `bg-gradient-to-r ${c.gradient} text-white shadow-md`
+                                        : 'text-slate-500 hover:text-slate-300'
+                                        }`}>
+                                    {role.label}
+                                </button>
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <button onClick={() => setIsCollapsed(false)} className={`w-8 h-8 rounded-lg ${c.bg10} ${c.text} flex items-center justify-center hover:bg-white/5 transition-colors`}>
+                        <ArrowUpRight size={16} />
+                    </button>
+                )}
             </div>
 
             {/* User */}
-            <div className="px-4 pb-4 flex items-center gap-3">
-                <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[10px] font-black text-white ring-2 ring-white/10`}>GM</div>
-                <div className="overflow-hidden flex-1">
-                    <p className="text-white text-xs font-bold truncate">Gerasimos M.</p>
-                    <p className={`${c.text} text-[10px] capitalize font-medium`}>{roles.find(r => r.id === activeRole)?.label || activeRole}</p>
-                </div>
-                <button className="text-slate-500 hover:text-red-400 transition-colors" title={t.logout}><LogOut size={15} /></button>
+            <div className={`px-4 pb-4 flex items-center gap-3 ${isCollapsed ? 'justify-center px-0' : ''}`}>
+                <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[10px] font-black text-white ring-2 ring-white/10 shrink-0`}>GM</div>
+                {!isCollapsed && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="overflow-hidden flex-1">
+                        <p className="text-white text-xs font-bold truncate">Gerasimos M.</p>
+                        <p className={`${c.text} text-[10px] capitalize font-semibold`}>{roles.find(r => r.id === activeRole)?.label || activeRole}</p>
+                    </motion.div>
+                )}
+                {!isCollapsed && <button className="text-slate-500 hover:text-red-400 transition-colors p-1" title={t.logout}><LogOut size={15} /></button>}
             </div>
         </>
     );
 
     return (
-        <div className="min-h-screen flex bg-[#080c16] text-slate-300 font-sans overflow-x-hidden md:overflow-visible">
-            {/* Desktop sidebar */}
-            <aside className="hidden md:flex w-[260px] flex-col border-r border-white/[0.06] bg-[#0c1122] shrink-0">
+        <div className="min-h-[100dvh] flex bg-[#080c16] text-slate-300 font-sans overflow-x-hidden relative">
+            {/* Desktop sidebar - Only show on LG (1024px+) */}
+            <aside className={`hidden lg:flex flex-col border-r border-white/[0.06] bg-[#0c1122] transition-all duration-300 ease-in-out shrink-0 relative ${isCollapsed ? 'w-[80px]' : 'w-[260px]'}`}>
                 <SidebarContent />
             </aside>
 
-            {/* Mobile sidebar - High z-index to ensure visibility */}
+            {/* Mobile/Tablet sidebar drawer */}
             <AnimatePresence>
                 {sidebarOpen && (
                     <>
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                            className="md:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[9998]" onClick={() => setSidebarOpen(false)} />
+                            className="lg:hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[9998]" onClick={() => setSidebarOpen(false)} />
                         <motion.aside initial={{ x: -280 }} animate={{ x: 0 }} exit={{ x: -280 }}
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                            className="md:hidden fixed left-0 top-0 bottom-0 w-[260px] bg-[#0c1122] z-[9999] border-r border-white/[0.06] flex flex-col shadow-2xl">
+                            className="lg:hidden fixed left-0 top-0 bottom-0 w-[280px] bg-[#0c1122] z-[10000] border-r border-white/[0.06] flex flex-col shadow-2xl h-[100dvh]">
                             <SidebarContent mobile />
                         </motion.aside>
                     </>
@@ -199,39 +269,76 @@ const UniversalAdmin = ({ config, language = 'en' }) => {
             </AnimatePresence>
 
             {/* ═══ Main ═══ */}
-            <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 flex flex-col min-w-0 min-h-[100dvh] relative">
                 {/* Header */}
-                <header className="h-14 md:h-[60px] border-b border-white/[0.06] flex items-center justify-between px-4 md:px-6 bg-[#0c1122]/90 backdrop-blur-xl sticky top-0 z-30">
-                    <div className="flex items-center gap-3">
-                        <button className="md:hidden p-1.5 text-slate-400 hover:text-white transition-colors" onClick={() => setSidebarOpen(true)}>
+                <motion.header
+                    animate={{ y: headerVisible ? 0 : -80 }}
+                    transition={{ duration: 0.3 }}
+                    className="h-16 lg:h-[64px] border-b border-white/[0.06] flex items-center justify-between px-4 lg:px-8 bg-[#0c1122]/95 backdrop-blur-2xl sticky top-0 z-40"
+                >
+                    <div className="flex items-center gap-4">
+                        <button className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors bg-white/5 rounded-xl" onClick={() => setSidebarOpen(true)}>
                             <Menu size={20} />
                         </button>
-                        <div className="hidden md:flex items-center gap-2 text-sm">
-                            <span className="text-white font-bold">{brandName}</span>
-                            <span className="text-slate-600">/</span>
-                            <span className={`${c.text} font-semibold capitalize`}>{activeTab}</span>
+                        <div className="hidden lg:flex items-center gap-3 text-sm">
+                            <span className="text-white/40 font-medium">{brandName}</span>
+                            <ChevronRight size={14} className="text-slate-700" />
+                            <span className={`${c.text} font-bold capitalize tracking-tight px-3 py-1 rounded-lg bg-white/5`}>{activeTab}</span>
+                        </div>
+                        {/* Mobile Brand Label */}
+                        <div className="lg:hidden flex items-center gap-2">
+                            <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${c.gradient} flex items-center justify-center text-white font-black text-[10px]`}>
+                                {brandLogo.charAt(0)}
+                            </div>
+                            <span className="text-white font-bold text-sm truncate max-w-[120px]">{brandName}</span>
                         </div>
                     </div>
-                    <div className="flex items-center gap-1.5 md:gap-2">
-                        {/* Search */}
-                        <button onClick={() => setSearchOpen(!searchOpen)}
-                            className="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all">
-                            <Search size={17} />
-                        </button>
-                        {/* Status Badge */}
-                        <div className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full ${c.bg10} ${c.border} border`}>
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-emerald-400 text-[10px] font-mono font-bold">{t.live}</span>
+
+                    <div className="flex items-center gap-2 lg:gap-4">
+                        {/* Search Bar - Desktop Only */}
+                        <div className="hidden lg:flex items-center relative group">
+                            <Search className="absolute left-3 text-slate-500 group-focus-within:text-white transition-colors" size={15} />
+                            <input
+                                type="text"
+                                placeholder={t.search}
+                                className="bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-2 text-xs w-64 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+                            />
                         </div>
-                        {/* Notifications */}
-                        <button className="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all relative">
-                            <Bell size={17} />
-                            <span className={`absolute top-1.5 right-1.5 w-2 h-2 ${c.bg} rounded-full border-2 border-[#0c1122] animate-pulse`} />
-                        </button>
-                        {/* Avatar mini */}
-                        <div className={`w-8 h-8 rounded-xl bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[10px] font-black text-white md:hidden`}>GM</div>
+
+                        <div className="flex items-center gap-1">
+                            <button onClick={() => setSearchOpen(!searchOpen)} className="lg:hidden p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all">
+                                <Search size={18} />
+                            </button>
+                            <button className="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all relative group">
+                                <Bell size={18} />
+                                <span className={`absolute top-2 right-2 w-2 h-2 ${c.bg} rounded-full border-2 border-[#0c1122] shadow-[0_0_10px_rgba(0,0,0,0.5)]`} />
+                            </button>
+                            <button className="hidden sm:flex items-center gap-2 pl-2 pr-1 py-1 rounded-xl hover:bg-white/5 transition-all text-slate-400 hover:text-white">
+                                <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[9px] font-black text-white`}>GM</div>
+                                <MoreVertical size={14} className="opacity-40" />
+                            </button>
+                        </div>
                     </div>
-                </header>
+                </motion.header>
+
+                {/* Mobile/Tablet Bottom Navigation (Hides on LG) */}
+                <div className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0c1122]/95 backdrop-blur-2xl border-t border-white/[0.06] z-50 flex items-center justify-around px-2 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+                    {navItems.slice(0, 4).map(item => {
+                        const Icon = item.icon || LayoutDashboard;
+                        const isActive = activeTab === item.id;
+                        return (
+                            <button key={item.id} onClick={() => setActiveTab(item.id)}
+                                className={`flex flex-col items-center gap-1 px-3 py-1 rounded-xl transition-all ${isActive ? c.text : 'text-slate-500'}`}>
+                                <Icon size={isActive ? 20 : 18} className={isActive ? 'animate-pulse' : ''} />
+                                <span className="text-[9px] font-bold uppercase tracking-tight">{item.label.split(' ')[0]}</span>
+                            </button>
+                        );
+                    })}
+                    <button onClick={() => setSidebarOpen(true)} className="flex flex-col items-center gap-1 text-slate-500 px-3">
+                        <Menu size={18} />
+                        <span className="text-[9px] font-bold uppercase tracking-tight">More</span>
+                    </button>
+                </div>
 
                 {/* Search overlay */}
                 <AnimatePresence>
@@ -248,7 +355,7 @@ const UniversalAdmin = ({ config, language = 'en' }) => {
                 </AnimatePresence>
 
                 {/* Content */}
-                <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
+                <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 pb-32 lg:pb-8">
                     <motion.div key={`${activeRole}-${activeTab}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
                         {(() => {
                             // Check customTabs first

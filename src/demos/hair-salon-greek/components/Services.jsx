@@ -9,44 +9,25 @@ const services = [
     { name: 'Χτένισμα Βραδινό', price: '€30', time: '45\'' },
 ];
 
-const SalonServices = () => {
+const SalonServices = ({ t }) => {
     return (
-        <section style={{ padding: '6rem 2rem', background: '#450a0a', color: 'white', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top right, rgba(0,0,0,0.3), transparent 70%)' }}></div>
-            <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-                <h2 style={{
-                    fontSize: '3rem',
-                    textAlign: 'center',
-                    marginBottom: '3rem',
-                    fontFamily: "'Playfair Display', serif",
-                    color: '#fff',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.3)'
-                }}>
-                    Υπηρεσίες
-                </h2>
+        <section className="py-16 md:py-24 bg-rose-950 text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,0,0,0.3),transparent_70%)]"></div>
+            <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+                <div className="text-center mb-10 md:mb-16">
+                    <span className="text-rose-400 font-bold tracking-widest uppercase text-sm">{t.services.badge}</span>
+                    <h2 className="text-4xl md:text-5xl font-playfair font-black mt-2 italic">{t.services.title}</h2>
+                </div>
 
-                <div className="glass-panel" style={{
-                    padding: '3rem',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    backdropFilter: 'blur(15px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3)'
-                }}>
-                    <div style={{ display: 'grid', gap: '1.5rem' }}>
-                        {services.map((service, index) => (
-                            <div key={index} style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                borderBottom: '1px solid rgba(255,255,255,0.1)',
-                                paddingBottom: '1rem',
-                                color: 'white'
-                            }}>
-                                <div>
-                                    <h3 style={{ fontSize: '1.2rem', fontWeight: 500, color: 'white' }}>{service.name}</h3>
-                                    <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)' }}>{service.time}</span>
+                <div className="glass-panel p-6 md:p-12 bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl rounded-[2rem]">
+                    <div className="grid gap-6 md:gap-8">
+                        {t.services.items.map((service, index) => (
+                            <div key={index} className="flex justify-between items-center border-b border-white/10 pb-6 last:border-0 last:pb-0 group">
+                                <div className="space-y-1">
+                                    <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-rose-300 transition-colors">{service.title}</h3>
+                                    <p className="text-sm text-rose-100/60 font-light">{service.desc}</p>
                                 </div>
-                                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fca5a5' }}>
+                                <div className="text-lg md:text-xl font-black text-rose-300 whitespace-nowrap ml-4">
                                     {service.price}
                                 </div>
                             </div>

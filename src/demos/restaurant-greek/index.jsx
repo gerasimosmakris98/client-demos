@@ -46,6 +46,11 @@ const translations = {
         },
         gallery: { badge: "Gallery", title: "MOMENTS" },
         reviews: { badge: "Reviews", title: "GUEST REVIEWS" },
+        testimonials: [
+            { name: 'Eleni M.', text: 'The best culinary experience in Athens!' },
+            { name: 'Marco R.', text: 'Incredible flavors. Every dish tells a story.' },
+            { name: 'Nikos D.', text: 'Perfect place for business dinners.' }
+        ],
         reservation: {
             badge: "Reservation",
             title: "BOOK A TABLE",
@@ -93,11 +98,68 @@ const translations = {
         },
         gallery: { badge: "Φωτογραφίες", title: "ΣΤΙΓΜΕΣ" },
         reviews: { badge: "Κριτικές", title: "ΣΧΟΛΙΑ ΠΕΛΑΤΩΝ" },
+        testimonials: [
+            { name: 'Ελένη Μ.', text: 'Η καλύτερη γαστρονομική εμπειρία στην Αθήνα!' },
+            { name: 'Marco R.', text: 'Απίθανες γεύσεις. Κάθε πιάτο διηγείται μια ιστορία.' },
+            { name: 'Νίκος Δ.', text: 'Τέλειο μέρος για επαγγελματικά δείπνα.' }
+        ],
         reservation: {
             badge: "Κράτηση",
             title: "ΚΡΑΤΗΣΗ ΤΡΑΠΕΖΙΟΥ",
             placeholders: { name: "Όνομα", phone: "Τηλέφωνο" },
             cta: "Κράτηση"
+        }
+    },
+    es: {
+        hero: {
+            subtitle: "Experiencia Gastronómica",
+            description: "Auténtica gastronomía con ingredientes locales frescos en una atmósfera cautivadora.",
+            book: "Reservar",
+            menu: "Menú"
+        },
+        about: {
+            badge: "Nuestra Historia",
+            title: "Sabores Que ",
+            titleAccent: "Cuentan Historias",
+            desc: "Desde 2012, GM Restaurant sirve cocina griega contemporánea con ingredientes de temporada de productores locales. Cocina creativa, ambiente cálido, noches inolvidables.",
+            stats: { years: 'Años', michelin: 'Rec. Michelin', seats: 'Plazas' }
+        },
+        menu: {
+            badge: "Menú",
+            title: "NUESTRO MENÚ",
+            categories: {
+                starters: "Entrantes",
+                mains: "Principales",
+                pasta: "Pasta",
+                desserts: "Postres"
+            },
+            items: {
+                octopus: "Pulpo a la Brasa",
+                tartar: "Tartar de Dorada",
+                lamb: "Cordero Kleftiko",
+                seafood: "Plato de Mariscos",
+                lobster: "Linguine de Langosta",
+                risotto: "Risotto de Setas",
+                fondant: "Fondant de Chocolate",
+                icecream: "Helado de Pasteli"
+            }
+        },
+        chef: {
+            badge: "Chef Principal",
+            desc: "Estudios en Le Cordon Bleu, experiencia en restaurantes europeos premiados. Alexandros crea platos que llevan los recuerdos de la abuela a un nivel gourmet."
+        },
+        gallery: { badge: "Galería", title: "MOMENTOS" },
+        reviews: { badge: "Reseñas", title: "OPINIONES" },
+        testimonials: [
+            { name: 'Elena M.', text: '¡La mejor experiencia gastronómica en Atenas!' },
+            { name: 'Marco R.', text: 'Sabores increíbles. Cada plato cuenta una historia.' },
+            { name: 'Nikos D.', text: 'Lugar perfecto para cenas de negocios.' }
+        ],
+        reservation: {
+            badge: "Reserva",
+            title: "RESERVAR MESA",
+            placeholders: { name: "Nombre", phone: "Teléfono" },
+            cta: "Reservar"
         }
     }
 };
@@ -229,11 +291,7 @@ const TestimonialsSection = ({ t }) => (
                 <h2 className="text-3xl md:text-4xl font-serif mt-4">{t.reviews.title}</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                {[
-                    { name: 'Ελένη Μ.', text: 'Η καλύτερη γαστρονομική εμπειρία στην Αθήνα!' },
-                    { name: 'Marco R.', text: 'Incredible flavors. Every dish tells a story.' },
-                    { name: 'Νίκος Δ.', text: 'Τέλειο μέρος για επαγγελματικά δείπνα.' }
-                ].map((testimonial, i) => (
+                {t.testimonials.map((testimonial, i) => (
                     <div key={i} className="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10">
                         <div className="flex gap-1 text-red-400 mb-4">{[...Array(5)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}</div>
                         <p className="text-gray-300 mb-6 italic font-serif text-sm">"{testimonial.text}"</p>

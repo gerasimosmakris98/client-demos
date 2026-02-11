@@ -3,7 +3,7 @@ import { MapPin, Clock, Phone, Mail } from 'lucide-react';
 
 const Location = ({ t }) => {
     return (
-        <section className="py-24 bg-[#2C1810] text-amber-50">
+        <section className="py-16 md:py-24 bg-[#2C1810] text-amber-50">
             <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                 <div className="space-y-12">
                     <div>

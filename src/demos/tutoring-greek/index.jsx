@@ -323,8 +323,8 @@ const TutoringDemo = () => {
             <FAQ t={t.faq} />
 
             {/* CTA Footer for Landing Page */}
-            <section className="py-20 bg-blue-600 text-white text-center">
-                <div className="max-w-4xl mx-auto px-6">
+            <section className="py-16 md:py-24 bg-blue-600 text-white text-center">
+                <div className="max-w-4xl mx-auto px-4 md:px-6">
                     <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.cta.title}</h2>
                     <p className="text-xl text-blue-100 mb-10">
                         {t.cta.subtitle}

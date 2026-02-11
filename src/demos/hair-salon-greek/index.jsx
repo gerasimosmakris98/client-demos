@@ -28,8 +28,135 @@ const salonTabs = [
     },
 ];
 
+const translations = {
+    en: {
+        hero: {
+            badge: "London • Paris • Athens",
+            title: "CRAFTING YOUR SIGNATURE LOOK",
+            desc: "Experience luxury hair care and styling tailored to your unique personality.",
+            cta: "Book Appointment"
+        },
+        services: {
+            badge: "Services",
+            title: "PREMIUM HAIR CARE",
+            items: [
+                { title: "Haircut & Style", price: "from €45", desc: "Precision cutting and professional styling." },
+                { title: "Color & Highlights", price: "from €80", desc: "Expert color techniques for vibrant results." },
+                { title: "Treatments", price: "from €30", desc: "Restore and nourish your hair." }
+            ]
+        },
+        testimonials: {
+            badge: "Reviews",
+            title: "WHAT OUR CLIENTS SAY",
+            list: [
+                { text: "The best haircut I've ever had. Truly professional service.", name: "Maria K." },
+                { text: "Love my new color! The stylists are amazing.", name: "Elena S." }
+            ]
+        },
+        booking: {
+            badge: "Booking",
+            title: "SECURE YOUR SPOT",
+            form: {
+                name: "Full Name",
+                email: "Email Address",
+                service: "Select Service",
+                date: "Select Date",
+                button: "Confirm Booking"
+            }
+        },
+        footer: {
+            address: "123 Style Avenue, Athens",
+            phone: "+30 210 123 4567",
+            hours: "Mon-Sat: 09:00 - 20:00"
+        }
+    },
+    el: {
+        hero: {
+            badge: "Λονδίνο • Παρίσι • Αθήνα",
+            title: "ΔΗΜΙΟΥΡΓΟΥΜΕ ΤΟ ΔΙΚΟ ΣΑΣ ΣΤΥΛ",
+            desc: "Απολαύστε πολυτελή φροντίδα μαλλιών και styling προσαρμοσμένα στη δική σας προσωπικότητα.",
+            cta: "Κλείστε Ραντεβού"
+        },
+        services: {
+            badge: "Υπηρεσίες",
+            title: "PREMIUM ΦΡΟΝΤΙΔΑ",
+            items: [
+                { title: "Κούρεμα & Styling", price: "από €45", desc: "Κούρεμα ακριβείας και επαγγελματικό styling." },
+                { title: "Βαφή & Ανταύγειες", price: "από €80", desc: "Εξειδικευμένες τεχνικές για ζωντανό χρώμα." },
+                { title: "Θραπείες", price: "από €30", desc: "Αποκαταστήστε και θρέψτε τα μαλλιά σας." }
+            ]
+        },
+        testimonials: {
+            badge: "Κριτικές",
+            title: "ΤΙ ΛΕΝΕ ΟΙ ΠΕΛΑΤΕΣ ΜΑΣ",
+            list: [
+                { text: "Το καλύτερο κούρεμα που είχα ποτέ. Πραγματικά επαγγελματική εξυπηρέτηση.", name: "Μαρία Κ." },
+                { text: "Λατρεύω το νέο μου χρώμα! Οι στυλίστες είναι υπέροχοι.", name: "Έλενα Σ." }
+            ]
+        },
+        booking: {
+            badge: "Κράτηση",
+            title: "ΚΛΕΙΣΤΕ ΤΗ ΘΕΣΗ ΣΑΣ",
+            form: {
+                name: "Ονοματεπώνυμο",
+                email: "Email Address",
+                service: "Επιλογή Υπηρεσίας",
+                date: "Επιλογή Ημερομηνίας",
+                button: "Επιβεβαίωση Κράτησης"
+            }
+        },
+        footer: {
+            address: "Λεωφόρος Στυλ 123, Αθήνα",
+            phone: "+30 210 123 4567",
+            hours: "Δευ-Σαβ: 09:00 - 20:00"
+        }
+    },
+    es: {
+        hero: {
+            badge: "Londres • París • Atenas",
+            title: "CREANDO TU LOOK PERSONAL",
+            desc: "Experimenta el cuidado del cabello de lujo y el peinado adaptado a tu personalidad única.",
+            cta: "Reservar Cita"
+        },
+        services: {
+            badge: "Servicios",
+            title: "CUIDADO PREMIUM",
+            items: [
+                { title: "Corte y Peinado", price: "desde €45", desc: "Corte de precisión y peinado profesional." },
+                { title: "Color y Reflejos", price: "desde €80", desc: "Técnicas expertas para resultados vibrantes." },
+                { title: "Tratamientos", price: "desde €30", desc: "Restaura y nutre tu cabello." }
+            ]
+        },
+        testimonials: {
+            badge: "Reseñas",
+            title: "LO QUE DICEN NUESTROS CLIENTES",
+            list: [
+                { text: "El mejor corte que he tenido. Servicio verdaderamente profesional.", name: "Maria K." },
+                { text: "¡Me encanta mi nuevo color! Los estilistas son increíbles.", name: "Elena S." }
+            ]
+        },
+        booking: {
+            badge: "Reserva",
+            title: "ASEGURA TU LUGAR",
+            form: {
+                name: "Nombre Completo",
+                email: "Correo Electrónico",
+                service: "Seleccionar Servicio",
+                date: "Seleccionar Fecha",
+                button: "Confirmar Reserva"
+            }
+        },
+        footer: {
+            address: "Avenida Estilo 123, Atenas",
+            phone: "+30 210 123 4567",
+            hours: "Lun-Sáb: 09:00 - 20:00"
+        }
+    }
+}
+
 const SalonDemo = () => {
-    const { viewMode } = useOutletContext() || {};
+    const { viewMode, language } = useOutletContext() || { language: 'en' };
+    const t = translations[language] || translations.en;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,12 +165,12 @@ const SalonDemo = () => {
     // Admin view removed - consolidated to Universal Admin demo
 
     return (
-        <div style={{ fontFamily: "'Inter', sans-serif" }}>
-            <SalonHero />
-            <SalonServices />
-            <SalonTestimonials />
-            <SalonBooking />
-            <SalonFooter />
+        <div style={{ fontFamily: "'Inter', sans-serif" }} className="bg-white">
+            <SalonHero t={t} />
+            <SalonServices t={t} />
+            <SalonTestimonials t={t} />
+            <SalonBooking t={t} />
+            <SalonFooter t={t} />
             <AIChat brandName="GM Salon" />
         </div>
     );

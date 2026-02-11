@@ -24,49 +24,25 @@ const practices = [
     }
 ];
 
-const PracticeAreas = () => {
+const PracticeAreas = ({ t }) => {
     return (
-        <section style={{ padding: '6rem 2rem', background: '#0f172a' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 style={{
-                        fontSize: '2.5rem',
-                        fontFamily: "'Playfair Display', serif",
-                        color: '#f8fafc',
-                        marginBottom: '1rem'
-                    }}>
-                        Τομείς Εξειδίκευσης
-                    </h2>
-                    <div style={{ width: '60px', height: '3px', background: '#c5a059', margin: '0 auto' }} />
+        <section className="py-16 md:py-24 bg-slate-900">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <div className="text-center mb-10 md:mb-16">
+                    <span className="text-yellow-500 font-bold tracking-widest uppercase text-sm">{t.practiceAreas.badge}</span>
+                    <h2 className="text-4xl md:text-5xl font-playfair font-bold text-slate-50 mt-2 italic">{t.practiceAreas.title}</h2>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-                    {practices.map((item, index) => (
-                        <div key={index} className="glass-panel" style={{
-                            background: 'rgba(255, 255, 255, 0.03)',
-                            padding: '2.5rem',
-                            border: '1px solid rgba(255, 255, 255, 0.05)',
-                            transition: 'all 0.3s',
-                            cursor: 'pointer'
-                        }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                                e.currentTarget.style.borderColor = '#c5a059';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
-                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
-                            }}
-                        >
-                            <div style={{ color: '#c5a059', marginBottom: '1.5rem' }}>
-                                {item.icon}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {t.practiceAreas.items.map((item, index) => (
+                        <div key={index} className="glass-panel p-8 bg-white/5 backdrop-blur-md border border-white/10 hover:border-yellow-600/50 transition-all group rounded-2xl">
+                            <div className="text-yellow-500 mb-6 group-hover:scale-110 transition-transform">
+                                {index === 0 && <Briefcase size={40} strokeWidth={1.5} />}
+                                {index === 1 && <ShieldCheck size={40} strokeWidth={1.5} />}
+                                {index === 2 && <Home size={40} strokeWidth={1.5} />}
                             </div>
-                            <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#f8fafc', fontWeight: 700 }}>
-                                {item.title}
-                            </h3>
-                            <p style={{ color: '#94a3b8', lineHeight: 1.6 }}>
+                            <h3 className="text-xl font-bold mb-4 text-white">{item.title}</h3>
+                            <p className="text-slate-400 leading-relaxed text-sm md:text-base italic">
                                 {item.desc}
                             </p>
                         </div>

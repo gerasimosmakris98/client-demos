@@ -28,7 +28,7 @@ const CafeHero = ({ t }) => {
             <Coffee size={32} strokeWidth={1.5} className="md:w-10 md:h-10" />
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-playfair font-black text-white mb-4 tracking-tight drop-shadow-lg">
             GM <span className="text-amber-500">CAFE</span>
           </h1>
 

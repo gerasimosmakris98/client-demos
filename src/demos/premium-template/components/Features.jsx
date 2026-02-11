@@ -1,85 +1,51 @@
 import React from 'react';
-import { Zap, Shield, BarChart3, Globe, Layers, Command } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const features = [
-    {
-        icon: <Zap size={24} />,
-        title: 'Lightning Fast',
-        description: 'Optimized for speed with edge-caching and minimal latency.'
-    },
-    {
-        icon: <Shield size={24} />,
-        title: 'Bank-Grade Security',
-        description: 'Enterprise-ready encryption and compliance out of the box.'
-    },
-    {
-        icon: <BarChart3 size={24} />,
-        title: 'Real-time Analytics',
-        description: 'Deep insights into your user behavior and conversion metrics.'
-    },
-    {
-        icon: <Globe size={24} />,
-        title: 'Global Scale',
-        description: 'Deploy instantly to 35+ regions worldwide with one click.'
-    },
-    {
-        icon: <Layers size={24} />,
-        title: 'Seamless Integration',
-        description: 'Works with your existing stack via powerful APIs and webhooks.'
-    },
-    {
-        icon: <Command size={24} />,
-        title: 'Command Palace',
-        description: 'Keyboard-first navigation for power users and rapid workflows.'
-    }
-];
-
-const Features = () => {
+const Features = ({ t }) => {
     return (
-        <section style={{ padding: 'var(--space-xl) var(--space-md)', background: 'var(--bg-secondary)' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: 'var(--space-lg)' }}>
-                    <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '1rem' }}>
-                        Built for <span style={{ color: 'var(--accent-primary)' }}>Modern Teams</span>
-                    </h2>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto' }}>
-                        Everything you need to launch and scale your next big idea.
-                    </p>
+        <section className="py-20 md:py-32 bg-[#080c16] text-white px-4 md:px-6">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16 md:mb-24">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6"
+                    >
+                        {t.features.title.split('Modern')[0]}
+                        <span className="text-blue-500">
+                            {t.features.title.includes('Modern') ? 'Modern Teams' : t.features.title.split(' ').slice(-2).join(' ')}
+                        </span>
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto"
+                    >
+                        {t.features.desc}
+                    </motion.p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                    {features.map((feature, index) => (
-                        <div key={index} className="glass-panel" style={{
-                            padding: '2rem',
-                            transition: 'transform 0.3s, background 0.3s',
-                            cursor: 'default',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '1rem'
-                        }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-                            }}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {t.features.items.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="p-8 rounded-3xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:border-blue-500/30 transition-all group"
                         >
-                            <div style={{
-                                color: 'var(--accent-primary)',
-                                background: 'rgba(59, 130, 246, 0.1)',
-                                width: 'fit-content',
-                                padding: '0.75rem',
-                                borderRadius: '12px'
-                            }}>
-                                {feature.icon}
+                            <div className="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                <feature.icon size={28} />
                             </div>
-                            <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>{feature.title}</h3>
-                            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                                {feature.description}
+                            <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                            <p className="text-slate-400 leading-relaxed">
+                                {feature.desc}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

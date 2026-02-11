@@ -3,7 +3,7 @@ import { Coffee, Clock, Award } from 'lucide-react';
 
 const About = ({ t }) => {
     return (
-        <section className="py-24 bg-[#FFF8F0] relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-[#FFF8F0] relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <div className="relative order-2 lg:order-1">
                     <div className="aspect-square rounded-[2rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700">

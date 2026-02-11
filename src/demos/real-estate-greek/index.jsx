@@ -24,26 +24,212 @@ const reTabs = [
     },
 ];
 
+const translations = {
+    en: {
+        hero: {
+            badge: "Premium Real Estate",
+            title: "GM ESTATES",
+            desc: "Find your dream home. Luxury properties in the best areas of Athens.",
+            filter: ["All", "Villa", "Apartment", "Penthouse", "Commercial"],
+            search: { area: "Area...", type: "Type", cta: "Search" }
+        },
+        about: {
+            badge: "About Us",
+            title: "Trusted",
+            subtitle: "Since 2005",
+            desc: "GM Estates is one of the leading real estate companies in Attica. We specialize in luxury properties and provide full legal support.",
+            stats: { properties: "Properties", years: "Years", success: "Success" }
+        },
+        listings: {
+            badge: "Portfolio",
+            title: "FEATURED LISTINGS",
+            items: [
+                { title: 'Villa Kifisia', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' },
+                { title: 'Penthouse Glyfada', price: '€1,500/mo', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'For Rent' },
+                { title: 'Studio Kolonaki', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' }
+            ]
+        },
+        services: {
+            badge: "Services",
+            title: "WHAT WE OFFER",
+            items: [
+                { icon: Key, title: 'Sales', desc: 'Full property sales management.' },
+                { icon: Building2, title: 'Rentals', desc: 'Residential & commercial leasing.' },
+                { icon: TrendingUp, title: 'Investment', desc: 'Investment opportunities & portfolio management.' }
+            ]
+        },
+        team: {
+            badge: "Team",
+            title: "OUR AGENTS",
+            list: [
+                { name: "Dimitris P.", role: "Senior Agent" },
+                { name: "Katerina M.", role: "Luxury Specialist" },
+                { name: "Alexandros K.", role: "Investment Advisor" }
+            ]
+        },
+        reviews: {
+            badge: "Reviews",
+            title: "CLIENT STORIES",
+            items: [
+                { name: "Nikos A.", text: "Found the perfect house in 2 weeks!" },
+                { name: "Maria E.", text: "Extremely professional service." },
+                { name: "Alex B.", text: "Best real estate experience in Athens, hands down." }
+            ]
+        },
+        contact: {
+            badge: "Contact",
+            title: "LET'S TALK",
+            name: "Full Name",
+            contact: "Phone / Email",
+            message: "Your Message",
+            cta: "Send Message"
+        },
+        footer: { rights: "© 2026 GM Estates. All rights reserved." }
+    },
+    el: {
+        hero: {
+            badge: "Premium Real Estate",
+            title: "GM ESTATES",
+            desc: "Βρείτε το σπίτι των ονείρων σας. Πολυτελή ακίνητα στις καλύτερες περιοχές της Αθήνας.",
+            filter: ["Όλα", "Βίλα", "Διαμέρισμα", "Ρετιρέ", "Επαγγελματικό"],
+            search: { area: "Περιοχή...", type: "Τύπος", cta: "Αναζήτηση" }
+        },
+        about: {
+            badge: "Σχετικά",
+            title: "Εμπιστοσύνη",
+            subtitle: "Από το 2005",
+            desc: "Η GM Estates είναι μία από τις κορυφαίες μεσιτικές εταιρείες στην Αττική. Εξειδικευόμαστε σε πολυτελή ακίνητα και παρέχουμε πλήρη νομική υποστήριξη.",
+            stats: { properties: "Ακίνητα", years: "Χρόνια", success: "Επιτυχία" }
+        },
+        listings: {
+            badge: "Χαρτοφυλάκιο",
+            title: "ΠΡΟΤΕΙΝΟΜΕΝΑ ΑΚΙΝΗΤΑ",
+            items: [
+                { title: 'Villa Κηφισιά', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'Πώληση' },
+                { title: 'Penthouse Γλυφάδα', price: '€1,500/μήνα', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'Ενοικίαση' },
+                { title: 'Studio Κολωνάκι', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'Πώληση' }
+            ]
+        },
+        services: {
+            badge: "Υπηρεσίες",
+            title: "ΤΙ ΠΡΟΣΦΕΡΟΥΜΕ",
+            items: [
+                { icon: Key, title: 'Πωλήσεις', desc: 'Πλήρης διαχείριση πώλησης ακινήτου.' },
+                { icon: Building2, title: 'Ενοικιάσεις', desc: 'Ενοικίαση κατοικιών & επαγγελματικών χώρων.' },
+                { icon: TrendingUp, title: 'Επενδύσεις', desc: 'Επενδυτικές ευκαιρίες & portfolio management.' }
+            ]
+        },
+        team: {
+            badge: "Ομάδα",
+            title: "ΟΙ ΣΥΝΕΡΓΑΤΕΣ ΜΑΣ",
+            list: [
+                { name: "Δημήτρης Π.", role: "Senior Agent" },
+                { name: "Κατερίνα Μ.", role: "Luxury Specialist" },
+                { name: "Αλέξανδρος Κ.", role: "Investment Advisor" }
+            ]
+        },
+        reviews: {
+            badge: "Κριτικές",
+            title: "ΙΣΤΟΡΙΕΣ ΠΕΛΑΤΩΝ",
+            items: [
+                { name: "Νίκος Α.", text: "Βρήκαν το ιδανικό σπίτι μέσα σε 2 εβδομάδες!" },
+                { name: "Μαρία Ε.", text: "Εξαιρετικά επαγγελματική εξυπηρέτηση." },
+                { name: "Alex B.", text: "Best real estate experience in Athens, hands down." }
+            ]
+        },
+        contact: {
+            badge: "Επικοινωνία",
+            title: "ΑΣ ΜΙΛΗΣΟΥΜΕ",
+            name: "Ονοματεπώνυμο",
+            contact: "Τηλέφωνο / Email",
+            message: "Το Μήνυμά σας",
+            cta: "Αποστολή"
+        },
+        footer: { rights: "© 2026 GM Estates. Όλα τα δικαιώματα διατηρούνται." }
+    },
+    es: {
+        hero: {
+            badge: "Inmobiliaria Premium",
+            title: "GM ESTATES",
+            desc: "Encuentre la casa de sus sueños. Propiedades de lujo en las mejores zonas de Atenas.",
+            filter: ["Todo", "Villa", "Apartamento", "Penthouse", "Comercial"],
+            search: { area: "Zona...", type: "Tipo", cta: "Buscar" }
+        },
+        about: {
+            badge: "Nosotros",
+            title: "Confianza",
+            subtitle: "Desde 2005",
+            desc: "GM Estates es una de las empresas inmobiliarias líderes en Ática. Nos especializamos en propiedades de lujo y brindamos apoyo legal completo.",
+            stats: { properties: "Propiedades", years: "Años", success: "Éxito" }
+        },
+        listings: {
+            badge: "Portafolio",
+            title: "PROPIEDADES DESTACADAS",
+            items: [
+                { title: 'Villa Kifisia', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'Venta' },
+                { title: 'Penthouse Glyfada', price: '€1,500/mes', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'Alquiler' },
+                { title: 'Studio Kolonaki', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'Venta' }
+            ]
+        },
+        services: {
+            badge: "Servicios",
+            title: "LO QUE OFRECEMOS",
+            items: [
+                { icon: Key, title: 'Ventas', desc: 'Gestión integral de venta de inmuebles.' },
+                { icon: Building2, title: 'Alquileres', desc: 'Arrendamiento residencial y comercial.' },
+                { icon: TrendingUp, title: 'Inversión', desc: 'Oportunidades de inversión y gestión de carteras.' }
+            ]
+        },
+        team: {
+            badge: "Equipo",
+            title: "NUESTROS AGENTES",
+            list: [
+                { name: "Dimitris P.", role: "Agente Senior" },
+                { name: "Katerina M.", role: "Especialista Lujo" },
+                { name: "Alexandros K.", role: "Asesor Inversión" }
+            ]
+        },
+        reviews: {
+            badge: "Opiniones",
+            title: "HISTORIAS DE CLIENTES",
+            items: [
+                { name: "Nikos A.", text: "¡Encontraron la casa perfecta en 2 semanas!" },
+                { name: "Maria E.", text: "Servicio extremadamente profesional." },
+                { name: "Alex B.", text: "La mejor experiencia inmobiliaria en Atenas, sin duda." }
+            ]
+        },
+        contact: {
+            badge: "Contacto",
+            title: "HABLEMOS",
+            name: "Nombre Completo",
+            contact: "Teléfono / Email",
+            message: "Su Mensaje",
+            cta: "Enviar Mensaje"
+        },
+        footer: { rights: "© 2026 GM Estates. Todos los derechos reservados." }
+    }
+}
+
 /* ───────── HERO with search pills ───────── */
-const Hero = () => (
+const Hero = ({ t }) => (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
             <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 border border-amber-500/30 rounded-full bg-amber-500/10 text-amber-400 font-mono text-[10px] md:text-xs tracking-widest uppercase mb-6 md:mb-8">
-                    <Home size={14} /> Premium Real Estate
+                    <Home size={14} /> {t.hero.badge}
                 </div>
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6">
-                    GM <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">ESTATES</span>
+                    {t.hero.title}
                 </h1>
                 <p className="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto mb-6 md:mb-8 px-2">
-                    Βρείτε το σπίτι των ονείρων σας. Πολυτελή ακίνητα στις καλύτερες περιοχές της Αθήνας.
+                    {t.hero.desc}
                 </p>
 
                 {/* Property filter pills */}
                 <div className="flex flex-wrap gap-2 justify-center mb-6 md:mb-10 px-4">
-                    {['All', 'Villa', 'Apartment', 'Penthouse', 'Commercial'].map((p, i) => (
+                    {t.hero.filter.map((p, i) => (
                         <button key={i} className={`px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all ${i === 0 ? 'bg-amber-500 text-black' : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'}`}>
                             {p}
                         </button>
@@ -54,17 +240,17 @@ const Hero = () => (
                 <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl md:rounded-full p-3 md:p-2 flex flex-col md:flex-row gap-2 md:gap-0">
                     <div className="flex items-center gap-2 flex-1 px-3 md:px-4 py-2">
                         <MapPin size={16} className="text-amber-400 flex-shrink-0" />
-                        <input className="bg-transparent outline-none flex-1 text-sm placeholder-gray-500 min-w-0" placeholder="Περιοχή..." />
+                        <input className="bg-transparent outline-none flex-1 text-sm placeholder-gray-500 min-w-0" placeholder={t.hero.search.area} />
                     </div>
                     <div className="hidden md:block w-px bg-white/10" />
                     <div className="flex items-center gap-2 flex-1 px-3 md:px-4 py-2">
                         <Building2 size={16} className="text-amber-400 flex-shrink-0" />
                         <select className="bg-transparent outline-none flex-1 text-sm text-gray-400 appearance-none">
-                            <option>Type</option><option>Villa</option><option>Apartment</option>
+                            <option>{t.hero.search.type}</option><option>Villa</option><option>Apartment</option>
                         </select>
                     </div>
                     <button className="bg-amber-500 text-black px-6 py-2.5 md:py-3 rounded-xl md:rounded-full font-bold flex items-center justify-center gap-2 text-sm hover:bg-amber-400 transition-colors">
-                        <Search size={16} /> Search
+                        <Search size={16} /> {t.hero.search.cta}
                     </button>
                 </div>
             </motion.div>
@@ -72,15 +258,15 @@ const Hero = () => (
     </section>
 );
 
-const AboutSection = () => (
+const AboutSection = ({ t }) => (
     <section className="py-16 md:py-24 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
-                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">About Us</span>
-                <h2 className="text-3xl md:text-4xl font-black mt-2 mb-4 md:mb-6">Trusted <span className="text-amber-400">Since 2005</span></h2>
-                <p className="text-gray-400 leading-relaxed mb-5 md:mb-8 text-sm md:text-base">Η GM Estates είναι μία από τις κορυφαίες μεσιτικές εταιρείες στην Αττική. Εξειδικευόμαστε σε πολυτελή ακίνητα και παρέχουμε πλήρη νομική υποστήριξη.</p>
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.about.badge}</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2 mb-4 md:mb-6">{t.about.title} <span className="text-amber-400">{t.about.subtitle}</span></h2>
+                <p className="text-gray-400 leading-relaxed mb-5 md:mb-8 text-sm md:text-base">{t.about.desc}</p>
                 <div className="grid grid-cols-3 gap-3 md:gap-6">
-                    {[{ num: '500+', label: 'Properties' }, { num: '18', label: 'Years' }, { num: '95%', label: 'Success' }].map((s, i) => (
+                    {[{ num: '500+', label: t.about.stats.properties }, { num: '18', label: t.about.stats.years }, { num: '95%', label: t.about.stats.success }].map((s, i) => (
                         <div key={i} className="p-3 md:p-4 bg-white/5 rounded-xl border border-white/10 text-center">
                             <div className="text-lg md:text-xl font-black text-amber-400">{s.num}</div>
                             <div className="text-gray-500 text-[10px] md:text-xs">{s.label}</div>
@@ -95,20 +281,15 @@ const AboutSection = () => (
     </section>
 );
 
-/* ───────── LISTINGS — staggered layout on desktop ───────── */
-const Listings = () => (
+const Listings = ({ t }) => (
     <section className="py-16 md:py-24 bg-neutral-950 text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="text-center mb-10 md:mb-16">
-                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Portfolio</span>
-                <h2 className="text-3xl md:text-4xl font-black mt-2">FEATURED LISTINGS</h2>
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.listings.badge}</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">{t.listings.title}</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                {[
-                    { title: 'Villa Κηφισιά', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' },
-                    { title: 'Penthouse Γλυφάδα', price: '€1,500/μήνα', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'For Rent' },
-                    { title: 'Studio Κολωνάκι', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' },
-                ].map((p, i) => (
+                {t.listings.items.map((p, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                         className={`group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all ${i === 1 ? 'md:translate-y-6' : ''}`}>
                         <div className="h-48 md:h-56 relative overflow-hidden">
@@ -131,19 +312,15 @@ const Listings = () => (
     </section>
 );
 
-const OurServices = () => (
+const OurServices = ({ t }) => (
     <section className="py-16 md:py-24 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="text-center mb-10 md:mb-16">
-                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Services</span>
-                <h2 className="text-3xl md:text-4xl font-black mt-2">WHAT WE OFFER</h2>
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.services.badge}</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">{t.services.title}</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-                {[
-                    { icon: Key, title: 'Sales', desc: 'Πλήρης διαχείριση πώλησης ακινήτου.' },
-                    { icon: Building2, title: 'Rentals', desc: 'Ενοικίαση κατοικιών & επαγγελματικών χώρων.' },
-                    { icon: TrendingUp, title: 'Investment', desc: 'Επενδυτικές ευκαιρίες & portfolio management.' }
-                ].map((s, i) => (
+                {t.services.items.map((s, i) => (
                     <div key={i} className="group p-5 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/50 transition-all hover:-translate-y-1">
                         <div className="mb-4 md:mb-6 p-3 md:p-4 bg-amber-500/10 w-fit rounded-xl md:rounded-2xl text-amber-400 group-hover:bg-amber-500 group-hover:text-black transition-colors">
                             <s.icon size={24} />
@@ -157,19 +334,15 @@ const OurServices = () => (
     </section>
 );
 
-const Agents = () => (
+const Agents = ({ t }) => (
     <section className="py-16 md:py-24 bg-neutral-950 text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="text-center mb-10 md:mb-16">
-                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Team</span>
-                <h2 className="text-3xl md:text-4xl font-black mt-2">OUR AGENTS</h2>
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.team.badge}</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">{t.team.title}</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-                {[
-                    { name: 'Δημήτρης Π.', role: 'Senior Agent' },
-                    { name: 'Κατερίνα Μ.', role: 'Luxury Specialist' },
-                    { name: 'Αλέξανδρος Κ.', role: 'Investment Advisor' }
-                ].map((a, i) => (
+                {t.team.list.map((a, i) => (
                     <div key={i} className="text-center p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10 hover:border-amber-500/30 transition-colors">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-500/20 mx-auto mb-4 flex items-center justify-center">
                             <Users size={28} className="text-amber-400 md:w-8 md:h-8" />
@@ -183,23 +356,19 @@ const Agents = () => (
     </section>
 );
 
-const Testimonials = () => (
+const Testimonials = ({ t }) => (
     <section className="py-16 md:py-24 bg-black text-white">
         <div className="max-w-5xl mx-auto px-4 md:px-6">
             <div className="text-center mb-10 md:mb-16">
-                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Reviews</span>
-                <h2 className="text-3xl md:text-4xl font-black mt-2">CLIENT STORIES</h2>
+                <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.reviews.badge}</span>
+                <h2 className="text-3xl md:text-4xl font-black mt-2">{t.reviews.title}</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-                {[
-                    { name: 'Νίκος Α.', text: 'Βρήκαν το ιδανικό σπίτι μέσα σε 2 εβδομάδες!' },
-                    { name: 'Μαρία Ε.', text: 'Εξαιρετικά επαγγελματική εξυπηρέτηση.' },
-                    { name: 'Alex B.', text: 'Best real estate experience in Athens, hands down.' }
-                ].map((t, i) => (
+                {t.reviews.items.map((item, i) => (
                     <div key={i} className="p-5 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10">
                         <div className="flex gap-1 text-amber-400 mb-3 md:mb-4">{[...Array(5)].map((_, j) => <Star key={j} size={12} fill="currentColor" />)}</div>
-                        <p className="text-gray-300 mb-4 md:mb-6 italic text-sm md:text-base">"{t.text}"</p>
-                        <p className="font-bold text-sm">{t.name}</p>
+                        <p className="text-gray-300 mb-4 md:mb-6 italic text-sm md:text-base">"{item.text}"</p>
+                        <p className="font-bold text-sm">{item.name}</p>
                     </div>
                 ))}
             </div>
@@ -207,37 +376,39 @@ const Testimonials = () => (
     </section>
 );
 
-const Contact = () => (
+const Contact = ({ t }) => (
     <section className="py-16 md:py-24 bg-neutral-950 text-white">
         <div className="max-w-3xl mx-auto px-4 md:px-6 text-center">
-            <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">Contact</span>
-            <h2 className="text-3xl md:text-4xl font-black mt-2 mb-8 md:mb-12">LET'S TALK</h2>
+            <span className="text-amber-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.contact.badge}</span>
+            <h2 className="text-3xl md:text-4xl font-black mt-2 mb-8 md:mb-12">{t.contact.title}</h2>
             <div className="space-y-3 md:space-y-4 text-left">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                    <input className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none text-sm" placeholder="Full Name" />
-                    <input className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none text-sm" placeholder="Phone / Email" />
+                    <input className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none text-sm" placeholder={t.contact.name} />
+                    <input className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none text-sm" placeholder={t.contact.contact} />
                 </div>
-                <textarea className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none h-28 md:h-32 text-sm" placeholder="Your Message" />
-                <button className="w-full bg-amber-500 text-black py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors text-sm">Send Message</button>
+                <textarea className="w-full p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 focus:border-amber-500 outline-none h-28 md:h-32 text-sm" placeholder={t.contact.message} />
+                <button className="w-full bg-amber-500 text-black py-3.5 md:py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors text-sm">{t.contact.cta}</button>
             </div>
         </div>
     </section>
 );
 
-const FooterSection = () => (
+const FooterSection = ({ t }) => (
     <footer className="bg-black py-10 md:py-12 border-t border-amber-500/20 text-center px-4">
         <h3 className="text-3xl md:text-4xl font-black text-neutral-800 mb-3 md:mb-4">GM ESTATES</h3>
-        <p className="text-gray-700 text-[10px] md:text-xs">© 2026 GM Estates. All rights reserved.</p>
+        <p className="text-gray-700 text-[10px] md:text-xs">{t.footer.rights}</p>
     </footer>
 );
 
 const RealEstateDemo = () => {
-    const { viewMode } = useOutletContext() || {};
+    const { viewMode, language } = useOutletContext() || { language: 'en' };
+    const t = translations[language] || translations.en;
+
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
         <div className="bg-black min-h-screen text-white font-sans">
-            <Hero /><AboutSection /><Listings /><OurServices /><Agents /><Testimonials /><Contact /><FooterSection />
+            <Hero t={t} /><AboutSection t={t} /><Listings t={t} /><OurServices t={t} /><Agents t={t} /><Testimonials t={t} /><Contact t={t} /><FooterSection t={t} />
             <AIChat brandName="GM Estates" />
         </div>
     );

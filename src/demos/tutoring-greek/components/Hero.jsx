@@ -20,13 +20,13 @@ const TutoringHero = ({ t }) => {
                 className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full border border-white/20 blur-sm opacity-50"
             />
 
-            <div className="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative z-10 container mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
                 {/* Text Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-white pt-20 lg:pt-0"
+                    className="text-white pt-24 lg:pt-0"
                 >
                     <motion.div
                         initial={{ scale: 0 }}

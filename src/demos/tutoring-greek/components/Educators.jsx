@@ -3,11 +3,11 @@ import { Users, CheckCircle, Briefcase, Zap } from 'lucide-react';
 
 const Educators = ({ t }) => {
     return (
-        <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
             {/* Abstract Background */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-900/20 to-transparent" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 font-bold text-sm uppercase mb-6 border border-blue-500/20">

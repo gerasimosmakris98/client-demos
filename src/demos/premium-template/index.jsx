@@ -6,92 +6,120 @@ import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 import { Users, BarChart3, CreditCard, Code2 } from 'lucide-react';
-
-const configs = {
-    saas: {
-        brandName: 'GM Premium SaaS', brandLogo: '🚀', accentColor: 'blue',
-        roles: [{ id: 'admin', label: 'Admin' }, { id: 'dev', label: 'Developer' }],
-        stats: [{ label: 'MRR', value: '$45.2k', trend: 8 }, { label: 'Users', value: '24.5k', trend: 12 }, { label: 'Churn', value: '1.2%', trend: -0.4 }, { label: 'Uptime', value: '99.9%', trend: 0 }],
-        navItems: [
-            { id: 'overview', label: 'Overview', icon: BarChart3 },
-            { id: 'users', label: 'User Base', icon: Users },
-            { id: 'git', label: 'Source Control', icon: Code2 },
-            { id: 'billing', label: 'Subscription', icon: CreditCard },
-        ]
-    },
-    ecommerce: {
-        brandName: 'GM Store', brandLogo: '🛍️', accentColor: 'emerald',
-        roles: [{ id: 'store_manager', label: 'Manager' }, { id: 'support', label: 'Support' }],
-        stats: [{ label: 'Sales', value: '$12.8k', trend: 15 }, { label: 'Orders', value: '142', trend: 5 }, { label: 'AOV', value: '$85', trend: 2 }, { label: 'Returns', value: '2.4%', trend: -1 }],
-        navItems: [
-            { id: 'overview', label: 'Storefront', icon: BarChart3 },
-            { id: 'products', label: 'Products', icon: Code2 },
-            { id: 'orders', label: 'Orders', icon: CreditCard },
-            { id: 'customers', label: 'Customers', icon: Users },
-        ]
-    },
-    agency: {
-        brandName: 'GM Creative', brandLogo: '🎨', accentColor: 'purple',
-        roles: [{ id: 'director', label: 'Director' }, { id: 'designer', label: 'Designer' }],
-        stats: [{ label: 'Active Projects', value: '12', trend: 0 }, { label: 'Billable Hours', value: '340', trend: 5 }, { label: 'Revenue', value: '$28.5k', trend: 10 }, { label: 'Leads', value: '8', trend: 2 }],
-        navItems: [
-            { id: 'overview', label: 'Dashboard', icon: BarChart3 },
-            { id: 'projects', label: 'Projects', icon: Code2 },
-            { id: 'invoices', label: 'Invoices', icon: CreditCard },
-            { id: 'git', label: 'Git Repos', icon: Code2 },
-        ]
-    },
-    booking: {
-        brandName: 'GM Booking', brandLogo: '📅', accentColor: 'rose',
-        roles: [{ id: 'manager', label: 'Manager' }, { id: 'staff', label: 'Reception' }],
-        stats: [{ label: 'Bookings', value: '48', trend: 12 }, { label: 'Occupancy', value: '85%', trend: 5 }, { label: 'Revenue', value: '$4.2k', trend: 8 }, { label: 'Check-ins', value: '12', trend: 0 }],
-        navItems: [
-            { id: 'overview', label: 'Calendar', icon: BarChart3 },
-            { id: 'reservations', label: 'Reservations', icon: Users },
-            { id: 'rooms', label: 'Rooms', icon: Code2 },
-            { id: 'payments', label: 'Payments', icon: CreditCard },
-        ]
-    }
-};
+import { translations } from './translations';
+import AIChat from '../../components/common/AIChat';
 
 const PremiumTemplate = () => {
-    // Default to admin view for this demo as requested
-    const [mode, setMode] = React.useState('saas');
     const { viewMode, language } = useOutletContext() || { viewMode: 'admin', language: 'en' };
+    const t = translations[language] || translations.en;
+    const [mode, setMode] = React.useState('saas');
 
-    // If viewMode is explicitly 'landing', show the landing page (which we keep for verify/rollback if needed)
-    // But for the purpose of "Universal Admin Demo", we highlight the Admin mainly.
+    const configs = {
+        saas: {
+            brandName: t.industries.saas.name, brandLogo: '🚀', accentColor: 'blue',
+            roles: [{ id: 'admin', label: 'Admin' }, { id: 'dev', label: 'Developer' }],
+            stats: [
+                { label: t.industries.saas.stats[0], value: '$45.2k', trend: 8 },
+                { label: t.industries.saas.stats[1], value: '24.5k', trend: 12 },
+                { label: t.industries.saas.stats[2], value: '1.2%', trend: -0.4 },
+                { label: t.industries.saas.stats[3], value: '99.9%', trend: 0 }
+            ],
+            navItems: [
+                { id: 'overview', label: t.industries.saas.nav[0], icon: BarChart3 },
+                { id: 'users', label: t.industries.saas.nav[1], icon: Users },
+                { id: 'git', label: t.industries.saas.nav[2], icon: Code2 },
+                { id: 'billing', label: t.industries.saas.nav[3], icon: CreditCard },
+            ]
+        },
+        ecommerce: {
+            brandName: t.industries.ecommerce.name, brandLogo: '🛍️', accentColor: 'emerald',
+            roles: [{ id: 'store_manager', label: 'Manager' }, { id: 'support', label: 'Support' }],
+            stats: [
+                { label: t.industries.ecommerce.stats[0], value: '$12.8k', trend: 15 },
+                { label: t.industries.ecommerce.stats[1], value: '142', trend: 5 },
+                { label: t.industries.ecommerce.stats[2], value: '$85', trend: 2 },
+                { label: t.industries.ecommerce.stats[3], value: '2.4%', trend: -1 }
+            ],
+            navItems: [
+                { id: 'overview', label: t.industries.ecommerce.nav[0], icon: BarChart3 },
+                { id: 'products', label: t.industries.ecommerce.nav[1], icon: Code2 },
+                { id: 'orders', label: t.industries.ecommerce.nav[2], icon: CreditCard },
+                { id: 'customers', label: t.industries.ecommerce.nav[3], icon: Users },
+            ]
+        },
+        agency: {
+            brandName: t.industries.agency.name, brandLogo: '🎨', accentColor: 'purple',
+            roles: [{ id: 'director', label: 'Director' }, { id: 'designer', label: 'Designer' }],
+            stats: [
+                { label: t.industries.agency.stats[0], value: '12', trend: 0 },
+                { label: t.industries.agency.stats[1], value: '340', trend: 5 },
+                { label: t.industries.agency.stats[2], value: '$28.5k', trend: 10 },
+                { label: t.industries.agency.stats[3], value: '8', trend: 2 }
+            ],
+            navItems: [
+                { id: 'overview', label: t.industries.agency.nav[0], icon: BarChart3 },
+                { id: 'projects', label: t.industries.agency.nav[1], icon: Code2 },
+                { id: 'invoices', label: t.industries.agency.nav[2], icon: CreditCard },
+                { id: 'git', label: t.industries.agency.nav[3], icon: Code2 },
+            ]
+        },
+        booking: {
+            brandName: t.industries.booking.name, brandLogo: '📅', accentColor: 'rose',
+            roles: [{ id: 'manager', label: 'Manager' }, { id: 'staff', label: 'Reception' }],
+            stats: [
+                { label: t.industries.booking.stats[0], value: '48', trend: 12 },
+                { label: t.industries.booking.stats[1], value: '85%', trend: 5 },
+                { label: t.industries.booking.stats[2], value: '$4.2k', trend: 8 },
+                { label: t.industries.booking.stats[3], value: '12', trend: 0 }
+            ],
+            navItems: [
+                { id: 'overview', label: t.industries.booking.nav[0], icon: BarChart3 },
+                { id: 'reservations', label: t.industries.booking.nav[1], icon: Users },
+                { id: 'rooms', label: t.industries.booking.nav[2], icon: Code2 },
+                { id: 'payments', label: t.industries.booking.nav[3], icon: CreditCard },
+            ]
+        }
+    };
+
+    useEffect(() => { window.scrollTo(0, 0); }, []);
+
     if (viewMode === 'landing') {
         return (
-            <div style={{ background: 'var(--bg-primary)', minHeight: '100vh', color: 'white' }}>
-                <Hero />
-                <Features />
-                <Pricing />
-                <Contact />
+            <div className="bg-[#0c1122] min-h-screen text-white font-sans overflow-x-hidden">
+                <Hero t={t} />
+                <Features t={t} />
+                <Pricing t={t} />
+                <Contact t={t} />
+                <AIChat brandName="Premium Template" />
             </div>
         );
     }
 
     const currentConfig = configs[mode];
 
-    return (
-        <div className="relative">
-            {/* Mode Switcher Overlay */}
-            <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2 bg-[#0c1122] p-2 rounded-2xl border border-white/10 shadow-2xl">
-                <p className="text-[10px] uppercase font-bold text-slate-500 px-2 py-1">Select Industry</p>
+    const IndustrySwitcher = ({ isMobile = false }) => (
+        <div className={`${isMobile ? 'w-full' : 'fixed bottom-24 right-4 lg:bottom-6 lg:right-6 z-40 hidden lg:flex'} flex flex-col gap-1.5 bg-[#0c1122]/80 p-2 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl ${!isMobile && 'max-w-[140px] sm:max-w-none'}`}>
+            <p className="text-[8px] uppercase font-black text-slate-500 px-2 py-1 tracking-[0.2em]">{t.industries.select}</p>
+            <div className={`flex ${isMobile ? 'grid grid-cols-2 gap-2' : 'flex-col gap-1'}`}>
                 {Object.keys(configs).map(key => (
                     <button
                         key={key}
                         onClick={() => setMode(key)}
-                        className={`px-4 py-2 rounded-xl text-xs font-bold capitalize transition-all text-left ${mode === key ? 'bg-white text-black' : 'text-slate-400 hover:text-white hover:bg-white/5'
-                            }`}
+                        className={`px-3 py-1.5 rounded-xl text-[10px] font-black capitalize transition-all text-left ${mode === key ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
                     >
-                        {key} Mode
+                        {key}
                     </button>
                 ))}
             </div>
+        </div>
+    );
 
-            <UniversalAdmin config={currentConfig} language={language} />
+    return (
+        <div className="relative font-sans overflow-x-hidden min-h-screen">
+            <IndustrySwitcher />
+
+            <UniversalAdmin config={currentConfig} language={language} switcher={<IndustrySwitcher isMobile />} />
+            <AIChat brandName={currentConfig.brandName} />
         </div>
     );
 };

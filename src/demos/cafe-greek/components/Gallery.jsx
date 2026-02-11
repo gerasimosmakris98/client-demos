@@ -8,8 +8,8 @@ const images = [
 
 const CafeGallery = ({ t }) => {
     return (
-        <section className="bg-stone-950 py-12">
-            <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
+        <section className="bg-stone-950 py-16 md:py-24">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8 text-center">
                 <span className="text-[#d4a373] font-bold tracking-widest uppercase text-sm">{t.gallery.badge}</span>
                 <h2 className="text-3xl md:text-4xl font-black text-white mt-2">{t.gallery.title}</h2>
             </div>

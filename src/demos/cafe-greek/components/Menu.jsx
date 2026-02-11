@@ -20,7 +20,7 @@ const highlights = [
 
 const CafeMenu = ({ t }) => {
     return (
-        <section className="py-24 bg-stone-900">
+        <section className="py-16 md:py-24 bg-stone-900">
             <div className="max-w-4xl mx-auto px-4 md:px-6">
                 <h2 className="text-4xl md:text-5xl text-center mb-12 font-playfair text-[#d4a373] drop-shadow-md">
                     {t.menu.title}

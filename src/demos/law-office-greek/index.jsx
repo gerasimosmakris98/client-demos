@@ -29,8 +29,162 @@ const lawTabs = [
     },
 ];
 
+const translations = {
+    en: {
+        hero: {
+            badge: "Expert Legal Advice",
+            title: "JUSTICE & INTEGRITY",
+            desc: "Expert legal representation for businesses and individuals since 2005.",
+            cta: "Free Consultation"
+        },
+        practiceAreas: {
+            badge: "Expertise",
+            title: "PRACTICE AREAS",
+            items: [
+                { title: "Corporate Law", desc: "Strategic advice for businesses." },
+                { title: "IP Protection", desc: "Securing your innovations." },
+                { title: "Real Estate", desc: "Navigating complex transactions." }
+            ]
+        },
+        attorneys: {
+            badge: "Attorneys",
+            title: "OUR LEGAL TEAM",
+            list: [
+                { name: "John Smith", role: "Senior Partner" },
+                { name: "Maria Garcia", role: "Head of Litigation" }
+            ]
+        },
+        caseStudies: {
+            badge: "Track Record",
+            title: "NOTABLE SUCCESSES",
+            list: [
+                { title: "IP Global Settlement", result: "€5.2M recovered" },
+                { title: "Corporate Restructuring", result: "300+ jobs saved" }
+            ]
+        },
+        testimonials: {
+            badge: "Clients",
+            title: "TRUSTED BY MANY",
+            list: [
+                { text: "Professional and dedicated to the best outcome.", name: "Dimitris P." }
+            ]
+        },
+        contact: {
+            badge: "Contact",
+            title: "GET IN TOUCH",
+            fields: {
+                name: "Name",
+                email: "Email",
+                message: "Message",
+                button: "Send Request"
+            }
+        }
+    },
+    el: {
+        hero: {
+            badge: "Εξειδικευμένες Νομικές Συμβουλές",
+            title: "ΔΙΚΑΙΟΣΥΝΗ & ΑΚΕΡΑΙΟΤΗΤΑ",
+            desc: "Εξειδικευμένη νομική εκπροσώπηση για επιχειρήσεις και ιδιώτες από το 2005.",
+            cta: "Δωρεάν Συμβουλή"
+        },
+        practiceAreas: {
+            badge: "Εξειδίκευση",
+            title: "ΤΟΜΕΙΣ ΔΙΚΑΙΟΥ",
+            items: [
+                { title: "Εταιρικό Δίκαιο", desc: "Στρατηγικές συμβουλές για επιχειρήσεις." },
+                { title: "Προστασία Πνευματικής Ιδιοκτησίας", desc: "Διαφύλαξη των καινοτομιών σας." },
+                { title: "Ακίνητα", desc: "Πλοήγηση σε σύνθετες συναλλαγές." }
+            ]
+        },
+        attorneys: {
+            badge: "Δικηγόροι",
+            title: "Η ΝΟΜΙΚΗ ΜΑΣ ΟΜΑΔΑ",
+            list: [
+                { name: "Γιάννης Σμυρνιός", role: "Senior Partner" },
+                { name: "Μαρία Γεωργίου", role: "Επικεφαλής Δικαστικών Υποθέσεων" }
+            ]
+        },
+        caseStudies: {
+            badge: "Ιστορικό",
+            title: "ΣΗΜΑΝΤΙΚΕΣ ΕΠΙΤΥΧΙΕΣ",
+            list: [
+                { title: "Παγκόσμιος Διακανονισμός IP", result: "€5.2M ανακτήθηκαν" },
+                { title: "Εταιρική Αναδιάρθρωση", result: "300+ θέσεις εργασίας σώθηκαν" }
+            ]
+        },
+        testimonials: {
+            badge: "Πελάτες",
+            title: "ΜΑΣ ΕΜΠΙΣΤΕΥΟΝΤΑΙ",
+            list: [
+                { text: "Επαγγελματίες και αφοσιωμένοι στο καλύτερο αποτέλεσμα.", name: "Δημήτρης Π." }
+            ]
+        },
+        contact: {
+            badge: "Επικοινωνία",
+            title: "ΜΙΛΗΣΤΕ ΜΑΣ",
+            fields: {
+                name: "Όνομα",
+                email: "Email",
+                message: "Μήνυμα",
+                button: "Αποστολή Αιτήματος"
+            }
+        }
+    },
+    es: {
+        hero: {
+            badge: "Asesoría Legal Experta",
+            title: "JUSTICIA E INTEGRIDAD",
+            desc: "Representación legal experta para empresas e individuos desde 2005.",
+            cta: "Consulta Gratuita"
+        },
+        practiceAreas: {
+            badge: "Experiencia",
+            title: "ÁREAS DE PRÁCTICA",
+            items: [
+                { title: "Derecho Corporativo", desc: "Asesoramiento estratégico para empresas." },
+                { title: "Protección de IP", desc: "Asegurando sus innovaciones." },
+                { title: "Inmuebles", desc: "Navegando transacciones complejas." }
+            ]
+        },
+        attorneys: {
+            badge: "Abogados",
+            title: "NUESTRO EQUIPO LEGAL",
+            list: [
+                { name: "John Smith", role: "Socio Senior" },
+                { name: "Maria Garcia", role: "Jefa de Litigios" }
+            ]
+        },
+        caseStudies: {
+            badge: "Trayectoria",
+            title: "ÉXITOS NOTABLES",
+            list: [
+                { title: "Acuerdo Global de IP", result: "€5.2M recuperados" },
+                { title: "Reestructuración Corporativa", result: "300+ empleos salvados" }
+            ]
+        },
+        testimonials: {
+            badge: "Clientes",
+            title: "CONFIADO POR MUCHOS",
+            list: [
+                { text: "Profesional y dedicado al mejor resultado.", name: "Dimitris P." }
+            ]
+        },
+        contact: {
+            badge: "Contacto",
+            title: "PONERSE EN CONTACTO",
+            fields: {
+                name: "Nombre",
+                email: "Email",
+                message: "Mensaje",
+                button: "Enviar Solicitud"
+            }
+        }
+    }
+}
+
 const LawDemo = () => {
-    const { viewMode } = useOutletContext() || {};
+    const { viewMode, language } = useOutletContext() || { language: 'en' };
+    const t = translations[language] || translations.en;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -39,13 +193,13 @@ const LawDemo = () => {
     // Admin view removed - consolidated to Universal Admin demo
 
     return (
-        <div style={{ fontFamily: "'Inter', sans-serif", color: '#0f172a' }}>
-            <LawHero />
-            <PracticeAreas />
-            <Attorneys />
-            <CaseStudies />
-            <Testimonials />
-            <Contact />
+        <div style={{ fontFamily: "'Inter', sans-serif" }} className="bg-white">
+            <LawHero t={t} />
+            <PracticeAreas t={t} />
+            <Attorneys t={t} />
+            <CaseStudies t={t} />
+            <Testimonials t={t} />
+            <Contact t={t} />
             <AIChat brandName="GM Law" />
         </div>
     );

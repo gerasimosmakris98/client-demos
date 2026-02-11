@@ -3,8 +3,8 @@ import { Star, Quote } from 'lucide-react';
 
 const Testimonials = ({ t }) => {
     return (
-        <section className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
+        <section className="py-16 md:py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="text-center mb-16">
                     <span className="text-amber-600 font-bold tracking-widest uppercase text-sm">{t.testimonials.badge}</span>
                     <h2 className="text-4xl md:text-5xl font-black text-amber-950 mt-2">{t.testimonials.title}</h2>
