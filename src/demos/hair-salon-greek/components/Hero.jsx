@@ -7,9 +7,14 @@ const SalonHero = ({ t }) => {
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center" />
+                <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{ scale: 1.1 }}
+                    transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
+                    className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center opacity-70"
+                />
                 <div className="absolute inset-0 bg-rose-950/40 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
             </div>
 
             <motion.div

@@ -1,63 +1,75 @@
 import React from 'react';
-import { Scissors, Calendar, Star } from 'lucide-react';
+import { Home, Search, MapPin, Key, ArrowRight, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const SalonHero = () => {
+const RealEstateHero = ({ t }) => {
     return (
-        <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 text-white px-4 md:px-6 py-20">
             {/* Background Image */}
             <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center" />
-                <div className="absolute inset-0 bg-rose-950/40 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center" />
+                <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
             </div>
 
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="relative z-10 max-w-2xl px-6 text-center"
-            >
-                <div className="glass-panel p-8 md:p-12 rounded-[2rem] border border-rose-200/10 shadow-2xl bg-white/5 backdrop-blur-md">
-                    <motion.div
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="flex justify-center mb-6 text-rose-300"
-                    >
-                        <div className="p-3 rounded-full bg-rose-500/10 border border-rose-500/20">
-                            <Scissors size={40} strokeWidth={1} />
-                        </div>
-                    </motion.div>
-
-                    <h1 className="text-5xl md:text-7xl font-playfair font-thin text-white mb-4 tracking-wider uppercase drop-shadow-lg">
-                        Elite Styles
-                    </h1>
-
-                    <div className="flex items-center justify-center gap-2 mb-6 text-rose-300/80">
-                        <Star size={14} fill="currentColor" />
-                        <Star size={14} fill="currentColor" />
-                        <Star size={14} fill="currentColor" />
-                        <Star size={14} fill="currentColor" />
-                        <Star size={14} fill="currentColor" />
+            <div className="relative z-10 container mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="max-w-4xl mx-auto text-center"
+                >
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-md">
+                        <Home size={16} /> {t.hero.badge}
                     </div>
 
-                    <p className="text-xl text-rose-100/90 mb-10 font-light italic leading-relaxed">
-                        "Η ομορφιά ξεκινάει από τη στιγμή που αποφασίζεις <br className="hidden md:block" /> να είσαι ο εαυτός σου."
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-[0.9] mb-8 tracking-tighter uppercase">
+                        {t.hero.title} <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">{t.hero.subtitle}</span>
+                    </h1>
+
+                    <p className="text-lg md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light italic">
+                        {t.hero.desc}
                     </p>
 
-                    <motion.button
-                        whileHover={{ scale: 1.02, backgroundColor: '#fb7185' }}
-                        whileTap={{ scale: 0.98 }}
-                        className="mx-auto flex items-center gap-3 px-8 py-4 bg-rose-400 text-white rounded-full font-medium shadow-lg shadow-rose-900/20 transition-all hover:shadow-rose-500/40"
-                    >
-                        <Calendar size={20} />
-                        <span className="tracking-wide">Κλείστε Ραντεβού</span>
-                    </motion.button>
-                </div>
-            </motion.div>
+                    {/* Search Bar - Desktop Only */}
+                    <div className="hidden md:flex items-center bg-white/10 backdrop-blur-2xl border border-white/20 p-2 rounded-2xl max-w-3xl mx-auto mb-12 shadow-2xl">
+                        <div className="flex-1 flex items-center gap-3 px-6 border-r border-white/10">
+                            <MapPin size={20} className="text-emerald-400" />
+                            <input type="text" placeholder={t.hero.searchLoc} className="bg-transparent border-none outline-none text-white w-full placeholder:text-slate-500" />
+                        </div>
+                        <div className="flex-1 flex items-center gap-3 px-6">
+                            <Building2 size={20} className="text-emerald-400" />
+                            <select className="bg-transparent border-none outline-none text-white w-full appearance-none cursor-pointer">
+                                <option className="bg-slate-900">{t.hero.searchType}</option>
+                                <option className="bg-slate-900">Apartment</option>
+                                <option className="bg-slate-900">Villa</option>
+                            </select>
+                        </div>
+                        <button className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 p-4 rounded-xl transition-all shadow-xl shadow-emerald-500/20">
+                            <Search size={24} />
+                        </button>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button className="bg-white text-slate-950 px-10 py-5 rounded-2xl font-black transition-all shadow-2xl flex items-center justify-center gap-3 group uppercase tracking-widest text-sm">
+                            <Key size={20} /> {t.hero.ctaPrimary}
+                        </button>
+                        <button className="border border-white/20 hover:bg-white/10 text-white px-10 py-5 rounded-2xl font-black transition-all backdrop-blur-md uppercase tracking-widest text-sm">
+                            {t.hero.ctaSecondary}
+                        </button>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Floating Visual Element (Mobile Friendly) */}
+            <div className="absolute bottom-10 inset-x-0 flex justify-center opacity-30">
+                <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                    <div className="w-px h-16 bg-gradient-to-b from-emerald-500 to-transparent" />
+                </motion.div>
+            </div>
         </section>
     );
 };
 
-export default SalonHero;
+export default RealEstateHero;

@@ -112,15 +112,19 @@ const PremiumTemplate = () => {
     const currentConfig = configs[mode];
 
     const IndustrySwitcher = ({ isMobile = false }) => (
-        <div className={`${isMobile ? 'w-full' : 'fixed bottom-24 right-4 lg:bottom-6 lg:right-6 z-40 hidden lg:flex'} flex flex-col gap-1.5 bg-[#0c1122]/80 p-2 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl ${!isMobile && 'max-w-[140px] sm:max-w-none'}`}>
+        <div className={`${isMobile ? 'w-full mb-4' : 'fixed bottom-24 right-4 lg:bottom-6 lg:right-6 z-40 hidden lg:flex'} flex flex-col gap-1.5 bg-[#0c1122]/80 p-2.5 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl ${!isMobile && 'max-w-[140px]'}`}>
             <p className="text-[8px] uppercase font-black text-slate-500 px-2 py-1 tracking-[0.2em]">{t.industries.select}</p>
             <div className={`flex ${isMobile ? 'grid grid-cols-2 gap-2' : 'flex-col gap-1'}`}>
                 {Object.keys(configs).map(key => (
                     <button
                         key={key}
-                        onClick={() => setMode(key)}
-                        className={`px-3 py-1.5 rounded-xl text-[10px] font-black capitalize transition-all text-left ${mode === key ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                        onClick={() => {
+                            setMode(key);
+                            // Optional: Close mobile sidebar if this is inside it
+                        }}
+                        className={`px-3 py-2.5 sm:py-1.5 rounded-xl text-[10px] sm:text-[10px] font-black capitalize transition-all text-center sm:text-left flex items-center justify-center sm:justify-start gap-2 ${mode === key ? `bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/20` : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
                     >
+                        <div className={`w-1.5 h-1.5 rounded-full ${mode === key ? 'bg-white animate-pulse' : 'bg-white/20'}`} />
                         {key}
                     </button>
                 ))}

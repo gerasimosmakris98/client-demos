@@ -7,7 +7,12 @@ const LawHero = ({ t }) => {
         <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-900 text-white">
             {/* Dynamic Background */}
             <div className="absolute inset-0 opacity-40">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2612&auto=format&fit=crop')] bg-cover bg-center" />
+                <motion.div
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+                    className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2612&auto=format&fit=crop')] bg-cover bg-center"
+                />
             </div>
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-slate-900/70" />
 
@@ -24,9 +29,9 @@ const LawHero = ({ t }) => {
                         <Scale size={16} /> {t.hero.badge}
                     </div>
 
-                    <h1 className="text-4xl md:text-7xl font-playfair font-bold leading-tight mb-8 drop-shadow-2xl">
+                    <h1 className="text-3xl sm:text-4xl md:text-7xl font-playfair font-bold leading-tight mb-6 md:mb-8 drop-shadow-2xl">
                         GM <span className="text-yellow-500">LAW</span> <br />
-                        <span className="text-2xl md:text-4xl text-slate-300 block mt-2">{t.hero.title}</span>
+                        <span className="text-xl md:text-4xl text-slate-300 block mt-2 leading-snug">{t.hero.title}</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-lg lg:border-l-4 border-yellow-600/50 lg:pl-6 mx-auto lg:mx-0">

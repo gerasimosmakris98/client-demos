@@ -262,23 +262,8 @@ const translations = {
     }
 };
 
-const Hero = ({ t }) => (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0015] text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-25" />
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/80 via-[#0d0015] to-[#0d0015]" />
-        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <div className="text-fuchsia-400 font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase mb-6 md:mb-8">{t.hero.tag}</div>
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6">{t.hero.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">{t.hero.subtitle}</span></h1>
-                <p className="text-sm md:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 px-2">{t.hero.desc}</p>
-                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-                    <button className="bg-gradient-to-r from-purple-600 to-fuchsia-600 px-8 md:px-10 py-3.5 md:py-4 rounded-full font-bold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-shadow text-sm">{t.hero.ctaPrimary}</button>
-                    <button className="border border-white/20 px-8 md:px-10 py-3.5 md:py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-sm">{t.hero.ctaSecondary}</button>
-                </div>
-            </motion.div>
-        </div>
-    </section>
-);
+import Hero from './components/Hero';
+
 
 const About = ({ t }) => (
     <section className="py-16 md:py-24 bg-[#0d0015] text-white">

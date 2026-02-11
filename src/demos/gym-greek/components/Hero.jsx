@@ -7,7 +7,12 @@ const Hero = ({ t }) => {
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
             {/* Dark/Neon Background */}
             <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-40" />
+                <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{ scale: 1.1 }}
+                    transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+                    className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-40"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-lime-500/10 via-transparent to-transparent" />
             </div>
@@ -22,11 +27,11 @@ const Hero = ({ t }) => {
                         <Activity size={16} /> {t.hero.badge}
                     </div>
 
-                    <h1 className="text-5xl md:text-9xl font-black italic tracking-tighter mb-6">
+                    <h1 className="text-4xl sm:text-5xl md:text-9xl font-black italic tracking-tighter mb-4 md:mb-6">
                         {t.hero.titleLeft} <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-500">{t.hero.titleRight}</span>
                     </h1>
 
-                    <p className="text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 md:mb-12 font-light px-4">
+                    <p className="text-base md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 font-light px-4">
                         {t.hero.desc}
                     </p>
 

@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Home, Phone, Mail, MapPin, Star, ArrowRight, Building2, Key, TrendingUp, Users, CalendarDays, FileText, Handshake, Search, ChevronDown, Bath, BedDouble, Maximize } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
+import Hero from './components/Hero';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const reTabs = [
@@ -28,10 +29,13 @@ const translations = {
     en: {
         hero: {
             badge: "Premium Real Estate",
-            title: "GM ESTATES",
+            title: "Dream Homes",
+            subtitle: "Exclusively for You",
             desc: "Find your dream home. Luxury properties in the best areas of Athens.",
-            filter: ["All", "Villa", "Apartment", "Penthouse", "Commercial"],
-            search: { area: "Area...", type: "Type", cta: "Search" }
+            searchLoc: "Find by Location...",
+            searchType: "Property Type",
+            ctaPrimary: "View Listings",
+            ctaSecondary: "Contact Agent"
         },
         about: {
             badge: "About Us",
@@ -89,10 +93,13 @@ const translations = {
     el: {
         hero: {
             badge: "Premium Real Estate",
-            title: "GM ESTATES",
+            title: "Το Σπίτι Των",
+            subtitle: "Ονείρων Σας",
             desc: "Βρείτε το σπίτι των ονείρων σας. Πολυτελή ακίνητα στις καλύτερες περιοχές της Αθήνας.",
-            filter: ["Όλα", "Βίλα", "Διαμέρισμα", "Ρετιρέ", "Επαγγελματικό"],
-            search: { area: "Περιοχή...", type: "Τύπος", cta: "Αναζήτηση" }
+            searchLoc: "Περιοχή...",
+            searchType: "Τύπος Ακινήτου",
+            ctaPrimary: "Δείτε Ακίνητα",
+            ctaSecondary: "Επικοινωνία"
         },
         about: {
             badge: "Σχετικά",
@@ -150,10 +157,13 @@ const translations = {
     es: {
         hero: {
             badge: "Inmobiliaria Premium",
-            title: "GM ESTATES",
+            title: "Casas De En Sueño",
+            subtitle: "Solo Para Usted",
             desc: "Encuentre la casa de sus sueños. Propiedades de lujo en las mejores zonas de Atenas.",
-            filter: ["Todo", "Villa", "Apartamento", "Penthouse", "Comercial"],
-            search: { area: "Zona...", type: "Tipo", cta: "Buscar" }
+            searchLoc: "Zona...",
+            searchType: "Tipo de Propiedad",
+            ctaPrimary: "Ver Listados",
+            ctaSecondary: "Contactar Agente"
         },
         about: {
             badge: "Nosotros",
@@ -210,53 +220,6 @@ const translations = {
     }
 }
 
-/* ───────── HERO with search pills ───────── */
-const Hero = ({ t }) => (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <div className="inline-flex items-center gap-2 px-4 py-2 border border-amber-500/30 rounded-full bg-amber-500/10 text-amber-400 font-mono text-[10px] md:text-xs tracking-widest uppercase mb-6 md:mb-8">
-                    <Home size={14} /> {t.hero.badge}
-                </div>
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6">
-                    {t.hero.title}
-                </h1>
-                <p className="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto mb-6 md:mb-8 px-2">
-                    {t.hero.desc}
-                </p>
-
-                {/* Property filter pills */}
-                <div className="flex flex-wrap gap-2 justify-center mb-6 md:mb-10 px-4">
-                    {t.hero.filter.map((p, i) => (
-                        <button key={i} className={`px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all ${i === 0 ? 'bg-amber-500 text-black' : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'}`}>
-                            {p}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Search bar — stacks vertically on mobile */}
-                <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl md:rounded-full p-3 md:p-2 flex flex-col md:flex-row gap-2 md:gap-0">
-                    <div className="flex items-center gap-2 flex-1 px-3 md:px-4 py-2">
-                        <MapPin size={16} className="text-amber-400 flex-shrink-0" />
-                        <input className="bg-transparent outline-none flex-1 text-sm placeholder-gray-500 min-w-0" placeholder={t.hero.search.area} />
-                    </div>
-                    <div className="hidden md:block w-px bg-white/10" />
-                    <div className="flex items-center gap-2 flex-1 px-3 md:px-4 py-2">
-                        <Building2 size={16} className="text-amber-400 flex-shrink-0" />
-                        <select className="bg-transparent outline-none flex-1 text-sm text-gray-400 appearance-none">
-                            <option>{t.hero.search.type}</option><option>Villa</option><option>Apartment</option>
-                        </select>
-                    </div>
-                    <button className="bg-amber-500 text-black px-6 py-2.5 md:py-3 rounded-xl md:rounded-full font-bold flex items-center justify-center gap-2 text-sm hover:bg-amber-400 transition-colors">
-                        <Search size={16} /> {t.hero.search.cta}
-                    </button>
-                </div>
-            </motion.div>
-        </div>
-    </section>
-);
 
 const AboutSection = ({ t }) => (
     <section className="py-16 md:py-24 bg-black text-white">

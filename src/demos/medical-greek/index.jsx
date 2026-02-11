@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { Heart, Stethoscope, Phone, Mail, MapPin, Clock, Star, Users, Calendar, Shield, CheckCircle, ChevronDown, Activity, CalendarDays, FileText, FlaskConical } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AIChat from '../../components/common/AIChat';
+import Hero from './components/Hero';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 
 const medicalTabs = [
@@ -28,10 +29,12 @@ const translations = {
     en: {
         hero: {
             badge: "Your Health First",
-            title: "GM MEDICAL",
+            title: "Advanced Medical",
+            subtitle: "Care for You",
             desc: "Modern medical center with specialized doctors. Online appointments, personal care.",
             ctaPrimary: "Book Appointment",
-            ctaSecondary: "Specialties"
+            ctaSecondary: "Our Specialties",
+            support: "24/7 Professional Support"
         },
         about: {
             badge: "About",
@@ -97,10 +100,12 @@ const translations = {
     el: {
         hero: {
             badge: "Η Υγεία Σας Πρώτα",
-            title: "GM MEDICAL",
+            title: "Σύγχρονη Ιατρική",
+            subtitle: "Φροντίδα Για Εσάς",
             desc: "Σύγχρονο ιατρικό κέντρο με εξειδικευμένους γιατρούς. Online ραντεβού, προσωπική φροντίδα.",
             ctaPrimary: "Κλείστε Ραντεβού",
-            ctaSecondary: "Ειδικότητες"
+            ctaSecondary: "Οι Ειδικότητες Μας",
+            support: "24/7 Επαγγελματική Υποστήριξη"
         },
         about: {
             badge: "Σχετικά",
@@ -166,10 +171,12 @@ const translations = {
     es: {
         hero: {
             badge: "Su Salud Primero",
-            title: "GM MEDICAL",
+            title: "Médica Avanzada",
+            subtitle: "Cuidado Para Usted",
             desc: "Centro médico moderno con médicos especialistas. Citas online, atención personal.",
             ctaPrimary: "Reservar Cita",
-            ctaSecondary: "Especialidades"
+            ctaSecondary: "Especialidades",
+            support: "Soporte Profesional 24/7"
         },
         about: {
             badge: "Sobre Nosotros",
@@ -234,43 +241,6 @@ const translations = {
     }
 }
 
-/* ───────── PULSING HEARTBEAT BADGE ───────── */
-const HeartbeatBadge = ({ children }) => (
-    <div className="inline-flex items-center gap-2 px-4 py-2 border border-teal-500/30 rounded-full bg-teal-500/10 text-teal-400 font-mono text-[10px] md:text-xs tracking-widest uppercase mb-6 md:mb-8">
-        <motion.div
-            animate={{ scale: [1, 1.3, 1, 1.15, 1] }}
-            transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 0.6 }}
-        >
-            <Heart size={14} fill="currentColor" />
-        </motion.div>
-        {children}
-    </div>
-);
-
-const Hero = ({ t }) => (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-teal-950 via-slate-950 to-cyan-950 text-white">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(20,184,166,0.4) 1px, transparent 0)', backgroundSize: '30px 30px' }} />
-        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <HeartbeatBadge>{t.hero.badge}</HeartbeatBadge>
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6">
-                    {t.hero.title}
-                </h1>
-                <p className="text-sm md:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 px-2">
-                    {t.hero.desc}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-                    <button className="bg-teal-500 text-black px-8 md:px-10 py-3.5 md:py-4 rounded-full font-black uppercase tracking-wider hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/20 flex items-center gap-2 justify-center text-sm">
-                        <Calendar size={16} /> {t.hero.ctaPrimary}
-                    </button>
-                    <button className="border border-white/20 px-8 md:px-10 py-3.5 md:py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-sm">
-                        {t.hero.ctaSecondary}
-                    </button>
-                </div>
-            </motion.div>
-        </div>
-    </section>
-);
 
 /* ───────── ABOUT — Asymmetric Layout ───────── */
 const About = ({ t }) => (

@@ -6,7 +6,15 @@ const TutoringHero = ({ t }) => {
     return (
         <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white">
             {/* Dynamic Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-blue-500 to-sky-400" />
+            <div className="absolute inset-0 z-0">
+                <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{ scale: 1.1 }}
+                    transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+                    className="w-full h-full bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 via-blue-900/20 to-transparent" />
+            </div>
 
             {/* Animated Shapes */}
             <motion.div
