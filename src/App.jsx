@@ -25,6 +25,7 @@ import HotelDemo from './demos/hotel-greek';
 import AccountingDemo from './demos/accounting-greek';
 import RestaurantDemo from './demos/restaurant-greek';
 import StudioDemo from './demos/studio-greek';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
                 <Route path="/demos/restaurant-greek" element={<RestaurantDemo />} />
                 <Route path="/demos/studio-greek" element={<StudioDemo />} />
               </Route>
+
+              {/* 404 Route */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <CookieConsentBanner />
             <Toaster />

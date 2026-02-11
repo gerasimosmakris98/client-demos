@@ -7,12 +7,19 @@ import Contact from './components/Contact';
 import UniversalAdmin from '../../components/demos/UniversalAdmin';
 import { Users, BarChart3, CreditCard, Code2 } from 'lucide-react';
 import { translations } from './translations';
+import { LoadingScreen } from '../../components/common/LoadingScreen';
 import AIChat from '../../components/common/AIChat';
 
 const PremiumTemplate = () => {
     const { viewMode, language } = useOutletContext() || { viewMode: 'admin', language: 'en' };
     const t = translations[language] || translations.en;
+    const [isLoading, setIsLoading] = React.useState(true);
     const [mode, setMode] = React.useState('saas');
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const configs = {
         saas: {
@@ -82,6 +89,8 @@ const PremiumTemplate = () => {
     };
 
     useEffect(() => { window.scrollTo(0, 0); }, []);
+
+    if (isLoading) return <LoadingScreen title="Universal Admin" message="Preparing Dashboard..." />;
 
     if (viewMode === 'landing') {
         return (

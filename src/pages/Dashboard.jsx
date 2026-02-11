@@ -381,11 +381,19 @@ const getUniqueCategories = (items) => {
 }
 
 
+import { LoadingScreen } from '@/components/common/LoadingScreen';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Dashboard() {
     const { language } = useLanguage();
+    const [isLoading, setIsLoading] = useState(true);
     const [viewMode, setViewMode] = useState('gallery'); // 'gallery' | 'list' | 'compact'
+
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 1500);
+        return () => clearTimeout(timer);
+    }, []);
+
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedTags, setSelectedTags] = useState([]);
@@ -423,6 +431,8 @@ export default function Dashboard() {
         setSelectedCategory('All');
         setSelectedTags([]);
     }
+
+    if (isLoading) return <LoadingScreen title="Gerasimos Makris" message="Loading Client Demos..." />;
 
     return (
         <div className="min-h-screen bg-background flex flex-col font-sans text-foreground">
