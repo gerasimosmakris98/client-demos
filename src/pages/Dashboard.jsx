@@ -1,4 +1,4 @@
-
+// Client Demos Dashboard - Last Updated: 2026-02-11
 import { useState, useMemo, useEffect } from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
