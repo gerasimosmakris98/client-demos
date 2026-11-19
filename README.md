@@ -1,9 +1,9 @@
-# GM Group — Client Demo Templates
+# Client Demo Templates — Prototype Archive
 
-> **13 production-ready, mobile-first React landing pages** for diverse industries.  
-> Built with React, Vite, Framer Motion, Tailwind CSS v4, and Firebase Hosting.
+> **13 modular React landing-page UI templates** for diverse small-business industries.  
+> Built with React, Vite, Framer Motion, and Tailwind CSS.
 
-**🔗 Live:** [client-demos-gm.web.app](https://client-demos-gm.web.app)
+**Status:** Source template library only (no active live Firebase Hosting deployment — see [g-makris.com/portfolio](https://g-makris.com/portfolio) for live showcase work).
 
 ---
 
@@ -126,4 +126,4 @@ The following templates are currently active and ported:
 
 ---
 
-Made with ❤️ by GM Group • Designed by Antigravity
+Maintained as an exploratory UI template repository · [g-makris.com](https://g-makris.com)
