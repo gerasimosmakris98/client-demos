@@ -269,7 +269,7 @@ const About = ({ t }) => (
                     ))}
                 </div>
             </div>
-            <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop" alt="Accounting office" className="w-full h-full object-cover" /></div>
+            <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]"><img src="/demo-art/accounting-1.svg" alt="Accounting office" className="w-full h-full object-cover" /></div>
         </div>
     </section>
 );

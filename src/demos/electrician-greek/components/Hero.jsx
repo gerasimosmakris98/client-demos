@@ -55,7 +55,7 @@ const ElectricianHero = ({ t }) => {
                     <div className="relative group">
                         <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                         <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2669&auto=format&fit=crop" className="w-full h-full object-cover" alt="Electrician Work" />
+                            <img src="/demo-art/electrician-1.svg" className="w-full h-full object-cover" alt="Electrician Work" />
                             <div className="absolute inset-0 bg-yellow-500/10 mix-blend-overlay" />
                         </div>
                     </div>

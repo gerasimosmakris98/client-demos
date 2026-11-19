@@ -7,7 +7,7 @@ const RealEstateHero = ({ t }) => {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 text-white px-4 md:px-6 py-20">
             {/* Background Image */}
             <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6199f7d009?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center" />
+                <div className="absolute inset-0 bg-[url('/demo-art/real-estate-1.svg')] bg-cover bg-center" />
                 <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
             </div>

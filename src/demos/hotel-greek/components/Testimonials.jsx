@@ -16,19 +16,19 @@ const Testimonials = () => {
                             name: "Elena P.",
                             role: "Food Critic",
                             text: "The freddo espresso here is unmatched. The atmosphere reminds me of old Athens but with a modern twist.",
-                            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
+                            image: "/demo-art/hotel-1.svg"
                         },
                         {
                             name: "Giorgos K.",
                             role: "Regular",
                             text: "Best brunch spot in town. You have to try the Kayanas, it's absolutely delicious!",
-                            image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=200"
+                            image: "/demo-art/hotel-2.svg"
                         },
                         {
                             name: "Maria S.",
                             role: "Designer",
                             text: "I work from here almost every day. Great wifi, amazing coffee, and the staff is super friendly.",
-                            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+                            image: "/demo-art/hotel-3.svg"
                         }
                     ].map((review, i) => (
                         <div key={i} className="bg-[#FFF8F0] p-8 rounded-[2rem] relative group hover:-translate-y-2 transition-transform duration-300">

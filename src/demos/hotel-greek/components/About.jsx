@@ -8,7 +8,7 @@ const About = () => {
                 <div className="relative">
                     <div className="aspect-square rounded-[2rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700">
                         <img
-                            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=1000"
+                            src="/demo-art/hotel-1.svg"
                             alt="Barista pouring coffee"
                             className="w-full h-full object-cover"
                         />

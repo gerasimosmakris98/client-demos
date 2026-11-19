@@ -52,7 +52,7 @@ const MedicalHero = ({ t }) => {
                     className="relative hidden lg:block"
                 >
                     <div className="relative w-[500px] h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2653&auto=format&fit=crop" className="w-full h-full object-cover" alt="Medical Care" />
+                        <img src="/demo-art/medical-1.svg" className="w-full h-full object-cover" alt="Medical Care" />
                         <div className="absolute inset-0 bg-blue-600/10 mix-blend-overlay" />
                     </div>
                     {/* Floating Stat Card */}

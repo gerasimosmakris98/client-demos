@@ -47,7 +47,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Un panel de administración SaaS completo con análisis, gestión de usuarios y configuraciones. Cuenta con modo claro/oscuro.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+        image: '/demo-art/dashboard-1.svg',
         images: [],
         tags: ['SaaS', 'Admin', 'Dashboard', 'Analytics'],
         category: 'Technology',
@@ -56,7 +56,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/premium-template',
         href: '/demos/premium-template',
         date: '2023-09-01T12:00:00Z',
-        engagement: { views: 320, likes: 45, comments: 8 }
+        engagement: null
     },
     {
         id: 'hair-salon-greek',
@@ -73,7 +73,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Plantilla moderna de reservas y exhibición para salones de belleza. Incluye menú de servicios y perfiles de estilistas.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop',
+        image: '/demo-art/dashboard-2.svg',
         images: [],
         tags: ['Beauty', 'Service Business', 'Greek', 'Booking'],
         category: 'Beauty',
@@ -82,7 +82,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/hair-salon-greek',
         href: '/demos/hair-salon-greek',
         date: '2023-09-15T12:00:00Z',
-        engagement: { views: 95, likes: 18, comments: 1 }
+        engagement: null
     },
     {
         id: 'law-office-greek',
@@ -99,7 +99,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Presencia profesional para firmas legales. Incluye áreas de práctica, perfiles de abogados y reserva de consultas.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2012&auto=format&fit=crop',
+        image: '/demo-art/dashboard-3.svg',
         images: [],
         tags: ['Legal', 'Professional Services', 'Greek'],
         category: 'Professional Services',
@@ -108,7 +108,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/law-office-greek',
         href: '/demos/law-office-greek',
         date: '2023-10-01T12:00:00Z',
-        engagement: { views: 110, likes: 14, comments: 0 }
+        engagement: null
     },
     {
         id: 'electrician-greek',
@@ -125,7 +125,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Una plantilla de sitio web profesional para electricistas. Diseño limpio, exhibición de servicios y formularios de contacto.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop',
+        image: '/demo-art/dashboard-4.svg',
         images: [],
         tags: ['Service Business', 'Greek', 'Template', 'Contact Form'],
         category: 'Small Business',
@@ -134,7 +134,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/electrician-greek',
         href: '/demos/electrician-greek',
         date: '2023-10-15T12:00:00Z',
-        engagement: { views: 120, likes: 15, comments: 2 }
+        engagement: null
     },
     {
         id: 'gym-greek',
@@ -151,7 +151,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Diseño energético para gimnasios. Horarios de clases, perfiles de entrenadores, precios de membresía e inscripciones.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+        image: '/demo-art/dashboard-1.svg',
         images: [],
         tags: ['Fitness', 'Health', 'Greek', 'Membership'],
         category: 'Health & Fitness',
@@ -160,7 +160,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/gym-greek',
         href: '/demos/gym-greek',
         date: '2023-10-25T12:00:00Z',
-        engagement: { views: 180, likes: 25, comments: 4 }
+        engagement: null
     },
     {
         id: 'real-estate-greek',
@@ -177,7 +177,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Plataforma de listado de propiedades. Filtros de búsqueda, detalles de la propiedad, contacto con el agente y mapa.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop',
+        image: '/demo-art/dashboard-2.svg',
         images: [],
         tags: ['Real Estate', 'Listings', 'Greek', 'Map'],
         category: 'Real Estate',
@@ -186,7 +186,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/real-estate-greek',
         href: '/demos/real-estate-greek',
         date: '2023-11-05T12:00:00Z',
-        engagement: { views: 210, likes: 28, comments: 6 }
+        engagement: null
     },
     {
         id: 'restaurant-greek',
@@ -203,7 +203,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Una plantilla elegante para restaurantes. Incluye visualización de menú, sistema de reservas e integración de galería.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop',
+        image: '/demo-art/dashboard-3.svg',
         images: [],
         tags: ['Hospitality', 'Greek', 'Menu', 'Reservations'],
         category: 'Hospitality',
@@ -212,7 +212,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/restaurant-greek',
         href: '/demos/restaurant-greek',
         date: '2023-11-20T12:00:00Z',
-        engagement: { views: 250, likes: 32, comments: 5 }
+        engagement: null
     },
     {
         id: 'medical-greek',
@@ -229,7 +229,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Diseño confiable para clínicas. Especialidades, perfiles de médicos, reserva de citas en línea y blog de salud.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop',
+        image: '/demo-art/dashboard-4.svg',
         images: [],
         tags: ['Healthcare', 'Medical', 'Greek', 'Booking'],
         category: 'Healthcare',
@@ -238,7 +238,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/medical-greek',
         href: '/demos/medical-greek',
         date: '2023-12-01T12:00:00Z',
-        engagement: { views: 90, likes: 10, comments: 0 }
+        engagement: null
     },
     {
         id: 'hotel-greek',
@@ -255,7 +255,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Experiencia inmersiva para hoteles. Exhibición de habitaciones, comodidades, motor de reservas y guía local.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop',
+        image: '/demo-art/dashboard-1.svg',
         images: [],
         tags: ['Hospitality', 'Hotel', 'Greek', 'Booking'],
         category: 'Hospitality',
@@ -264,7 +264,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/hotel-greek',
         href: '/demos/hotel-greek',
         date: '2023-12-15T12:00:00Z',
-        engagement: { views: 160, likes: 22, comments: 2 }
+        engagement: null
     },
     {
         id: 'cafe-greek',
@@ -281,7 +281,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Un diseño acogedor y moderno para cafeterías. Especializado en resaltar productos y ambiente.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop',
+        image: '/demo-art/dashboard-2.svg',
         images: [],
         tags: ['Hospitality', 'Cafe', 'Greek'],
         category: 'Hospitality',
@@ -290,7 +290,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/cafe-greek',
         href: '/demos/cafe-greek',
         date: '2024-01-10T12:00:00Z',
-        engagement: { views: 85, likes: 12, comments: 0 }
+        engagement: null
     },
     {
         id: 'accounting-greek',
@@ -307,7 +307,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Diseño corporativo para contadores. Servicios, equipo, calculadoras de impuestos y recursos.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop',
+        image: '/demo-art/dashboard-3.svg',
         images: [],
         tags: ['Finance', 'Corporate', 'Greek'],
         category: 'Professional Services',
@@ -316,7 +316,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/accounting-greek',
         href: '/demos/accounting-greek',
         date: '2024-01-20T12:00:00Z',
-        engagement: { views: 70, likes: 8, comments: 0 }
+        engagement: null
     },
     {
         id: 'tutoring-greek',
@@ -333,7 +333,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Una plataforma profesional para tutores. Listados de cursos, perfiles de profesores y horarios.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop',
+        image: '/demo-art/dashboard-4.svg',
         images: [],
         tags: ['Education', 'Service Business', 'Greek'],
         category: 'Education',
@@ -342,7 +342,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/tutoring-greek',
         href: '/demos/tutoring-greek',
         date: '2024-02-05T12:00:00Z',
-        engagement: { views: 150, likes: 20, comments: 3 }
+        engagement: null
     },
     {
         id: 'studio-greek',
@@ -359,7 +359,7 @@ const DEMO_PROJECTS_DATA = [
             es: 'Diseño tranquilo para estudios de bienestar. Horarios de clases, biografías de instructores, galería y precios.'
         },
         content: '',
-        image: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2069&auto=format&fit=crop',
+        image: '/demo-art/dashboard-1.svg',
         images: [],
         tags: ['Wellness', 'Fitness', 'Greek', 'Classes'],
         category: 'Health & Fitness',
@@ -368,7 +368,7 @@ const DEMO_PROJECTS_DATA = [
         liveUrl: '/demos/studio-greek',
         href: '/demos/studio-greek',
         date: '2024-02-10T12:00:00Z',
-        engagement: { views: 130, likes: 19, comments: 2 }
+        engagement: null
     }
 ];
 

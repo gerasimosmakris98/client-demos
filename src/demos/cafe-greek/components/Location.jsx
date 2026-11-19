@@ -60,7 +60,7 @@ const Location = ({ t }) => {
                 <div className="h-[400px] lg:h-auto bg-white/5 rounded-[2rem] overflow-hidden relative">
                     {/* Mock Map */}
                     <img
-                        src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1000"
+                        src="/demo-art/cafe-1.svg"
                         alt="Map Location"
                         className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
                     />

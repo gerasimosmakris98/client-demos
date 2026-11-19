@@ -15,17 +15,17 @@ const Stylists = () => {
                         {
                             name: "Anna V.",
                             role: "Master Colorist",
-                            image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=400"
+                            image: "/demo-art/hair-salon-1.svg"
                         },
                         {
                             name: "Dimitris K.",
                             role: "Senior Stylist",
-                            image: "https://images.unsplash.com/photo-1534030347209-7147fd69a3f2?auto=format&fit=crop&q=80&w=400"
+                            image: "/demo-art/hair-salon-2.svg"
                         },
                         {
                             name: "Sophia L.",
                             role: "Bridal Specialist",
-                            image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&q=80&w=400"
+                            image: "/demo-art/hair-salon-3.svg"
                         }
                     ].map((stylist, i) => (
                         <div key={i} className="group relative overflow-hidden rounded-[2rem] h-[400px]">

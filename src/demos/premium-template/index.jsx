@@ -13,7 +13,7 @@ import AIChat from '../../components/common/AIChat';
 const PremiumTemplate = () => {
     const { viewMode, language } = useOutletContext() || { viewMode: 'admin', language: 'en' };
     const t = translations[language] || translations.en;
-    const [isLoading, setIsLoading] = React.useState(true);
+    const [isLoading, setIsLoading] = React.useState(false);
     const [mode, setMode] = React.useState('saas');
 
     React.useEffect(() => {

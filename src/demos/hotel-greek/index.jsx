@@ -205,7 +205,7 @@ const About = ({ t }) => (
         <Divider />
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mt-8">
             <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[280px] md:h-[500px]">
-                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=2625&auto=format&fit=crop" className="w-full h-full object-cover" alt="Hotel lobby" />
+                <img src="/demo-art/hotel-1.svg" className="w-full h-full object-cover" alt="Hotel lobby" />
             </div>
             <div>
                 <span className="text-[#d4cbb8]/60 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.about.badge}</span>
@@ -235,9 +235,9 @@ const Rooms = ({ t }) => (
             {/* Horizontal scroll on mobile, grid on desktop */}
             <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">
                 {[
-                    { name: t.rooms.types.classic, price: '€120', size: '28m²', img: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=800&auto=format&fit=crop' },
-                    { name: t.rooms.types.deluxe, price: '€220', size: '45m²', img: 'https://images.unsplash.com/photo-1590490360182-c33d955e4c47?q=80&w=800&auto=format&fit=crop' },
-                    { name: t.rooms.types.penthouse, price: '€450', size: '85m²', img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop' }
+                    { name: t.rooms.types.classic, price: '€120', size: '28m²', img: '/demo-art/hotel-2.svg' },
+                    { name: t.rooms.types.deluxe, price: '€220', size: '45m²', img: '/demo-art/hotel-3.svg' },
+                    { name: t.rooms.types.penthouse, price: '€450', size: '85m²', img: '/demo-art/hotel-4.svg' }
                 ].map((r, i) => (
                     <div key={i} className="group rounded-2xl md:rounded-3xl overflow-hidden border border-[#d4cbb8]/10 hover:border-[#d4cbb8]/30 transition-all min-w-[280px] md:min-w-0 snap-center flex-shrink-0 md:flex-shrink">
                         <div className="h-48 md:h-64 relative overflow-hidden">

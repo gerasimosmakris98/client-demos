@@ -37,7 +37,7 @@ const About = () => {
                 <div className="order-1 lg:order-2 relative">
                     <div className="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative z-10">
                         <img
-                            src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1000"
+                            src="/demo-art/hair-salon-1.svg"
                             alt="Salon Interior"
                             className="w-full h-full object-cover"
                         />

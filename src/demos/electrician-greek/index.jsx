@@ -256,7 +256,7 @@ const About = () => {
                     </div>
                 </div>
                 <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]">
-                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2669&auto=format&fit=crop" className="w-full h-full object-cover" alt="Electrician at work" />
+                    <img src="/demo-art/electrician-1.svg" className="w-full h-full object-cover" alt="Electrician at work" />
                 </div>
             </div>
         </section>
@@ -306,10 +306,10 @@ const Team = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     {[
-                        { name: 'Νίκος Κ.', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop' },
-                        { name: 'Γιώργος Μ.', img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop' },
-                        { name: 'Δημήτρης Π.', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop' },
-                        { name: 'Αλέξης Τ.', img: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop' }
+                        { name: 'Νίκος Κ.', img: '/demo-art/electrician-2.svg' },
+                        { name: 'Γιώργος Μ.', img: '/demo-art/electrician-3.svg' },
+                        { name: 'Δημήτρης Π.', img: '/demo-art/electrician-4.svg' },
+                        { name: 'Αλέξης Τ.', img: '/demo-art/electrician-1.svg' }
                     ].map((member, i) => (
                         <div key={i} className="group relative h-[240px] md:h-[300px] rounded-2xl md:rounded-3xl overflow-hidden bg-slate-800">
                             <img src={member.img} alt={member.name} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity group-hover:scale-110 duration-700" />
@@ -338,12 +338,12 @@ const Gallery = () => {
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                     {[
-                        'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800&auto=format&fit=crop',
-                        'https://images.unsplash.com/photo-1544724569-5f546fd6dd2d?q=80&w=800&auto=format&fit=crop',
-                        'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=800&auto=format&fit=crop',
-                        'https://images.unsplash.com/photo-1565608444338-39712a2aa774?q=80&w=800&auto=format&fit=crop',
-                        'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
-                        'https://images.unsplash.com/photo-1550525811-e5869dd03032?q=80&w=800&auto=format&fit=crop'
+                        '/demo-art/electrician-2.svg',
+                        '/demo-art/electrician-3.svg',
+                        '/demo-art/electrician-4.svg',
+                        '/demo-art/electrician-1.svg',
+                        '/demo-art/electrician-2.svg',
+                        '/demo-art/electrician-3.svg'
                     ].map((img, i) => (
                         <div key={i} className="group aspect-square rounded-xl md:rounded-2xl bg-slate-800 border border-white/5 hover:border-orange-500/30 transition-colors overflow-hidden relative">
                             <img src={img} alt={`Project ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -467,6 +467,7 @@ const Footer = () => {
 /* ───────── MAIN ───────── */
 const ElectricianDemo = () => {
     const { viewMode } = useOutletContext() || {};
+    const t = useElectricianT();
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     // Admin view removed - consolidated to Universal Admin demo

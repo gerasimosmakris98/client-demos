@@ -16,19 +16,19 @@ const Attorneys = () => {
                             name: "Alexandros M.",
                             role: "Managing Partner",
                             specialty: "Corporate Law",
-                            image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
+                            image: "/demo-art/medical-1.svg"
                         },
                         {
                             name: "Eleni K.",
                             role: "Senior Associate",
                             specialty: "Family Law",
-                            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"
+                            image: "/demo-art/medical-2.svg"
                         },
                         {
                             name: "Dimitris P.",
                             role: "Associate",
                             specialty: "Civil Litigation",
-                            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400"
+                            image: "/demo-art/medical-3.svg"
                         }
                     ].map((lawyer, i) => (
                         <div key={i} className="bg-white group hover:shadow-xl transition-shadow duration-300 border border-slate-200">

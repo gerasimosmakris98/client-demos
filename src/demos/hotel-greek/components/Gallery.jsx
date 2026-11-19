@@ -1,9 +1,9 @@
 import React from 'react';
 
 const images = [
-    "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2694&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=2671&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop"
+    "/demo-art/hotel-1.svg",
+    "/demo-art/hotel-2.svg",
+    "/demo-art/hotel-3.svg"
 ];
 
 const CafeGallery = () => {
