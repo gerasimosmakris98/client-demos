@@ -11,7 +11,7 @@ const TutoringHero = ({ t }) => {
                     initial={{ scale: 1 }}
                     animate={{ scale: 1.1 }}
                     transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-                    className="w-full h-full bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30"
+                    className="w-full h-full bg-[url('/demo-art/tutoring-1.svg')] bg-cover bg-center opacity-30"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 via-blue-900/20 to-transparent" />
             </div>
@@ -92,7 +92,7 @@ const TutoringHero = ({ t }) => {
 
                     <div className="relative z-10 rounded-[40px] overflow-hidden border-8 border-white/20 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
                         <img
-                            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"
+                            src="/demo-art/tutoring-2.svg"
                             alt="Student Success"
                             className="w-full h-[600px] object-cover"
                         />

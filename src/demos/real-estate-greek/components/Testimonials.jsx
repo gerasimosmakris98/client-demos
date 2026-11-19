@@ -16,19 +16,19 @@ const Testimonials = () => {
                             name: "Georgia P.",
                             service: "Balayage",
                             text: "I've never been happier with my color! Anna is a true artist.",
-                            image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200"
+                            image: "/demo-art/real-estate-1.svg"
                         },
                         {
                             name: "Eleni M.",
                             service: "Bridal Styling",
                             text: "They made me feel like a princess on my wedding day. Thank you so much!",
-                            image: "https://images.unsplash.com/photo-1554151228-14d9def656ec?auto=format&fit=crop&q=80&w=200"
+                            image: "/demo-art/real-estate-2.svg"
                         },
                         {
                             name: "Katerina S.",
                             service: "Haircut",
                             text: "The best salon experience in Athens. The atmosphere is so relaxing.",
-                            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+                            image: "/demo-art/real-estate-3.svg"
                         }
                     ].map((review, i) => (
                         <div key={i} className="bg-white p-8 rounded-[2rem] shadow-sm relative border border-rose-100">

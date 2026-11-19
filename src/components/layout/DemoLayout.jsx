@@ -38,7 +38,7 @@ const DemoLayout = () => {
     }, [templateId]);
 
     // Check if we are inside an iframe (to hide the chrome)
-    const isInIframe = window.self !== window.top;
+    const isInIframe = window.self !== window.top || window.location.search.includes("capture=1");
 
     if (isInIframe) {
         return <Outlet context={{ viewMode, language }} />;

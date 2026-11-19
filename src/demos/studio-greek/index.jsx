@@ -278,7 +278,7 @@ const About = ({ t }) => (
                     ))}
                 </div>
             </div>
-            <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2720&auto=format&fit=crop" className="w-full h-full object-cover" alt="Yoga studio" /></div>
+            <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]"><img src="/demo-art/studio-1.svg" className="w-full h-full object-cover" alt="Yoga studio" /></div>
         </div>
     </section>
 );
@@ -324,12 +324,12 @@ const GallerySection = ({ t }) => (
             <div className="text-center mb-10 md:mb-16"><span className="text-fuchsia-400 font-mono text-[10px] md:text-sm uppercase tracking-widest">{t.gallery.badge}</span><h2 className="text-3xl md:text-4xl font-black mt-2">{t.gallery.title}</h2></div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                 {[
-                    'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1588286840104-8957b019727f?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop'
+                    '/demo-art/studio-2.svg',
+                    '/demo-art/studio-3.svg',
+                    '/demo-art/studio-4.svg',
+                    '/demo-art/studio-1.svg',
+                    '/demo-art/studio-2.svg',
+                    '/demo-art/studio-3.svg'
                 ].map((src, i) => (
                     <div key={i} className="aspect-video rounded-xl md:rounded-2xl overflow-hidden group"><img src={src} alt={`Studio ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" /></div>
                 ))}

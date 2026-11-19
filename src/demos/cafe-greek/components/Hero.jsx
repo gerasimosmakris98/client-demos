@@ -11,7 +11,7 @@ const CafeHero = ({ t }) => {
           initial={{ scale: 1 }}
           animate={{ scale: 1.1 }}
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-          className="w-full h-full bg-[url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center"
+          className="w-full h-full bg-[url('/demo-art/cafe-1.svg')] bg-cover bg-center"
         />
         <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent" />

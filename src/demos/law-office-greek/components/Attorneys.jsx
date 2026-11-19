@@ -14,7 +14,7 @@ const Attorneys = ({ t }) => {
                     {t.attorneys.list.map((lawyer, i) => (
                         <div key={i} className="bg-white group hover:shadow-xl transition-shadow duration-300 border border-slate-200 rounded-2xl overflow-hidden">
                             <div className="relative h-64 md:h-80 overflow-hidden">
-                                <img src={i === 0 ? "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" : "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"} alt={lawyer.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                                <img src={i === 0 ? "/demo-art/law-office-1.svg" : "/demo-art/law-office-2.svg"} alt={lawyer.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors"></div>
                             </div>
                             <div className="p-6 md:p-8">

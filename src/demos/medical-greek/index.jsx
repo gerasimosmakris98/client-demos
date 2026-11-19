@@ -266,7 +266,7 @@ const About = ({ t }) => (
             </div>
             {/* Image extends past section boundary on desktop for asymmetric feel */}
             <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px] md:-mb-12 md:mt-8 relative">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2535&auto=format&fit=crop" className="w-full h-full object-cover" alt="Medical center" />
+                <img src="/demo-art/medical-1.svg" className="w-full h-full object-cover" alt="Medical center" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent md:from-transparent" />
             </div>
         </div>

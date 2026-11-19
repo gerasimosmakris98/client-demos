@@ -42,9 +42,9 @@ const translations = {
             badge: "Programs",
             title: "TRAIN WITH THE BEST",
             items: [
-                { title: 'CrossFit', desc: 'High-intensity functional movements.', img: 'https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=800&auto=format&fit=crop' },
-                { title: 'Yoga Flow', desc: 'Mind and body synchronization.', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop' },
-                { title: 'Boxing', desc: 'Skill, strength, and endurance.', img: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800&auto=format&fit=crop' }
+                { title: 'CrossFit', desc: 'High-intensity functional movements.', img: '/demo-art/gym-1.svg' },
+                { title: 'Yoga Flow', desc: 'Mind and body synchronization.', img: '/demo-art/gym-2.svg' },
+                { title: 'Boxing', desc: 'Skill, strength, and endurance.', img: '/demo-art/gym-3.svg' }
             ]
         },
         trainers: {
@@ -87,9 +87,9 @@ const translations = {
             badge: "Προγράμματα",
             title: "ΠΡΟΠΟΝΗΘΕΙΤΕ ΜΕ ΤΟΥΣ ΚΑΛΥΤΕΡΟΥΣ",
             items: [
-                { title: 'CrossFit', desc: 'Λειτουργικές κινήσεις υψηλής έντασης.', img: 'https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=800&auto=format&fit=crop' },
-                { title: 'Yoga Flow', desc: 'Συγχρονισμός νου και σώματος.', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop' },
-                { title: 'Πυγμαχία', desc: 'Δεξιότητα, δύναμη και αντοχή.', img: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800&auto=format&fit=crop' }
+                { title: 'CrossFit', desc: 'Λειτουργικές κινήσεις υψηλής έντασης.', img: '/demo-art/gym-4.svg' },
+                { title: 'Yoga Flow', desc: 'Συγχρονισμός νου και σώματος.', img: '/demo-art/gym-1.svg' },
+                { title: 'Πυγμαχία', desc: 'Δεξιότητα, δύναμη και αντοχή.', img: '/demo-art/gym-2.svg' }
             ]
         },
         trainers: {
@@ -132,9 +132,9 @@ const translations = {
             badge: "Programas",
             title: "ENTRENA CON LOS MEJORES",
             items: [
-                { title: 'CrossFit', desc: 'Movimientos funcionales de alta intensidad.', img: 'https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?q=80&w=800&auto=format&fit=crop' },
-                { title: 'Yoga Flow', desc: 'Sincronización de cuerpo y mente.', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop' },
-                { title: 'Boxeo', desc: 'Habilidad, fuerza y resistencia.', img: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800&auto=format&fit=crop' }
+                { title: 'CrossFit', desc: 'Movimientos funcionales de alta intensidad.', img: '/demo-art/gym-3.svg' },
+                { title: 'Yoga Flow', desc: 'Sincronización de cuerpo y mente.', img: '/demo-art/gym-4.svg' },
+                { title: 'Boxeo', desc: 'Habilidad, fuerza y resistencia.', img: '/demo-art/gym-1.svg' }
             ]
         },
         trainers: {

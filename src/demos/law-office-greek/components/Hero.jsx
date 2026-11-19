@@ -11,7 +11,7 @@ const LawHero = ({ t }) => {
                     initial={{ scale: 1.1 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-                    className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=2612&auto=format&fit=crop')] bg-cover bg-center"
+                    className="absolute inset-0 bg-[url('/demo-art/law-office-1.svg')] bg-cover bg-center"
                 />
             </div>
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-slate-900/70" />
@@ -59,7 +59,7 @@ const LawHero = ({ t }) => {
                     className="relative hidden lg:block"
                 >
                     <div className="relative w-[500px] h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
-                        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover" alt="Law Office" />
+                        <img src="/demo-art/law-office-2.svg" className="w-full h-full object-cover" alt="Law Office" />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
 
                         {/* Floating Cards */}

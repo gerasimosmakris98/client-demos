@@ -11,7 +11,7 @@ const Hero = ({ t }) => {
                     initial={{ scale: 1 }}
                     animate={{ scale: 1.1 }}
                     transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-                    className="w-full h-full bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center"
+                    className="w-full h-full bg-[url('/demo-art/restaurant-1.svg')] bg-cover bg-center"
                 />
                 <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a0a] via-[#1a0a0a]/80 to-transparent" />

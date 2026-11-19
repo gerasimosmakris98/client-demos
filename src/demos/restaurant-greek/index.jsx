@@ -171,7 +171,7 @@ const About = ({ t }) => (
     <section className="py-16 md:py-24 bg-[#1a0a0a] text-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="rounded-3xl overflow-hidden h-[300px] md:h-[500px]">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover" alt="Food" />
+                <img src="/demo-art/restaurant-1.svg" className="w-full h-full object-cover" alt="Food" />
             </div>
             <div>
                 <span className="text-red-400 font-mono text-xs tracking-[0.3em] uppercase">{t.about.badge}</span>
@@ -233,7 +233,7 @@ const Chef = ({ t }) => (
                 </div>
             </div>
             <div className="rounded-3xl overflow-hidden h-[300px] md:h-[400px] order-1 md:order-2">
-                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=2677&auto=format&fit=crop" className="w-full h-full object-cover" alt="Chef" />
+                <img src="/demo-art/restaurant-2.svg" className="w-full h-full object-cover" alt="Chef" />
             </div>
         </div>
     </section>
@@ -248,12 +248,12 @@ const Gallery = ({ t }) => (
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                 {[
-                    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?q=80&w=800&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop'
+                    '/demo-art/restaurant-3.svg',
+                    '/demo-art/restaurant-4.svg',
+                    '/demo-art/restaurant-1.svg',
+                    '/demo-art/restaurant-2.svg',
+                    '/demo-art/restaurant-3.svg',
+                    '/demo-art/restaurant-4.svg'
                 ].map((src, i) => (
                     <div key={i} className="aspect-square rounded-2xl overflow-hidden group">
                         <img src={src} alt={`Food ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />

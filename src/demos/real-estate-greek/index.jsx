@@ -48,9 +48,9 @@ const translations = {
             badge: "Portfolio",
             title: "FEATURED LISTINGS",
             items: [
-                { title: 'Villa Kifisia', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' },
-                { title: 'Penthouse Glyfada', price: '€1,500/mo', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'For Rent' },
-                { title: 'Studio Kolonaki', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'For Sale' }
+                { title: 'Villa Kifisia', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: '/demo-art/real-estate-1.svg', tag: 'For Sale' },
+                { title: 'Penthouse Glyfada', price: '€1,500/mo', beds: 3, baths: 2, size: '180m²', img: '/demo-art/real-estate-2.svg', tag: 'For Rent' },
+                { title: 'Studio Kolonaki', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: '/demo-art/real-estate-3.svg', tag: 'For Sale' }
             ]
         },
         services: {
@@ -112,9 +112,9 @@ const translations = {
             badge: "Χαρτοφυλάκιο",
             title: "ΠΡΟΤΕΙΝΟΜΕΝΑ ΑΚΙΝΗΤΑ",
             items: [
-                { title: 'Villa Κηφισιά', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'Πώληση' },
-                { title: 'Penthouse Γλυφάδα', price: '€1,500/μήνα', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'Ενοικίαση' },
-                { title: 'Studio Κολωνάκι', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'Πώληση' }
+                { title: 'Villa Κηφισιά', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: '/demo-art/real-estate-4.svg', tag: 'Πώληση' },
+                { title: 'Penthouse Γλυφάδα', price: '€1,500/μήνα', beds: 3, baths: 2, size: '180m²', img: '/demo-art/real-estate-1.svg', tag: 'Ενοικίαση' },
+                { title: 'Studio Κολωνάκι', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: '/demo-art/real-estate-2.svg', tag: 'Πώληση' }
             ]
         },
         services: {
@@ -176,9 +176,9 @@ const translations = {
             badge: "Portafolio",
             title: "PROPIEDADES DESTACADAS",
             items: [
-                { title: 'Villa Kifisia', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800&auto=format&fit=crop', tag: 'Venta' },
-                { title: 'Penthouse Glyfada', price: '€1,500/mes', beds: 3, baths: 2, size: '180m²', img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop', tag: 'Alquiler' },
-                { title: 'Studio Kolonaki', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', tag: 'Venta' }
+                { title: 'Villa Kifisia', price: '€1,200,000', beds: 5, baths: 3, size: '320m²', img: '/demo-art/real-estate-3.svg', tag: 'Venta' },
+                { title: 'Penthouse Glyfada', price: '€1,500/mes', beds: 3, baths: 2, size: '180m²', img: '/demo-art/real-estate-4.svg', tag: 'Alquiler' },
+                { title: 'Studio Kolonaki', price: '€350,000', beds: 1, baths: 1, size: '55m²', img: '/demo-art/real-estate-1.svg', tag: 'Venta' }
             ]
         },
         services: {
@@ -238,7 +238,7 @@ const AboutSection = ({ t }) => (
                 </div>
             </div>
             <div className="rounded-2xl md:rounded-3xl overflow-hidden h-[260px] md:h-[400px]">
-                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2675&auto=format&fit=crop" className="w-full h-full object-cover" alt="Real estate" />
+                <img src="/demo-art/real-estate-2.svg" className="w-full h-full object-cover" alt="Real estate" />
             </div>
         </div>
     </section>
